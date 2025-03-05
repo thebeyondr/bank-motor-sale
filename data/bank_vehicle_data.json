@@ -1,0 +1,1261 @@
+{
+  "banks": [
+    {
+      "id": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "name": "JMMB",
+      "viewInstructions": "View at KACS Auto Sales: 37 Dunrobin Avenue, Kingston 10 | 876-227-2776",
+      "saleTerms": "Vehicles sold as-is, where-is. All reasonable offers considered.",
+      "bidInstructions": "Bid at KACS Auto Sales: 37 Dunrobin Avenue, Kingston 10 | 876-227-2776",
+      "contactInfo": {
+        "phones": ["876-551-6507", "876-564-5928", "876-284-6933"],
+        "emails": [""],
+        "address": "",
+        "website": "https://www.jmmb.com/"
+      },
+      "operatingHours": {
+        "weekdays": "9:00 AM - 4:00 PM",
+        "weekends": "Closed"
+      }
+    },
+    {
+      "id": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "name": "NCB",
+      "viewInstructions": "Visit Nihon Trucking: 45-47 Constant Spring Road, Kingston 10",
+      "saleTerms": "All vehicles are sold as-is where-is.",
+      "bidInstructions": "Email bids to vehiclebids@jncb.com",
+      "contactInfo": {
+        "phones": ["888-429-5950", "876-589-9835", "876-285-4809"],
+        "emails": ["vehiclebids@jncb.com"],
+        "address": "6 Haughton Terrace, Kingston 10, Jamaica",
+        "website": "https://www.jncb.com"
+      },
+      "operatingHours": {
+        "weekdays": "8:30 AM - 3:00 PM",
+        "weekends": "Closed"
+      }
+    },
+    {
+      "id": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "name": "CIBC",
+      "viewInstructions": "View at Collections Solutions Ltd: 30 Cowper Drive, Kingston 20 | Mon - Fri 9:00 AM - 4:30 PM",
+      "saleTerms": "Sold as-is, where-is, under the power of sale.",
+      "bidInstructions": "[DEADLINE March 19, 2025] Collect bid forms at Collections Solutions Ltd: 30 Cowper Drive, Kingston 20 or CIBC Caribbean",
+      "contactInfo": {
+        "phones": ["1-246-467-2960 Ext 7318 or 7319"],
+        "emails": ["duane.skeete@cibcfcib.com", "wayne.weekes@cibcfcib.com"],
+        "address": "CIBC, Kingston, Jamaica",
+        "website": "https://www.cibcfcib.com"
+      },
+      "operatingHours": {
+        "weekdays": "8:30 AM - 4:30 PM",
+        "weekends": "Closed"
+      }
+    }
+  ],
+  "vehicles": [
+    {
+      "id": "3e1d5db4-5655-4d4d-aa29-98d1be69e832",
+      "year": 2021,
+      "make": "Audi",
+      "model": "Q3",
+      "color": "Gray",
+      "pricesBySource": {
+        "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4": {
+          "price": 5000000,
+          "source": "JMMB"
+        }
+      },
+      "sources": ["JMMB"]
+    },
+    {
+      "id": "bea25779-bf54-45d0-9094-82855a01392f",
+      "year": 2018,
+      "make": "BMW",
+      "model": "X5",
+      "color": "White",
+      "pricesBySource": {
+        "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4": {
+          "price": 5000000,
+          "source": "JMMB"
+        }
+      },
+      "sources": ["JMMB"]
+    },
+    {
+      "id": "c1ae0714-b0ac-4c99-9cc9-6f34a5fc01af",
+      "year": 2018,
+      "make": "BMW",
+      "model": "X1",
+      "color": "White",
+      "pricesBySource": {
+        "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4": {
+          "price": 3000000,
+          "source": "JMMB"
+        }
+      },
+      "sources": ["JMMB"]
+    },
+    {
+      "id": "5052be5a-e7ce-4dc0-82eb-17402c2e8b5e",
+      "year": 2016,
+      "make": "BMW",
+      "model": "523D",
+      "color": "White",
+      "pricesBySource": {
+        "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4": {
+          "price": 3000000,
+          "source": "JMMB"
+        }
+      },
+      "sources": ["JMMB"]
+    },
+    {
+      "id": "1817571e-3c14-42de-8571-a83c086d3ebc",
+      "year": 2017,
+      "make": "Honda",
+      "model": "Accord",
+      "color": "Blue",
+      "pricesBySource": {
+        "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4": {
+          "price": 2000000,
+          "source": "JMMB"
+        }
+      },
+      "sources": ["JMMB"]
+    },
+    {
+      "id": "34dad968-66a2-403f-b492-b63049c2b017",
+      "year": 2016,
+      "make": "Honda",
+      "model": "Accord EX",
+      "color": "Black",
+      "pricesBySource": {
+        "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4": {
+          "price": 3000000,
+          "source": "JMMB"
+        }
+      },
+      "sources": ["JMMB"]
+    },
+    {
+      "id": "4506b254-cd9c-4720-afe8-7c07f6fa2b1d",
+      "year": 2014,
+      "make": "Honda",
+      "model": "Civic",
+      "color": "Gray",
+      "pricesBySource": {
+        "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4": {
+          "price": 1000000,
+          "source": "JMMB"
+        }
+      },
+      "sources": ["JMMB"]
+    },
+    {
+      "id": "bf7fcffb-a27e-46ed-9c81-0d1723410b6a",
+      "year": 2016,
+      "make": "Honda",
+      "model": "Accord",
+      "color": "Gray",
+      "pricesBySource": {
+        "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4": {
+          "price": 2000000,
+          "source": "JMMB"
+        }
+      },
+      "sources": ["JMMB"]
+    },
+    {
+      "id": "eeba16cc-0f6e-4869-9609-0e05bbedb8bf",
+      "year": 2016,
+      "make": "Honda",
+      "model": "Fit",
+      "color": "White",
+      "pricesBySource": {
+        "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4": {
+          "price": 1000000,
+          "source": "JMMB"
+        }
+      },
+      "sources": ["JMMB"]
+    },
+    {
+      "id": "cf52cf52-5d0b-4660-a609-015336f8167c",
+      "year": 2018,
+      "make": "Honda",
+      "model": "Civic",
+      "color": "Gray",
+      "pricesBySource": {
+        "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4": {
+          "price": 2000000,
+          "source": "JMMB"
+        }
+      },
+      "sources": ["JMMB"]
+    },
+    {
+      "id": "483d1222-c07e-4da5-858c-a73de9f9b063",
+      "year": 2020,
+      "make": "Honda",
+      "model": "Civic",
+      "color": "Silver",
+      "pricesBySource": {
+        "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4": {
+          "price": 2000000,
+          "source": "JMMB"
+        }
+      },
+      "sources": ["JMMB"]
+    },
+    {
+      "id": "920509ea-ebbe-4793-b4d9-d38a347c670a",
+      "year": 2018,
+      "make": "Honda",
+      "model": "CRV",
+      "color": "Red",
+      "pricesBySource": {
+        "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4": {
+          "price": 3000000,
+          "source": "JMMB"
+        }
+      },
+      "sources": ["JMMB"]
+    },
+    {
+      "id": "b47407c6-8de0-47c0-a05f-abcecbd681e4",
+      "year": 2019,
+      "make": "Hyundai",
+      "model": "Accent",
+      "color": "Red",
+      "pricesBySource": {
+        "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4": {
+          "price": 2000000,
+          "source": "JMMB"
+        }
+      },
+      "sources": ["JMMB"]
+    },
+    {
+      "id": "6d52f4e5-c227-4a82-8628-b4fdcdc5a24f",
+      "year": 2022,
+      "make": "Hyundai",
+      "model": "Palisade",
+      "color": "Black",
+      "pricesBySource": {
+        "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4": {
+          "price": 7000000,
+          "source": "JMMB"
+        }
+      },
+      "sources": ["JMMB"]
+    },
+    {
+      "id": "6f0cb5d4-15b0-41ea-8a44-9c6796862f3c",
+      "year": 2019,
+      "make": "Hyundai",
+      "model": "Tucson",
+      "color": "Black",
+      "pricesBySource": {
+        "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4": {
+          "price": 2000000,
+          "source": "JMMB"
+        }
+      },
+      "sources": ["JMMB"]
+    },
+    {
+      "id": "4700d154-d50c-42e0-bde0-9637d850535e",
+      "year": 2023,
+      "make": "Audi",
+      "model": "A3",
+      "color": "Unknown",
+      "pricesBySource": {
+        "cf984f5d-4bf8-405d-93f4-c518e258f7fe": {
+          "price": null,
+          "source": "NCB"
+        }
+      },
+      "sources": ["NCB"]
+    },
+    {
+      "id": "ce66151d-10db-4492-ae6a-a9836c81b617",
+      "year": 2018,
+      "make": "Audi",
+      "model": "A4",
+      "color": "Unknown",
+      "pricesBySource": {
+        "cf984f5d-4bf8-405d-93f4-c518e258f7fe": {
+          "price": null,
+          "source": "NCB"
+        }
+      },
+      "sources": ["NCB"]
+    },
+    {
+      "id": "f4639d50-45f4-4466-9a1f-f87f1352acb4",
+      "year": 2024,
+      "make": "Audi",
+      "model": "Q3",
+      "color": "Unknown",
+      "pricesBySource": {
+        "cf984f5d-4bf8-405d-93f4-c518e258f7fe": {
+          "price": null,
+          "source": "NCB"
+        }
+      },
+      "sources": ["NCB"]
+    },
+    {
+      "id": "b32dd33f-074c-4794-ad1e-e6409cfcd6c2",
+      "year": 2015,
+      "make": "BMW",
+      "model": "316",
+      "color": "Unknown",
+      "pricesBySource": {
+        "cf984f5d-4bf8-405d-93f4-c518e258f7fe": {
+          "price": null,
+          "source": "NCB"
+        }
+      },
+      "sources": ["NCB"]
+    },
+    {
+      "id": "dc92dadc-f7b3-4cd2-9b0e-637c8c4fae94",
+      "year": 2018,
+      "make": "BMW",
+      "model": "5301",
+      "color": "Unknown",
+      "pricesBySource": {
+        "cf984f5d-4bf8-405d-93f4-c518e258f7fe": {
+          "price": null,
+          "source": "NCB"
+        }
+      },
+      "sources": ["NCB"]
+    },
+    {
+      "id": "8bc8c5b2-03de-411f-8299-2303b0d7586f",
+      "year": 2017,
+      "make": "BMW",
+      "model": "X1",
+      "color": "Unknown",
+      "pricesBySource": {
+        "cf984f5d-4bf8-405d-93f4-c518e258f7fe": {
+          "price": null,
+          "source": "NCB"
+        }
+      },
+      "sources": ["NCB"]
+    },
+    {
+      "id": "2f6ef767-7be0-459d-8747-a89c736e7509",
+      "year": 2019,
+      "make": "BMW",
+      "model": "X1",
+      "color": "Unknown",
+      "pricesBySource": {
+        "cf984f5d-4bf8-405d-93f4-c518e258f7fe": {
+          "price": null,
+          "source": "NCB"
+        }
+      },
+      "sources": ["NCB"]
+    },
+    {
+      "id": "e53dfeea-437e-4323-a086-40509236f0bf",
+      "year": 2014,
+      "make": "BMW",
+      "model": "X3",
+      "color": "Unknown",
+      "pricesBySource": {
+        "cf984f5d-4bf8-405d-93f4-c518e258f7fe": {
+          "price": null,
+          "source": "NCB"
+        }
+      },
+      "sources": ["NCB"]
+    },
+    {
+      "id": "de1bbed8-6c1b-436a-80b6-c6a9e24774d6",
+      "year": 2019,
+      "make": "BMW",
+      "model": "X3 - Xdrive",
+      "color": "Unknown",
+      "pricesBySource": {
+        "cf984f5d-4bf8-405d-93f4-c518e258f7fe": {
+          "price": null,
+          "source": "NCB"
+        }
+      },
+      "sources": ["NCB"]
+    },
+    {
+      "id": "64a0e121-ae7e-42e3-83f0-eb8fce38d48a",
+      "year": 2018,
+      "make": "BMW",
+      "model": "X5",
+      "color": "Unknown",
+      "pricesBySource": {
+        "cf984f5d-4bf8-405d-93f4-c518e258f7fe": {
+          "price": null,
+          "source": "NCB"
+        }
+      },
+      "sources": ["NCB"]
+    },
+    {
+      "id": "b255f5b0-0994-46d5-9c28-cecbd89b921e",
+      "year": 2012,
+      "make": "BMW",
+      "model": "X5 - ATL AutoBahn",
+      "color": "Unknown",
+      "pricesBySource": {
+        "cf984f5d-4bf8-405d-93f4-c518e258f7fe": {
+          "price": null,
+          "source": "NCB"
+        }
+      },
+      "sources": ["NCB"]
+    },
+    {
+      "id": "4468b17c-81ea-4cab-82d9-10ba3ce8a071",
+      "year": 2018,
+      "make": "Honda",
+      "model": "CRV",
+      "color": "Unknown",
+      "pricesBySource": {
+        "cf984f5d-4bf8-405d-93f4-c518e258f7fe": {
+          "price": null,
+          "source": "NCB"
+        }
+      },
+      "sources": ["NCB"]
+    },
+    {
+      "id": "c122e6ca-b1ce-43ec-ad17-62936b183d10",
+      "year": 2015,
+      "make": "Honda",
+      "model": "Fit Hybrid",
+      "color": "Unknown",
+      "pricesBySource": {
+        "cf984f5d-4bf8-405d-93f4-c518e258f7fe": {
+          "price": null,
+          "source": "NCB"
+        }
+      },
+      "sources": ["NCB"]
+    },
+    {
+      "id": "ec2e0e31-4b2d-4a44-a2bc-89a732e5bc49",
+      "year": 2017,
+      "make": "Honda",
+      "model": "Fit_1",
+      "color": "Unknown",
+      "pricesBySource": {
+        "cf984f5d-4bf8-405d-93f4-c518e258f7fe": {
+          "price": null,
+          "source": "NCB"
+        }
+      },
+      "sources": ["NCB"]
+    },
+    {
+      "id": "0abe7eae-ae16-4742-818e-692394ca38dd",
+      "year": 2017,
+      "make": "Honda",
+      "model": "Fit 2",
+      "color": "Unknown",
+      "pricesBySource": {
+        "cf984f5d-4bf8-405d-93f4-c518e258f7fe": {
+          "price": null,
+          "source": "NCB"
+        }
+      },
+      "sources": ["NCB"]
+    },
+    {
+      "id": "8587bd34-521c-4eff-9b16-5bd9d58b24af",
+      "year": 2017,
+      "make": "Honda",
+      "model": "Fit_3",
+      "color": "Unknown",
+      "pricesBySource": {
+        "cf984f5d-4bf8-405d-93f4-c518e258f7fe": {
+          "price": null,
+          "source": "NCB"
+        }
+      },
+      "sources": ["NCB"]
+    },
+    {
+      "id": "39c31cca-7555-41bd-8641-f9f98f3b922b",
+      "year": 2018,
+      "make": "Honda",
+      "model": "Fit",
+      "color": "Unknown",
+      "pricesBySource": {
+        "cf984f5d-4bf8-405d-93f4-c518e258f7fe": {
+          "price": null,
+          "source": "NCB"
+        }
+      },
+      "sources": ["NCB"]
+    },
+    {
+      "id": "1fbfb6fc-d674-4a94-a9a6-bc489c783f10",
+      "year": 2017,
+      "make": "Honda",
+      "model": "Fit Hybrid",
+      "color": "Unknown",
+      "pricesBySource": {
+        "cf984f5d-4bf8-405d-93f4-c518e258f7fe": {
+          "price": null,
+          "source": "NCB"
+        }
+      },
+      "sources": ["NCB"]
+    },
+    {
+      "id": "7b020e94-0c15-4e19-97f3-c7e0c3981148",
+      "year": 2018,
+      "make": "Honda",
+      "model": "Fit Hybrid",
+      "color": "Unknown",
+      "pricesBySource": {
+        "cf984f5d-4bf8-405d-93f4-c518e258f7fe": {
+          "price": null,
+          "source": "NCB"
+        }
+      },
+      "sources": ["NCB"]
+    },
+    {
+      "id": "b0b9b3dc-3494-4bdd-b89e-267b56b20889",
+      "year": 2021,
+      "make": "Honda",
+      "model": "City",
+      "color": "Unknown",
+      "pricesBySource": {
+        "cf984f5d-4bf8-405d-93f4-c518e258f7fe": {
+          "price": null,
+          "source": "NCB"
+        }
+      },
+      "sources": ["NCB"]
+    },
+    {
+      "id": "4865b626-2137-490b-ae38-972687aad1bb",
+      "year": 2016,
+      "make": "Honda",
+      "model": "Grace Hybrid",
+      "color": "Unknown",
+      "pricesBySource": {
+        "cf984f5d-4bf8-405d-93f4-c518e258f7fe": {
+          "price": null,
+          "source": "NCB"
+        }
+      },
+      "sources": ["NCB"]
+    },
+    {
+      "id": "de80cdce-d41d-438d-a514-7fdcbde2e870",
+      "year": 2021,
+      "make": "Honda",
+      "model": "HRV_1",
+      "color": "Unknown",
+      "pricesBySource": {
+        "cf984f5d-4bf8-405d-93f4-c518e258f7fe": {
+          "price": null,
+          "source": "NCB"
+        }
+      },
+      "sources": ["NCB"]
+    },
+    {
+      "id": "08fd26b1-cf63-4b88-8d0a-e1f305b616d0",
+      "year": 2021,
+      "make": "Honda",
+      "model": "HRV_2",
+      "color": "Unknown",
+      "pricesBySource": {
+        "cf984f5d-4bf8-405d-93f4-c518e258f7fe": {
+          "price": null,
+          "source": "NCB"
+        }
+      },
+      "sources": ["NCB"]
+    },
+    {
+      "id": "0ec3aad7-e981-4d6d-b348-698a5d63398c",
+      "year": 2016,
+      "make": "Honda",
+      "model": "Vezel",
+      "color": "Unknown",
+      "pricesBySource": {
+        "cf984f5d-4bf8-405d-93f4-c518e258f7fe": {
+          "price": null,
+          "source": "NCB"
+        }
+      },
+      "sources": ["NCB"]
+    },
+    {
+      "id": "cb588167-ca18-4578-affd-048dbe491009",
+      "year": 2019,
+      "make": "Hyundai",
+      "model": "Creta",
+      "color": "Unknown",
+      "pricesBySource": {
+        "cf984f5d-4bf8-405d-93f4-c518e258f7fe": {
+          "price": null,
+          "source": "NCB"
+        }
+      },
+      "sources": ["NCB"]
+    },
+    {
+      "id": "2cb90ab0-ad19-454b-ab34-88661f5dee72",
+      "year": 2021,
+      "make": "Hyundai",
+      "model": "Creta",
+      "color": "Unknown",
+      "pricesBySource": {
+        "cf984f5d-4bf8-405d-93f4-c518e258f7fe": {
+          "price": null,
+          "source": "NCB"
+        }
+      },
+      "sources": ["NCB"]
+    },
+    {
+      "id": "4a975c77-cc91-4aff-b255-26232c25e2e9",
+      "year": 2022,
+      "make": "Hyundai",
+      "model": "Creta",
+      "color": "Unknown",
+      "pricesBySource": {
+        "cf984f5d-4bf8-405d-93f4-c518e258f7fe": {
+          "price": null,
+          "source": "NCB"
+        }
+      },
+      "sources": ["NCB"]
+    },
+    {
+      "id": "745aa36d-897e-4992-bc44-641780a2621c",
+      "year": 2016,
+      "make": "Santa",
+      "model": "Fe",
+      "color": "Unknown",
+      "pricesBySource": {
+        "cf984f5d-4bf8-405d-93f4-c518e258f7fe": {
+          "price": null,
+          "source": "NCB"
+        }
+      },
+      "sources": ["NCB"]
+    },
+    {
+      "id": "8af9e968-d61e-4422-b91e-b01e10c6b7b4",
+      "year": 2016,
+      "make": "Hyundai",
+      "model": "Santa Fe\n2015 Hyundai Sonata",
+      "color": "Unknown",
+      "pricesBySource": {
+        "cf984f5d-4bf8-405d-93f4-c518e258f7fe": {
+          "price": null,
+          "source": "NCB"
+        }
+      },
+      "sources": ["NCB"]
+    },
+    {
+      "id": "45dbec04-c7b4-4e2c-b9a3-d0f801d7421f",
+      "year": 2022,
+      "make": "Hyundai",
+      "model": "Staria",
+      "color": "Unknown",
+      "pricesBySource": {
+        "cf984f5d-4bf8-405d-93f4-c518e258f7fe": {
+          "price": null,
+          "source": "NCB"
+        }
+      },
+      "sources": ["NCB"]
+    },
+    {
+      "id": "9cde6858-3674-4adb-945d-616e1dd28bdb",
+      "year": 2019,
+      "make": "Hyundai",
+      "model": "Tucson",
+      "color": "Unknown",
+      "pricesBySource": {
+        "cf984f5d-4bf8-405d-93f4-c518e258f7fe": {
+          "price": null,
+          "source": "NCB"
+        }
+      },
+      "sources": ["NCB"]
+    },
+    {
+      "id": "28220667-901e-4828-a529-a5371db9561b",
+      "year": 2020,
+      "make": "Hyundai",
+      "model": "Tucson",
+      "color": "Unknown",
+      "pricesBySource": {
+        "cf984f5d-4bf8-405d-93f4-c518e258f7fe": {
+          "price": null,
+          "source": "NCB"
+        }
+      },
+      "sources": ["NCB"]
+    },
+    {
+      "id": "6bec57c4-3311-4110-836a-ca1969167ae0",
+      "year": 2020,
+      "make": "Hyundai",
+      "model": "Venue",
+      "color": "Unknown",
+      "pricesBySource": {
+        "cf984f5d-4bf8-405d-93f4-c518e258f7fe": {
+          "price": null,
+          "source": "NCB"
+        }
+      },
+      "sources": ["NCB"]
+    },
+    {
+      "id": "5123c991-cdcd-4390-93c7-9a46d7e3ae74",
+      "year": 2014,
+      "make": "BMW",
+      "model": "X1",
+      "color": "Silver",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 1400000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "7150643c-9e62-43ff-a914-c687826dfc7d",
+      "year": 2016,
+      "make": "BMW",
+      "model": "X5",
+      "color": "Black",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 2700000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "c564a4eb-7105-41bb-b72a-9af937b53185",
+      "year": 2021,
+      "make": "Ford",
+      "model": "Ecosport Titanium",
+      "color": "Gray",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 2290000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "15e9900c-1bb5-4eaa-8753-1f144e261257",
+      "year": 2010,
+      "make": "Ford",
+      "model": "Fiesta",
+      "color": "Red",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 300000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "e1b56440-c4b9-44f2-bb45-80a9943deeb0",
+      "year": 2021,
+      "make": "Ford",
+      "model": "Ranger Raptor",
+      "color": "Gray",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 8570000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "11f7a8c0-ddd2-4a88-bfa6-81e7b854ab73",
+      "year": 2021,
+      "make": "Ford",
+      "model": "Ranger Wildtrak",
+      "color": "White",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 6520000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "bce9e513-4ecd-4fb2-84b7-0360dab25dfa",
+      "year": 2016,
+      "make": "Honda",
+      "model": "Accord",
+      "color": "White",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 1940000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "5ea88f3e-2fe7-428b-8609-980879a3a859",
+      "year": 2014,
+      "make": "Hyundai",
+      "model": "H1",
+      "color": "White",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 600000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "e51ed511-3b60-408f-b04a-9992c4804cac",
+      "year": 2019,
+      "make": "Hyundai",
+      "model": "Tucson",
+      "color": "Gray",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 2710000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "cba651f4-9d7e-4e20-afc0-dc17417b18f3",
+      "year": 2015,
+      "make": "Mazda",
+      "model": "CX5",
+      "color": "Red",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 1660000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "6252e9f8-7907-4335-b2fb-fd35d42e2614",
+      "year": 2013,
+      "make": "Mazda",
+      "model": "Premacy",
+      "color": "Purple",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 850000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "5154509b-9178-4b6a-a613-2d57031b5951",
+      "year": 2014,
+      "make": "Mazda",
+      "model": "Premacy",
+      "color": "Blue",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 800000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "b6b076f1-33bc-4dbc-87fb-aa74c2ffb36e",
+      "year": 2015,
+      "make": "Mazda",
+      "model": "Premacy",
+      "color": "Black",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 600000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "9e274944-e540-42f0-ab03-194125287d53",
+      "year": 2016,
+      "make": "Mazda",
+      "model": "Premacy",
+      "color": "Gray",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 1000000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "b6b36cde-cfe2-43b7-9f16-b81d4aae2bb0",
+      "year": 2013,
+      "make": "Mazda",
+      "model": "Versia",
+      "color": "Red",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 400000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "0eb52b44-4281-4bda-a8bc-58a460a2f439",
+      "year": 2015,
+      "make": "Mercedes",
+      "model": "Benz C180",
+      "color": "Blue",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 2170000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "09022540-4ddb-40ef-a414-6c0b708e0200",
+      "year": 2015,
+      "make": "Mercedes",
+      "model": "Benz E250",
+      "color": "White",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 3100000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "f5097c2d-3658-47df-98af-1247685f1518",
+      "year": 2017,
+      "make": "Mitsubishi",
+      "model": "Attrage",
+      "color": "Gray",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 810000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "42340038-83a9-44d5-b786-c7b466fa78e6",
+      "year": 2017,
+      "make": "Mitsubishi",
+      "model": "Attrage",
+      "color": "White",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 650000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "a4aa368b-f8b2-43c5-a1f1-d21f9d5e089f",
+      "year": 2014,
+      "make": "Nissan",
+      "model": "AD Wagon",
+      "color": "White",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 300000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "22653a90-e60c-46a0-8b19-1bd21f90b8fb",
+      "year": 2014,
+      "make": "Nissan",
+      "model": "Bluebird Sylphy G",
+      "color": "Gray",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 800000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "cb434bfd-089e-4ace-839a-3e8afcd4dd38",
+      "year": 2014,
+      "make": "Nissan",
+      "model": "Bluebird Sylphy X",
+      "color": "Black",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 700000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "51e576e7-43ce-4c17-8da2-2df0722e55a6",
+      "year": 2016,
+      "make": "Nissan",
+      "model": "Latio",
+      "color": "Gray",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 700000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "472e69f0-5433-456d-bd38-300c0cdeb92e",
+      "year": 2012,
+      "make": "Nissan",
+      "model": "Lafesta Highway Star",
+      "color": "Gray",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 550000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "d67147b7-377b-4474-97f2-60c1cfcce4b2",
+      "year": 2021,
+      "make": "Nissan",
+      "model": "Qashqai",
+      "color": "Red",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 3170000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "d0f3b70f-1606-4753-bd7c-8e6dbf98ab5e",
+      "year": 2013,
+      "make": "Nissan",
+      "model": "Skyline",
+      "color": "White",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 700000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "834b151a-0a69-49f1-aa79-8e455d05e360",
+      "year": 2013,
+      "make": "Nissan",
+      "model": "Sulphy",
+      "color": "White",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 800000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "ca9644a1-c06c-4eb4-acd4-f2b6e5b1dc6f",
+      "year": 2014,
+      "make": "Subaru",
+      "model": "Impreza G4",
+      "color": "Silver",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 750000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "0c3ba568-23b6-40e8-a63d-9d0f96dd3aca",
+      "year": 2015,
+      "make": "Subaru",
+      "model": "Impreza G4",
+      "color": "Gray",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 1100000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "2b16d517-0afa-4479-a8ab-9bc78d690cee",
+      "year": 2012,
+      "make": "Subaru",
+      "model": "Legacy Touring",
+      "color": "Black",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 600000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "1cc8ac55-f2bc-43c0-8854-6e5cd86140c1",
+      "year": 2013,
+      "make": "Subaru",
+      "model": "Legacy Touring",
+      "color": "Blue",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 1940000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "1924889e-4cbc-44f3-9144-f735004ddd93",
+      "year": 2015,
+      "make": "Suzuki",
+      "model": "Swift",
+      "color": "Gray",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 840000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "8c7b345f-9f70-4746-ab06-d151a6be0bb3",
+      "year": 2014,
+      "make": "Toyota",
+      "model": "Passo X",
+      "color": "White",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 550000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "736b8425-11fa-4b95-9a97-79a512c38714",
+      "year": 2023,
+      "make": "Toyota",
+      "model": "Rav4",
+      "color": "Blue",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 6030000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "e079f59b-0062-42b1-abdd-6ca19ba83cd6",
+      "year": 2017,
+      "make": "Toyota",
+      "model": "Vitz",
+      "color": "Pink",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 1550000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "8ec43569-c4a1-4df5-9c1b-be905d4922a1",
+      "year": 2014,
+      "make": "Volkswagen",
+      "model": "Jetta",
+      "color": "Blue",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 500000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "42e2209a-d25c-4a44-91b6-66e968f6609f",
+      "year": 2016,
+      "make": "Volkswagen",
+      "model": "Polo",
+      "color": "Gray",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 650000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    },
+    {
+      "id": "ce71f089-4e28-4736-99cd-80e94f99deb4",
+      "year": 2019,
+      "make": "Volkswagen",
+      "model": "Polo",
+      "color": "Black",
+      "pricesBySource": {
+        "33ff7536-112c-4a40-9b16-a60666ac7d4f": {
+          "price": 1450000,
+          "source": "CIBC"
+        }
+      },
+      "sources": ["CIBC"]
+    }
+  ]
+}
