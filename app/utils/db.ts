@@ -1,11 +1,12 @@
-import type { PriceBySource, Vehicle } from "~/types/vehicle";
-import type { Bank } from "~/types/bank";
+import type { Vehicle, Price } from "~/types/vehicle";
+import type { Bank, VehicleDBSchema } from "~/types/bank";
 
 const DB_NAME = "bankomoto";
 const DB_VERSION = 1;
 
 export const STORES = {
   VEHICLES: "vehicles",
+  PRICES: "prices",
   BANKS: "banks",
 } as const;
 
@@ -54,11 +55,16 @@ export async function openDB(): Promise<BankomotoDB> {
         vehiclesStore.createIndex("make", "make", { unique: false });
         vehiclesStore.createIndex("model", "model", { unique: false });
         vehiclesStore.createIndex("year", "year", { unique: false });
-        vehiclesStore.createIndex("color", "color", { unique: false });
-        vehiclesStore.createIndex("sources", "sources", {
-          unique: false,
-          multiEntry: true,
+      }
+
+      // Create prices store with indexes
+      if (!db.objectStoreNames.contains(STORES.PRICES)) {
+        const pricesStore = db.createObjectStore(STORES.PRICES, {
+          keyPath: "id",
         });
+        pricesStore.createIndex("vehicleId", "vehicleId", { unique: false });
+        pricesStore.createIndex("bankId", "bankId", { unique: false });
+        pricesStore.createIndex("color", "color", { unique: false });
       }
     };
   });
@@ -66,9 +72,12 @@ export async function openDB(): Promise<BankomotoDB> {
 
 export async function getVehicleById(
   id: string
-): Promise<{ vehicle: Vehicle; bank: Bank } | null> {
+): Promise<{ vehicle: Vehicle; prices: Price[]; bank: Bank } | null> {
   const db = await openDB();
-  const tx = db.transaction([STORES.VEHICLES, STORES.BANKS], "readonly");
+  const tx = db.transaction(
+    [STORES.VEHICLES, STORES.PRICES, STORES.BANKS],
+    "readonly"
+  );
 
   try {
     // Get vehicle
@@ -80,18 +89,27 @@ export async function getVehicleById(
 
     if (!vehicle) return null;
 
-    // Get bank info for the first source
-    const bankId = Object.keys(vehicle.pricesBySource)[0];
-    if (!bankId) return null;
+    // Get prices for vehicle
+    const prices = await new Promise<Price[]>((resolve, reject) => {
+      const request = tx
+        .objectStore(STORES.PRICES)
+        .index("vehicleId")
+        .getAll(id);
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error);
+    });
 
+    if (!prices.length) return null;
+
+    // Get bank info for the first price
     const bank = await new Promise<Bank>((resolve, reject) => {
-      const request = tx.objectStore(STORES.BANKS).get(bankId);
+      const request = tx.objectStore(STORES.BANKS).get(prices[0].bankId);
       request.onsuccess = () => resolve(request.result);
       request.onerror = () => reject(request.error);
     });
 
     if (!bank) return null;
-    return { vehicle, bank };
+    return { vehicle, prices, bank };
   } catch (error) {
     console.error("Error fetching vehicle:", error);
     return null;
@@ -100,60 +118,71 @@ export async function getVehicleById(
 
 export async function getVehicles(
   filters: VehicleFilters = {}
-): Promise<Vehicle[]> {
+): Promise<(Vehicle & { prices: Price[] })[]> {
   const db = await openDB();
-  const tx = db.transaction(STORES.VEHICLES, "readonly");
-  const store = tx.objectStore(STORES.VEHICLES);
+  const tx = db.transaction([STORES.VEHICLES, STORES.PRICES], "readonly");
+  const vehiclesStore = tx.objectStore(STORES.VEHICLES);
+  const pricesStore = tx.objectStore(STORES.PRICES);
 
   return new Promise((resolve, reject) => {
-    const request = store.getAll();
+    const request = vehiclesStore.getAll();
 
-    request.onsuccess = () => {
-      const results = (request.result as Vehicle[]).filter((vehicle) => {
+    request.onsuccess = async () => {
+      const vehicles = request.result as Vehicle[];
+      const results = [];
+
+      for (const vehicle of vehicles) {
+        // Get prices for this vehicle
+        const prices = await new Promise<Price[]>((resolve) => {
+          const priceRequest = pricesStore
+            .index("vehicleId")
+            .getAll(vehicle.id);
+          priceRequest.onsuccess = () => resolve(priceRequest.result);
+          priceRequest.onerror = () => resolve([]);
+        });
+
+        // Apply filters
         if (
           filters.make &&
           vehicle.make.toLowerCase() !== filters.make.toLowerCase()
         ) {
-          return false;
+          continue;
         }
         if (
           filters.model &&
           !vehicle.model.toLowerCase().includes(filters.model.toLowerCase())
         ) {
-          return false;
+          continue;
+        }
+        if (filters.year && vehicle.year !== filters.year) {
+          continue;
         }
         if (
           filters.color &&
-          vehicle.color.toLowerCase() !== filters.color.toLowerCase()
+          !prices.some(
+            (p) => p.color?.toLowerCase() === filters.color?.toLowerCase()
+          )
         ) {
-          return false;
+          continue;
         }
-        if (filters.year && vehicle.year !== filters.year) {
-          return false;
-        }
-        if (filters.bank && !vehicle.sources.includes(filters.bank)) {
-          return false;
+        if (filters.bank && !prices.some((p) => p.bankId === filters.bank)) {
+          continue;
         }
         if (
           filters.minPrice &&
-          !Object.values(vehicle.pricesBySource).some(
-            (priceInfo: PriceBySource) =>
-              priceInfo.price && priceInfo.price >= filters.minPrice!
-          )
+          !prices.some((p) => p.price && p.price >= filters.minPrice!)
         ) {
-          return false;
+          continue;
         }
         if (
           filters.maxPrice &&
-          !Object.values(vehicle.pricesBySource).some(
-            (priceInfo: PriceBySource) =>
-              priceInfo.price && priceInfo.price <= filters.maxPrice!
-          )
+          !prices.some((p) => p.price && p.price <= filters.maxPrice!)
         ) {
-          return false;
+          continue;
         }
-        return true;
-      });
+
+        results.push({ ...vehicle, prices });
+      }
 
       resolve(results);
     };

@@ -1,0 +1,2471 @@
+{
+  "banks": [
+    {
+      "id": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "name": "JMMB",
+      "viewInstructions": "View at KACS Auto Sales: 37 Dunrobin Avenue, Kingston 10 | 876-227-2776",
+      "saleTerms": "Vehicles sold as-is, where-is. All reasonable offers considered.",
+      "bidInstructions": "Bid at KACS Auto Sales: 37 Dunrobin Avenue, Kingston 10 | 876-227-2776",
+      "contactInfo": {
+        "phones": ["876-551-6507", "876-564-5928", "876-284-6933"],
+        "emails": [""],
+        "address": "",
+        "website": "https://www.jmmb.com/"
+      },
+      "operatingHours": {
+        "weekdays": "9:00 AM - 4:00 PM",
+        "weekends": "Closed"
+      }
+    },
+    {
+      "id": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "name": "NCB",
+      "viewInstructions": "Visit Nihon Trucking: 45-47 Constant Spring Road, Kingston 10",
+      "saleTerms": "All vehicles are sold as-is where-is.",
+      "bidInstructions": "Email bids to vehiclebids@jncb.com",
+      "contactInfo": {
+        "phones": ["888-429-5950", "876-589-9835", "876-285-4809"],
+        "emails": ["vehiclebids@jncb.com"],
+        "address": "6 Haughton Terrace, Kingston 10, Jamaica",
+        "website": "https://www.jncb.com"
+      },
+      "operatingHours": {
+        "weekdays": "8:30 AM - 3:00 PM",
+        "weekends": "Closed"
+      }
+    },
+    {
+      "id": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "name": "CIBC",
+      "viewInstructions": "View at Collections Solutions Ltd: 30 Cowper Drive, Kingston 20 | Mon - Fri 9:00 AM - 4:30 PM",
+      "saleTerms": "Sold as-is, where-is, under the power of sale.",
+      "bidInstructions": "[DEADLINE March 19, 2025] Collect bid forms at Collections Solutions Ltd: 30 Cowper Drive, Kingston 20 or CIBC Caribbean",
+      "contactInfo": {
+        "phones": ["1-246-467-2960 Ext 7318 or 7319"],
+        "emails": ["duane.skeete@cibcfcib.com", "wayne.weekes@cibcfcib.com"],
+        "address": "CIBC, Kingston, Jamaica",
+        "website": "https://www.cibcfcib.com"
+      },
+      "operatingHours": {
+        "weekdays": "8:30 AM - 4:30 PM",
+        "weekends": "Closed"
+      }
+    }
+  ],
+  "vehicles": [
+    {
+      "id": "e2e0634b-61da-4c22-806b-e6ac844ee115",
+      "year": 2021,
+      "make": "Audi",
+      "model": "Q3"
+    },
+    {
+      "id": "df46ec99-c575-4f15-ac2d-6ab31d8879c9",
+      "year": 2023,
+      "make": "Audi",
+      "model": "A3"
+    },
+    {
+      "id": "da604485-0bbb-4677-a622-414a00b85057",
+      "year": 2018,
+      "make": "Audi",
+      "model": "A4"
+    },
+    {
+      "id": "b40c488d-038f-405c-b1b5-426d37306982",
+      "year": 2024,
+      "make": "Audi",
+      "model": "Q3"
+    },
+    {
+      "id": "327ee8b8-88d1-4ff2-8cb1-513e0ae7e240",
+      "year": 2017,
+      "make": "BMW",
+      "model": "X1"
+    },
+    {
+      "id": "270ab905-45e9-46d3-abf9-724782b46af0",
+      "year": 2018,
+      "make": "BMW",
+      "model": "X5"
+    },
+    {
+      "id": "c7df6bef-f36c-43d4-9f7f-f9aae98244fa",
+      "year": 2019,
+      "make": "BMW",
+      "model": "X4"
+    },
+    {
+      "id": "c4e38e1b-b940-40b0-9dfc-5b14e5fab0a1",
+      "year": 2018,
+      "make": "BMW",
+      "model": "X1"
+    },
+    {
+      "id": "150f846f-daf3-4244-a817-f12d86d9aa46",
+      "year": 2021,
+      "make": "BMW",
+      "model": "X4"
+    },
+    {
+      "id": "9c9d9af7-b546-4580-8749-d7e7adffa396",
+      "year": 2016,
+      "make": "BMW",
+      "model": "523d"
+    },
+    {
+      "id": "f171d3dd-ad3e-4d33-81b8-96d34c860ac9",
+      "year": 2015,
+      "make": "BMW",
+      "model": "316"
+    },
+    {
+      "id": "fdafbe3b-a007-4a9a-b24e-df9c1bf9b784",
+      "year": 2018,
+      "make": "BMW",
+      "model": "530i"
+    },
+    {
+      "id": "55669a26-25f4-42a6-9f7d-8ac9e0291ef9",
+      "year": 2019,
+      "make": "BMW",
+      "model": "X1"
+    },
+    {
+      "id": "0fe8c38a-9404-4df3-b58c-e3a6e865b2d4",
+      "year": 2014,
+      "make": "BMW",
+      "model": "X3"
+    },
+    {
+      "id": "44763081-dfea-42f6-a6cb-cc5c33f29d12",
+      "year": 2019,
+      "make": "BMW",
+      "model": "X3 - Xdrive"
+    },
+    {
+      "id": "cf7f6a18-8e69-4c10-b382-c5cd88376034",
+      "year": 2012,
+      "make": "BMW",
+      "model": "X5"
+    },
+    {
+      "id": "8188be14-2fbd-481e-8ae1-4174bbcde0cd",
+      "year": 2014,
+      "make": "BMW",
+      "model": "X1"
+    },
+    {
+      "id": "7f0444aa-b81f-4bc6-8478-ef627391178c",
+      "year": 2016,
+      "make": "BMW",
+      "model": "X5"
+    },
+    {
+      "id": "a4073c9e-0619-4fed-b6bf-9d439c2095d1",
+      "year": 2021,
+      "make": "Ford",
+      "model": "Ecosport Titanium"
+    },
+    {
+      "id": "9450b2fd-1438-41ec-bf45-fe673b7cb68d",
+      "year": 2010,
+      "make": "Ford",
+      "model": "Fiesta"
+    },
+    {
+      "id": "c83e7828-8cd8-4fbe-b3de-d129d718a607",
+      "year": 2021,
+      "make": "Ford",
+      "model": "Ranger Raptor"
+    },
+    {
+      "id": "5f264653-7ee4-471d-a3d4-aa6fa82b31f1",
+      "year": 2021,
+      "make": "Ford",
+      "model": "Ranger Wildtrak"
+    },
+    {
+      "id": "32c7c1c3-ad00-4fca-ac1d-4fa80e97a4a4",
+      "year": 2014,
+      "make": "Honda",
+      "model": "Accord"
+    },
+    {
+      "id": "748afa0f-43fc-411e-8a8d-d2a78991212f",
+      "year": 2017,
+      "make": "Honda",
+      "model": "Accord Sport"
+    },
+    {
+      "id": "ed43a770-7084-4acc-9854-676a3634d754",
+      "year": 2016,
+      "make": "Honda",
+      "model": "Accord EX"
+    },
+    {
+      "id": "c8f49591-d591-4d2a-9ce5-fb40385c9f85",
+      "year": 2016,
+      "make": "Honda",
+      "model": "Accord"
+    },
+    {
+      "id": "ff83a722-ebb3-4669-acf0-845659d67114",
+      "year": 2014,
+      "make": "Honda",
+      "model": "Civic"
+    },
+    {
+      "id": "4aa1feb3-2061-43cb-916a-310a30c664f4",
+      "year": 2019,
+      "make": "Honda",
+      "model": "Civic"
+    },
+    {
+      "id": "f849b0cc-3e4a-4b7d-ac75-eba8df9552a9",
+      "year": 2016,
+      "make": "Honda",
+      "model": "Accord Sport"
+    },
+    {
+      "id": "f56d0206-f4da-49c5-84b9-743ebbaf8673",
+      "year": 2016,
+      "make": "Honda",
+      "model": "Fit"
+    },
+    {
+      "id": "1e4ac178-b720-461f-857a-9b502fe68ec7",
+      "year": 2017,
+      "make": "Honda",
+      "model": "Civic"
+    },
+    {
+      "id": "632a2c24-094a-447b-ad60-850603ec6382",
+      "year": 2018,
+      "make": "Honda",
+      "model": "Civic"
+    },
+    {
+      "id": "ef9490c1-6390-4851-b989-b7a483e3113e",
+      "year": 2014,
+      "make": "Honda",
+      "model": "City"
+    },
+    {
+      "id": "2da4d809-6aca-49ab-9414-4340ee32837e",
+      "year": 2020,
+      "make": "Honda",
+      "model": "Civic"
+    },
+    {
+      "id": "81418ed4-9b82-47e5-a377-27a95cfd6fb5",
+      "year": 2024,
+      "make": "Honda",
+      "model": "BRV"
+    },
+    {
+      "id": "77053460-35e3-4686-be13-bd14fb506fb1",
+      "year": 2018,
+      "make": "Honda",
+      "model": "CRV"
+    },
+    {
+      "id": "695066e1-9465-409d-84ff-206a0c07fd1c",
+      "year": 2014,
+      "make": "Honda",
+      "model": "CRV"
+    },
+    {
+      "id": "cfda0146-65ff-4607-ba1f-a6a61cecd4a1",
+      "year": 2015,
+      "make": "Honda",
+      "model": "Hybrid"
+    },
+    {
+      "id": "ff31bf1d-8c1b-4553-89b1-1e18df4f54be",
+      "year": 2017,
+      "make": "Honda",
+      "model": "Fit"
+    },
+    {
+      "id": "5b9c48ee-da92-4610-968a-a4b49627d5e4",
+      "year": 2018,
+      "make": "Honda",
+      "model": "Fit"
+    },
+    {
+      "id": "d94682f4-50d1-4103-9e6a-eeafc988428f",
+      "year": 2017,
+      "make": "Honda",
+      "model": "Fit Hybrid"
+    },
+    {
+      "id": "afc1c3cf-69ee-4d2a-8539-3d90f865a5a8",
+      "year": 2018,
+      "make": "Honda",
+      "model": "Fit Hybrid"
+    },
+    {
+      "id": "46de80ee-a203-4472-96fa-30c5f619b2dc",
+      "year": 2021,
+      "make": "Honda",
+      "model": "City"
+    },
+    {
+      "id": "4a4ac189-d29a-4814-81e2-56d7837f0a54",
+      "year": 2016,
+      "make": "Honda",
+      "model": "Grace Hybrid"
+    },
+    {
+      "id": "1a7d7fcd-4590-446c-9909-9b8a83f710cb",
+      "year": 2021,
+      "make": "Honda",
+      "model": "HRV"
+    },
+    {
+      "id": "4661857d-c4c1-487b-843b-d2108470d511",
+      "year": 2016,
+      "make": "Honda",
+      "model": "Vezel"
+    },
+    {
+      "id": "c6267b76-285a-4606-8091-23fd065a200d",
+      "year": 2020,
+      "make": "Hyundai",
+      "model": "Grand I - 10"
+    },
+    {
+      "id": "12b19a4c-447b-44c3-ab9d-46556ef3a621",
+      "year": 2019,
+      "make": "Hyundai",
+      "model": "Accent"
+    },
+    {
+      "id": "18201257-ce41-42cf-b335-990083bfb50f",
+      "year": 2018,
+      "make": "Hyundai",
+      "model": "Accent"
+    },
+    {
+      "id": "6af1658b-b5a0-479c-911f-e9381572a795",
+      "year": 2022,
+      "make": "Hyundai",
+      "model": "Palisade"
+    },
+    {
+      "id": "51fabcd7-65c1-4fee-a2a2-f70d3e801ee4",
+      "year": 2022,
+      "make": "Hyundai",
+      "model": "Venue"
+    },
+    {
+      "id": "27ee52dd-042b-4ec8-af97-16744ea6cdea",
+      "year": 2019,
+      "make": "Hyundai",
+      "model": "Tucson"
+    },
+    {
+      "id": "1f4ee961-69a0-4d27-9ee5-b2def37df889",
+      "year": 2022,
+      "make": "Hyundai",
+      "model": "Tucson"
+    },
+    {
+      "id": "315c78ad-8140-4573-85c0-349756aa2bfa",
+      "year": 2019,
+      "make": "Hyundai",
+      "model": "Creta"
+    },
+    {
+      "id": "71e39472-e1bb-4df4-ab66-4128193598c0",
+      "year": 2021,
+      "make": "Hyundai",
+      "model": "Creta"
+    },
+    {
+      "id": "0ce7d6fb-2bca-4b3d-8e78-e47f298368a7",
+      "year": 2022,
+      "make": "Hyundai",
+      "model": "Creta"
+    },
+    {
+      "id": "ab371206-2f48-4006-9a34-cb1bb1d7097f",
+      "year": 2016,
+      "make": "Hyundai",
+      "model": "Santa Fe"
+    },
+    {
+      "id": "0b94dc30-4d61-49c8-b1a6-a2931ebac413",
+      "year": 2015,
+      "make": "Hyundai",
+      "model": "Sonata"
+    },
+    {
+      "id": "ec071b30-852a-4c59-bdca-5db76fe05fa8",
+      "year": 2022,
+      "make": "Hyundai",
+      "model": "Staria"
+    },
+    {
+      "id": "0b523c45-d83c-48f2-b235-1b026d907d3d",
+      "year": 2020,
+      "make": "Hyundai",
+      "model": "Tucson"
+    },
+    {
+      "id": "6b599025-d41e-432a-8e53-6ba38b75941e",
+      "year": 2020,
+      "make": "Hyundai",
+      "model": "Venue"
+    },
+    {
+      "id": "f58bfd7f-b96b-4adf-a1a9-99f684bdce03",
+      "year": 2014,
+      "make": "Hyundai",
+      "model": "H1"
+    },
+    {
+      "id": "7f917721-53b4-40f2-ab21-d8b21a79bacf",
+      "year": 2018,
+      "make": "Jaguar",
+      "model": "XE R"
+    },
+    {
+      "id": "5be517e4-302b-4fce-8efc-decc9d6c1026",
+      "year": 2013,
+      "make": "Jaguar",
+      "model": "XJ"
+    },
+    {
+      "id": "b68e9441-67db-42da-8ce0-2af8c2d7d3a8",
+      "year": 2020,
+      "make": "Kia",
+      "model": "Rio"
+    },
+    {
+      "id": "3b84857c-931d-4606-a98a-aa9e8f84d534",
+      "year": 2019,
+      "make": "Kia",
+      "model": "Rio"
+    },
+    {
+      "id": "74ebe1db-391c-490c-b588-89979b25da13",
+      "year": 2018,
+      "make": "Kia",
+      "model": "Sedona Grand Carnival"
+    },
+    {
+      "id": "29761a04-f533-49fb-a8bb-7af9f2e19ed0",
+      "year": 2024,
+      "make": "Kia",
+      "model": "Seltos"
+    },
+    {
+      "id": "3ba360e0-59d7-4ea7-af1f-c7e57964f21b",
+      "year": 2022,
+      "make": "Kia",
+      "model": "Sonet"
+    },
+    {
+      "id": "06d261f5-085a-47dd-ad2f-02974561b13a",
+      "year": 2023,
+      "make": "Kia",
+      "model": "Sonet"
+    },
+    {
+      "id": "bc29d515-5540-486b-8d50-d7488aeab44f",
+      "year": 2019,
+      "make": "Kia",
+      "model": "Sportage"
+    },
+    {
+      "id": "b541823c-ef76-4fee-9d93-96ec0c605a94",
+      "year": 2021,
+      "make": "Kia",
+      "model": "Seltos"
+    },
+    {
+      "id": "8ff55807-0273-45e1-a62b-10e3fc6425ab",
+      "year": 2022,
+      "make": "Kia",
+      "model": "Soluto"
+    },
+    {
+      "id": "e76c448b-31b2-42e3-b56d-e17e5aaced44",
+      "year": 2023,
+      "make": "Kia",
+      "model": "Sorento"
+    },
+    {
+      "id": "45b92c2b-165a-405e-82a2-637d22e5b84a",
+      "year": 2023,
+      "make": "Kia",
+      "model": "Sportage"
+    },
+    {
+      "id": "ff1dcaed-2060-4119-b8a9-139d51c65328",
+      "year": 2015,
+      "make": "Mazda",
+      "model": "CX5"
+    },
+    {
+      "id": "38961b8b-b2ff-463e-8cad-12918f375812",
+      "year": 2013,
+      "make": "Mazda",
+      "model": "Premacy"
+    },
+    {
+      "id": "5f942860-02db-42b7-80fd-c3b881e794f6",
+      "year": 2014,
+      "make": "Mazda",
+      "model": "Premacy"
+    },
+    {
+      "id": "28d91816-08b0-4d6c-a237-9b6ac6601a24",
+      "year": 2015,
+      "make": "Mazda",
+      "model": "Premacy"
+    },
+    {
+      "id": "ab42893d-9b75-409a-b83f-a878207f0cc6",
+      "year": 2016,
+      "make": "Mazda",
+      "model": "Premacy"
+    },
+    {
+      "id": "e759367a-8b47-4b1d-9dc2-68480efbfb95",
+      "year": 2013,
+      "make": "Mazda",
+      "model": "Versia"
+    },
+    {
+      "id": "57d18c53-7679-4acd-aac7-a33a6f8dd88b",
+      "year": 2022,
+      "make": "Mercedes Benz",
+      "model": "GLS 450"
+    },
+    {
+      "id": "647f7be2-c2d5-4dbf-8896-b1c46a87812b",
+      "year": 2019,
+      "make": "Mercedes Benz",
+      "model": "C300"
+    },
+    {
+      "id": "a991842d-0c14-4c00-bab3-830d525da9e1",
+      "year": 2020,
+      "make": "Mercedes Benz",
+      "model": "C300"
+    },
+    {
+      "id": "6e553135-1069-4768-90f9-690cf5198182",
+      "year": 2018,
+      "make": "Mercedes Benz",
+      "model": "CLA180"
+    },
+    {
+      "id": "1062e1d5-71dd-4d78-beb0-1071d6c7e3ab",
+      "year": 2020,
+      "make": "Mercedes Benz",
+      "model": "CLA35 AMG"
+    },
+    {
+      "id": "44cf7925-014a-4e68-9a01-887d3d1d687d",
+      "year": 2020,
+      "make": "Mercedes Benz",
+      "model": "GLC300"
+    },
+    {
+      "id": "5380b0b4-0026-4027-9878-9f691b773b78",
+      "year": 2015,
+      "make": "Mercedes Benz",
+      "model": "C180"
+    },
+    {
+      "id": "5f987da4-7270-40fa-8267-61ea5925b05a",
+      "year": 2015,
+      "make": "Mercedes Benz",
+      "model": "E250"
+    },
+    {
+      "id": "f574d690-54af-4651-b1ef-c6d6a48bf4a2",
+      "year": 2022,
+      "make": "Mini Cooper",
+      "model": "Countryman"
+    },
+    {
+      "id": "dae41e71-3f34-4013-820a-febb2416866f",
+      "year": 2021,
+      "make": "Mitsubishi",
+      "model": "Xpander"
+    },
+    {
+      "id": "97fb162b-27a8-433f-b5a6-1aa9401e75d6",
+      "year": 2016,
+      "make": "Mitsubishi",
+      "model": "ASX"
+    },
+    {
+      "id": "d3a8cd25-722f-4764-a486-33783a627bb1",
+      "year": 2017,
+      "make": "Mitsubishi",
+      "model": "Attrage"
+    },
+    {
+      "id": "ddf5c62e-7b34-4c1a-bc72-e9c70d67e704",
+      "year": 2013,
+      "make": "Nissan",
+      "model": "Juke"
+    },
+    {
+      "id": "c6ff8413-61d4-412a-bed2-4cadce3027c4",
+      "year": 2017,
+      "make": "Nissan",
+      "model": "Juke"
+    },
+    {
+      "id": "481577f2-0b84-469c-9524-b47ea0455227",
+      "year": 2016,
+      "make": "Nissan",
+      "model": "XTrail"
+    },
+    {
+      "id": "d2d5b133-a2ae-45dc-9425-a892e453bfc4",
+      "year": 2011,
+      "make": "Nissan",
+      "model": "AD"
+    },
+    {
+      "id": "91c50179-51e6-4999-9f14-82b0abdfb5a3",
+      "year": 2016,
+      "make": "Nissan",
+      "model": "AD"
+    },
+    {
+      "id": "d4f8cc1a-fc2b-437d-a2d3-622797a7b62e",
+      "year": 2017,
+      "make": "Nissan",
+      "model": "AD"
+    },
+    {
+      "id": "f190764e-83f1-411a-8886-eb5e7902c7f8",
+      "year": 2016,
+      "make": "Nissan",
+      "model": "AD Expert"
+    },
+    {
+      "id": "b83331ca-c641-4b8d-8fd9-1bb81f772b77",
+      "year": 2015,
+      "make": "Nissan",
+      "model": "Caravan"
+    },
+    {
+      "id": "e510f141-7c34-447e-9443-4d5b18b8191d",
+      "year": 2015,
+      "make": "Nissan",
+      "model": "LaFesta"
+    },
+    {
+      "id": "7eee3285-9f5a-4c3e-942e-76b02f2706ef",
+      "year": 2013,
+      "make": "Nissan",
+      "model": "Latio"
+    },
+    {
+      "id": "3e1be0cc-1af4-473d-82af-80cca92c9347",
+      "year": 2014,
+      "make": "Nissan",
+      "model": "Latio"
+    },
+    {
+      "id": "c396dcc3-8384-4110-9648-3ade1fceb369",
+      "year": 2015,
+      "make": "Nissan",
+      "model": "Latio"
+    },
+    {
+      "id": "ce5cf187-8cfb-4cdf-999a-d5c448e1dac2",
+      "year": 2016,
+      "make": "Nissan",
+      "model": "Latio"
+    },
+    {
+      "id": "a20c55ed-c934-43f0-b722-d96e13820278",
+      "year": 2016,
+      "make": "Nissan",
+      "model": "Note"
+    },
+    {
+      "id": "eeda9511-a9c1-4fd7-8c26-5939b32b0b50",
+      "year": 2013,
+      "make": "Nissan",
+      "model": "Serena"
+    },
+    {
+      "id": "8e952c4d-3667-411e-834c-e8d94e12f8a2",
+      "year": 2015,
+      "make": "Nissan",
+      "model": "Sylphy"
+    },
+    {
+      "id": "22e7109d-f198-485d-850f-ac93efa40b17",
+      "year": 2014,
+      "make": "Nissan",
+      "model": "Teana"
+    },
+    {
+      "id": "c6ac38b5-5f3b-4f63-b2bd-410bc746abba",
+      "year": 2017,
+      "make": "Nissan",
+      "model": "Teana"
+    },
+    {
+      "id": "ad298813-96dc-42b6-9b40-a398c6038fef",
+      "year": 2012,
+      "make": "Nissan",
+      "model": "Tiida Latio"
+    },
+    {
+      "id": "2e03e690-9b53-4620-b28a-fb434482b110",
+      "year": 2014,
+      "make": "Nissan",
+      "model": "AD Wagon"
+    },
+    {
+      "id": "babf7b13-cd94-4103-af60-e68e203d2a95",
+      "year": 2014,
+      "make": "Nissan",
+      "model": "Bluebird Sylphy G"
+    },
+    {
+      "id": "bf406971-5e05-4f6c-a4e1-c19d301f9836",
+      "year": 2014,
+      "make": "Nissan",
+      "model": "Bluebird Sylphy X"
+    },
+    {
+      "id": "449ff223-413e-40b8-ace6-ae82a4def321",
+      "year": 2012,
+      "make": "Nissan",
+      "model": "Lafesta Highway Star"
+    },
+    {
+      "id": "c7c15a5a-430e-430b-a8b2-5150e5f3a77b",
+      "year": 2021,
+      "make": "Nissan",
+      "model": "Qashqai"
+    },
+    {
+      "id": "87cf9cb3-0343-4878-ae4d-2325643f3600",
+      "year": 2013,
+      "make": "Nissan",
+      "model": "Skyline"
+    },
+    {
+      "id": "8ea6f6d7-9994-4638-a56c-2767ce33fc82",
+      "year": 2013,
+      "make": "Nissan",
+      "model": "Sulphy"
+    },
+    {
+      "id": "dba168fb-3183-4bfd-9226-d2af766bb021",
+      "year": 2021,
+      "make": "Porsche",
+      "model": "Cayenne"
+    },
+    {
+      "id": "60b4aaf1-e63e-4fc1-8979-68773883f85b",
+      "year": 2018,
+      "make": "Subaru",
+      "model": "Impreza Sport (Hatch Back)"
+    },
+    {
+      "id": "589a7c12-6b73-49af-af57-c8c76da8531a",
+      "year": 2012,
+      "make": "Subaru",
+      "model": "Impreza G4"
+    },
+    {
+      "id": "b9e3214e-2b75-48dd-bb28-ba77fd8d48d9",
+      "year": 2013,
+      "make": "Subaru",
+      "model": "Impreza G4"
+    },
+    {
+      "id": "70a71e3b-ba5c-4ece-b5ad-ef8cb7707862",
+      "year": 2014,
+      "make": "Subaru",
+      "model": "Impreza G4"
+    },
+    {
+      "id": "48d597b2-d40a-44cd-817d-3d1d3669528c",
+      "year": 2015,
+      "make": "Subaru",
+      "model": "Impreza G4"
+    },
+    {
+      "id": "1e226b9d-a466-41c0-afa0-abedb50717b8",
+      "year": 2016,
+      "make": "Subaru",
+      "model": "Impreza G4"
+    },
+    {
+      "id": "f786f5c9-cefc-427a-98c0-7beb4769da6a",
+      "year": 2017,
+      "make": "Subaru",
+      "model": "Impreza G4"
+    },
+    {
+      "id": "41258210-36be-403d-a526-e598cae99a79",
+      "year": 2015,
+      "make": "Subaru",
+      "model": "Impreza"
+    },
+    {
+      "id": "21675de4-fc32-40b1-ad30-8baafb72d382",
+      "year": 2016,
+      "make": "Subaru",
+      "model": "Impreza Sport"
+    },
+    {
+      "id": "31f79630-7706-449b-aec1-50fdd35643ee",
+      "year": 2014,
+      "make": "Subaru",
+      "model": "Impreza XV"
+    },
+    {
+      "id": "92c1bbf4-c258-4cd0-bfd3-b91f53384e54",
+      "year": 2021,
+      "make": "Subaru",
+      "model": "XV"
+    },
+    {
+      "id": "ad0684a1-6de4-4840-9d86-4dcec5377885",
+      "year": 2012,
+      "make": "Subaru",
+      "model": "Legacy Touring"
+    },
+    {
+      "id": "de6610f2-685f-4f5d-aa82-f4e6a1a2e586",
+      "year": 2013,
+      "make": "Subaru",
+      "model": "Legacy Touring"
+    },
+    {
+      "id": "63605bb2-e41f-426e-b245-8e71a2b5aec8",
+      "year": 2022,
+      "make": "Suzuki",
+      "model": "Jimny"
+    },
+    {
+      "id": "5bf1ecf4-b1cd-4c57-a708-d18ae968e956",
+      "year": 2022,
+      "make": "Suzuki",
+      "model": "Vitara"
+    },
+    {
+      "id": "58b8c093-0611-440f-b6f4-5addeb0d796e",
+      "year": 2022,
+      "make": "Suzuki",
+      "model": "XL7"
+    },
+    {
+      "id": "adaecf58-d7a4-4649-b402-d6768980767d",
+      "year": 2015,
+      "make": "Suzuki",
+      "model": "Swift"
+    },
+    {
+      "id": "2dd3b9b6-54b9-438e-9c65-5c31778669a8",
+      "year": 2015,
+      "make": "Toyota",
+      "model": "Altis"
+    },
+    {
+      "id": "3430bbf3-ab5e-4c71-96e4-f07aba6cedf0",
+      "year": 2018,
+      "make": "Toyota",
+      "model": "Aqua (Hybrid)"
+    },
+    {
+      "id": "4a187051-8d13-4b17-aa76-c36c230b6c54",
+      "year": 2018,
+      "make": "Toyota",
+      "model": "Corolla"
+    },
+    {
+      "id": "236cf3ca-9f39-4bcd-a934-902285889475",
+      "year": 2013,
+      "make": "Toyota",
+      "model": "Allion"
+    },
+    {
+      "id": "de4332d3-c5e4-4cfb-93c3-5bc611a3eadb",
+      "year": 2017,
+      "make": "Toyota",
+      "model": "Aqua Hybrid"
+    },
+    {
+      "id": "1e743ad6-d930-4e47-98e7-46c273cd7be8",
+      "year": 2015,
+      "make": "Toyota",
+      "model": "Corolla Axio"
+    },
+    {
+      "id": "cd6590f9-ac33-485c-b1d6-c1b4246ef5e7",
+      "year": 2016,
+      "make": "Toyota",
+      "model": "Corolla Axio"
+    },
+    {
+      "id": "fdbc3235-1311-4867-93c5-aa796a4cbbcf",
+      "year": 2017,
+      "make": "Toyota",
+      "model": "Corolla Axio"
+    },
+    {
+      "id": "5283fabb-c4ee-46e5-9b22-0b5cc0b8fa6d",
+      "year": 2018,
+      "make": "Toyota",
+      "model": "Corolla Axio"
+    },
+    {
+      "id": "2e5c2254-2cb7-4308-b4cf-ebccd2fa1bd8",
+      "year": 2015,
+      "make": "Toyota",
+      "model": "Corolla Fielder"
+    },
+    {
+      "id": "4cc1ea33-0ab8-4a57-b020-e3e6204eab7f",
+      "year": 2017,
+      "make": "Toyota",
+      "model": "Corolla Fielder"
+    },
+    {
+      "id": "42b02ac9-4289-427d-a6b9-2380c3bb0577",
+      "year": 2015,
+      "make": "Toyota",
+      "model": "Isis"
+    },
+    {
+      "id": "b94b43e7-1be5-4af4-903e-209b14703a64",
+      "year": 2016,
+      "make": "Toyota",
+      "model": "Mark X"
+    },
+    {
+      "id": "8c8180d6-8d32-4b44-ba47-a12ab0d962c5",
+      "year": 2015,
+      "make": "Toyota",
+      "model": "Probox"
+    },
+    {
+      "id": "58751619-39b6-4e72-82db-6e9b37ee38cc",
+      "year": 2017,
+      "make": "Toyota",
+      "model": "Probox"
+    },
+    {
+      "id": "1b5e6d34-95af-454f-8b69-eb193e07d39d",
+      "year": 2022,
+      "make": "Toyota",
+      "model": "Raize"
+    },
+    {
+      "id": "f5889822-3547-4172-ba82-f7d4a9eabf0e",
+      "year": 2023,
+      "make": "Toyota",
+      "model": "Raize"
+    },
+    {
+      "id": "31d11e20-7210-4c2b-9f11-c37ae2ed9b1c",
+      "year": 2013,
+      "make": "Toyota",
+      "model": "Wish"
+    },
+    {
+      "id": "d027bd59-b428-445b-a9ee-81731dba0485",
+      "year": 2014,
+      "make": "Toyota",
+      "model": "Passo X"
+    },
+    {
+      "id": "a326563b-c72e-4485-9822-44559b57c7ca",
+      "year": 2023,
+      "make": "Toyota",
+      "model": "Rav4"
+    },
+    {
+      "id": "a96b0499-67c6-4ffb-a286-5e1224a9c6be",
+      "year": 2017,
+      "make": "Toyota",
+      "model": "Vitz"
+    },
+    {
+      "id": "494f6247-2b89-44b1-88f1-524f185a0357",
+      "year": 2019,
+      "make": "Volkswagen (VW)",
+      "model": "Amarok"
+    },
+    {
+      "id": "017ddb57-3b92-4a84-ac8c-1f0800bb9782",
+      "year": 2017,
+      "make": "Volkswagen (VW)",
+      "model": "Polo"
+    },
+    {
+      "id": "49e8c002-2594-41dd-a76d-2477288014de",
+      "year": 2017,
+      "make": "Volkswagen (VW)",
+      "model": "Tiguan"
+    },
+    {
+      "id": "48fe29c0-339e-4442-b43f-a10ca975c77e",
+      "year": 2018,
+      "make": "Volkswagen (VW)",
+      "model": "Jetta"
+    },
+    {
+      "id": "fc95892b-3f00-46a3-a622-03a3cbf268b3",
+      "year": 2022,
+      "make": "Volkswagen (VW)",
+      "model": "Tiguan"
+    },
+    {
+      "id": "f7deee85-b1bd-4b22-8ed9-d751abe28f2e",
+      "year": 2014,
+      "make": "Volkswagen (VW)",
+      "model": "Jetta"
+    },
+    {
+      "id": "3a399922-fe63-4d39-8dad-2e4eba65b503",
+      "year": 2016,
+      "make": "Volkswagen (VW)",
+      "model": "Polo"
+    },
+    {
+      "id": "4cb6cc7a-4d59-425d-977e-c0fed27610cc",
+      "year": 2019,
+      "make": "Volkswagen (VW)",
+      "model": "Polo"
+    }
+  ],
+  "prices": [
+    {
+      "id": "67d7702d-cde8-4de0-bb16-c4a4e6b3def8",
+      "vehicleId": "e2e0634b-61da-4c22-806b-e6ac844ee115",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 5300000,
+      "amount": 1,
+      "color": "Grey"
+    },
+    {
+      "id": "99ab6946-d911-4e54-9150-f8439fc42a8c",
+      "vehicleId": "df46ec99-c575-4f15-ac2d-6ab31d8879c9",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "8d3f9311-f050-4a58-a3be-3000f9b709a1",
+      "vehicleId": "da604485-0bbb-4677-a622-414a00b85057",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "c1d9cbb4-ba10-41b7-a7fb-846ace083729",
+      "vehicleId": "b40c488d-038f-405c-b1b5-426d37306982",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "9207aea7-bb95-4a82-96cb-158251a76dce",
+      "vehicleId": "327ee8b8-88d1-4ff2-8cb1-513e0ae7e240",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 2500000,
+      "amount": 1,
+      "color": "White"
+    },
+    {
+      "id": "bf340eed-56b1-47e5-9b84-5a46c0b6c4f7",
+      "vehicleId": "270ab905-45e9-46d3-abf9-724782b46af0",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 5500000,
+      "amount": 1,
+      "color": "White"
+    },
+    {
+      "id": "cf5e7e19-4b6d-4215-9cd9-016b3164c608",
+      "vehicleId": "c7df6bef-f36c-43d4-9f7f-f9aae98244fa",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 6500000,
+      "amount": 1,
+      "color": "White"
+    },
+    {
+      "id": "13a57132-bf17-4b14-8066-e2dcc7ac3f3b",
+      "vehicleId": "c4e38e1b-b940-40b0-9dfc-5b14e5fab0a1",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 3000000,
+      "amount": 1,
+      "color": "White"
+    },
+    {
+      "id": "4b4db118-b2f3-4cea-b61c-855e233e8869",
+      "vehicleId": "150f846f-daf3-4244-a817-f12d86d9aa46",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 8500000,
+      "amount": 1,
+      "color": "Red"
+    },
+    {
+      "id": "15cf3584-c3ca-42fe-8dce-15d1293e9786",
+      "vehicleId": "9c9d9af7-b546-4580-8749-d7e7adffa396",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 3230000,
+      "amount": 1,
+      "color": "White"
+    },
+    {
+      "id": "ee69c552-7700-4bef-bbb0-168a4f3be560",
+      "vehicleId": "f171d3dd-ad3e-4d33-81b8-96d34c860ac9",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "f6a5542b-2a92-41c2-9c89-897e26811ca2",
+      "vehicleId": "fdafbe3b-a007-4a9a-b24e-df9c1bf9b784",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "e1e321c6-333c-465a-b0fb-e6ceb8f35156",
+      "vehicleId": "327ee8b8-88d1-4ff2-8cb1-513e0ae7e240",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "e29e366b-ece4-4390-8abb-473c47bd260c",
+      "vehicleId": "55669a26-25f4-42a6-9f7d-8ac9e0291ef9",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "7dbf4ba8-5689-47e2-ab9e-ec82c1477f1d",
+      "vehicleId": "0fe8c38a-9404-4df3-b58c-e3a6e865b2d4",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "2a75d43a-8ff5-434f-b88e-105d8a7dfc0e",
+      "vehicleId": "44763081-dfea-42f6-a6cb-cc5c33f29d12",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "d2e30566-5826-430e-a0d9-954958440605",
+      "vehicleId": "270ab905-45e9-46d3-abf9-724782b46af0",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "ed08946d-bd6b-46ea-b7e5-e1bf91e5e254",
+      "vehicleId": "cf7f6a18-8e69-4c10-b382-c5cd88376034",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "3e4230cc-0cd0-4554-a04f-b24472f808c1",
+      "vehicleId": "8188be14-2fbd-481e-8ae1-4174bbcde0cd",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 1400000,
+      "amount": 1,
+      "color": "Silver"
+    },
+    {
+      "id": "9340b6a3-11d8-46d1-99b4-b9cf6f3ceb04",
+      "vehicleId": "7f0444aa-b81f-4bc6-8478-ef627391178c",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 2700000,
+      "amount": 1,
+      "color": "Black"
+    },
+    {
+      "id": "6baaf9f8-9b63-4f6c-8f50-5a8db357fd51",
+      "vehicleId": "a4073c9e-0619-4fed-b6bf-9d439c2095d1",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 2290000,
+      "amount": 1,
+      "color": "Grey"
+    },
+    {
+      "id": "c0e0be08-eb76-476e-83c4-529dd4eb48e8",
+      "vehicleId": "9450b2fd-1438-41ec-bf45-fe673b7cb68d",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 300000,
+      "amount": 1,
+      "color": "Red"
+    },
+    {
+      "id": "cee18a14-20db-4a18-955f-c087f1eac3d9",
+      "vehicleId": "c83e7828-8cd8-4fbe-b3de-d129d718a607",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 8570000,
+      "amount": 1,
+      "color": "Grey"
+    },
+    {
+      "id": "5c9d4a52-4f40-4114-bac2-ecf04d754b78",
+      "vehicleId": "5f264653-7ee4-471d-a3d4-aa6fa82b31f1",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 6520000,
+      "amount": 1,
+      "color": "White"
+    },
+    {
+      "id": "b9ec6bb3-a207-475b-9322-6823c6c69ec0",
+      "vehicleId": "32c7c1c3-ad00-4fca-ac1d-4fa80e97a4a4",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 1880000,
+      "amount": 1,
+      "color": "Black"
+    },
+    {
+      "id": "d3555939-6f83-4786-8c35-2ffe7a93eff7",
+      "vehicleId": "748afa0f-43fc-411e-8a8d-d2a78991212f",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 2800000,
+      "amount": 1,
+      "color": "Blue"
+    },
+    {
+      "id": "4a61dd9c-636a-4b29-bb68-631a866cc351",
+      "vehicleId": "ed43a770-7084-4acc-9854-676a3634d754",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 3000000,
+      "amount": 1,
+      "color": "Black"
+    },
+    {
+      "id": "58827a39-2d41-444d-8ac7-9b06e441ed3a",
+      "vehicleId": "c8f49591-d591-4d2a-9ce5-fb40385c9f85",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 2700000,
+      "amount": 1,
+      "color": "Silver"
+    },
+    {
+      "id": "6aa99ec2-b0cd-4c7d-9a4a-ee609b344fef",
+      "vehicleId": "ff83a722-ebb3-4669-acf0-845659d67114",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 1300000,
+      "amount": 1,
+      "color": "Grey"
+    },
+    {
+      "id": "d3b178f9-b464-4838-9004-fd5f08a281e4",
+      "vehicleId": "4aa1feb3-2061-43cb-916a-310a30c664f4",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 2255000,
+      "amount": 1,
+      "color": "Red"
+    },
+    {
+      "id": "939295e9-8370-4313-a9f4-d2ca22cfd681",
+      "vehicleId": "f849b0cc-3e4a-4b7d-ac75-eba8df9552a9",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 2100000,
+      "amount": 1,
+      "color": "Grey"
+    },
+    {
+      "id": "e5c7410e-d723-48a2-bc79-746af15b327b",
+      "vehicleId": "f56d0206-f4da-49c5-84b9-743ebbaf8673",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 1200000,
+      "amount": 1,
+      "color": "White"
+    },
+    {
+      "id": "2f65b2f0-04d4-4784-8431-39b028edd1da",
+      "vehicleId": "1e4ac178-b720-461f-857a-9b502fe68ec7",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 1600000,
+      "amount": 1,
+      "color": "Blue"
+    },
+    {
+      "id": "40356d40-89ea-43b6-bcb0-d41af3e984c8",
+      "vehicleId": "632a2c24-094a-447b-ad60-850603ec6382",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 2660000,
+      "amount": 1,
+      "color": "Grey"
+    },
+    {
+      "id": "6e42bb89-7cb2-4b3c-bce0-6bb4c2500aa7",
+      "vehicleId": "ef9490c1-6390-4851-b989-b7a483e3113e",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 1000000,
+      "amount": 1,
+      "color": "Red"
+    },
+    {
+      "id": "197974ca-c07f-4566-b83c-697e48112b02",
+      "vehicleId": "2da4d809-6aca-49ab-9414-4340ee32837e",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 2150000,
+      "amount": 1,
+      "color": "Silver"
+    },
+    {
+      "id": "5d1dfb00-5658-4067-ac16-89ea21d3addc",
+      "vehicleId": "81418ed4-9b82-47e5-a377-27a95cfd6fb5",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 5400000,
+      "amount": 1,
+      "color": "White"
+    },
+    {
+      "id": "e4a1064b-33f6-494b-9af3-b50a5982a6d9",
+      "vehicleId": "77053460-35e3-4686-be13-bd14fb506fb1",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 3040000,
+      "amount": 1,
+      "color": "Red"
+    },
+    {
+      "id": "f898bc01-d886-4ac8-ba00-3844160d88c7",
+      "vehicleId": "695066e1-9465-409d-84ff-206a0c07fd1c",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 1600000,
+      "amount": 1,
+      "color": "Black"
+    },
+    {
+      "id": "a49734fb-e5ba-4081-b754-76c04d9972f7",
+      "vehicleId": "77053460-35e3-4686-be13-bd14fb506fb1",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "b1095465-8a21-4912-8840-5d3dfe941ea0",
+      "vehicleId": "cfda0146-65ff-4607-ba1f-a6a61cecd4a1",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "b5c803a3-a88d-4da8-8e6a-6cd3b26a5d93",
+      "vehicleId": "ff31bf1d-8c1b-4553-89b1-1e18df4f54be",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 3,
+      "color": null
+    },
+    {
+      "id": "66279b76-3888-4e3e-b2d5-eda25ce81709",
+      "vehicleId": "5b9c48ee-da92-4610-968a-a4b49627d5e4",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "4b04e355-c547-4d12-97ab-2eff4acf020e",
+      "vehicleId": "d94682f4-50d1-4103-9e6a-eeafc988428f",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "4f84dd4a-26be-4905-9240-670161397e36",
+      "vehicleId": "afc1c3cf-69ee-4d2a-8539-3d90f865a5a8",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "44d0a1c1-664c-401e-b78f-a3f1e25f7510",
+      "vehicleId": "46de80ee-a203-4472-96fa-30c5f619b2dc",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "3fe16fc8-7d8d-4af0-8aea-265ef43d8ed2",
+      "vehicleId": "4a4ac189-d29a-4814-81e2-56d7837f0a54",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "a9518cd7-0a60-4a2a-8b13-4b97f7ff7caf",
+      "vehicleId": "1a7d7fcd-4590-446c-9909-9b8a83f710cb",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 2,
+      "color": null
+    },
+    {
+      "id": "3631f1bc-7b33-4da0-88da-ad08cb1f8487",
+      "vehicleId": "4661857d-c4c1-487b-843b-d2108470d511",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "f19e43f8-8da0-4f3d-8273-54124c990d68",
+      "vehicleId": "c8f49591-d591-4d2a-9ce5-fb40385c9f85",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 1940000,
+      "amount": 1,
+      "color": "White"
+    },
+    {
+      "id": "6d798e52-41c4-4ddd-9f47-7e08e8be716d",
+      "vehicleId": "c6267b76-285a-4606-8091-23fd065a200d",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 2040000,
+      "amount": 1,
+      "color": "Red"
+    },
+    {
+      "id": "2dd6e0e7-ebb9-40db-87c4-97da83d868eb",
+      "vehicleId": "12b19a4c-447b-44c3-ab9d-46556ef3a621",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 2280000,
+      "amount": 1,
+      "color": "Red"
+    },
+    {
+      "id": "524651d4-887e-43dd-861d-f4744e720335",
+      "vehicleId": "18201257-ce41-42cf-b335-990083bfb50f",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 1360000,
+      "amount": 1,
+      "color": "Grey"
+    },
+    {
+      "id": "81c1957c-2df2-4c33-b9b7-412ba83fe9c7",
+      "vehicleId": "6af1658b-b5a0-479c-911f-e9381572a795",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 7570000,
+      "amount": 1,
+      "color": "Black"
+    },
+    {
+      "id": "1b4880e4-037d-4686-87f2-f5eaa04a1116",
+      "vehicleId": "51fabcd7-65c1-4fee-a2a2-f70d3e801ee4",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 3550000,
+      "amount": 3,
+      "color": "Blue"
+    },
+    {
+      "id": "7920b7ab-92c4-457d-a41e-dac0028e0024",
+      "vehicleId": "27ee52dd-042b-4ec8-af97-16744ea6cdea",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 2700000,
+      "amount": 1,
+      "color": "Black"
+    },
+    {
+      "id": "8eb59556-b43f-4dfe-af62-f86fb20838d8",
+      "vehicleId": "1f4ee961-69a0-4d27-9ee5-b2def37df889",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 4700000,
+      "amount": 1,
+      "color": "Black"
+    },
+    {
+      "id": "5f1e48e6-7c24-4396-ac06-8c40214fc894",
+      "vehicleId": "315c78ad-8140-4573-85c0-349756aa2bfa",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "b2608d02-a283-4aba-92ec-67a1dfe12ce1",
+      "vehicleId": "71e39472-e1bb-4df4-ab66-4128193598c0",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "8b1226a7-8cc8-4594-bc5a-ae2bdec99b3d",
+      "vehicleId": "0ce7d6fb-2bca-4b3d-8e78-e47f298368a7",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "8c301724-f119-4a0b-8a72-7339c18de24b",
+      "vehicleId": "ab371206-2f48-4006-9a34-cb1bb1d7097f",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 2,
+      "color": null
+    },
+    {
+      "id": "721102d7-ee66-409d-b9e2-50e1ad7c1218",
+      "vehicleId": "0b94dc30-4d61-49c8-b1a6-a2931ebac413",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "09f913b8-c34d-41fa-9a59-cbd958278527",
+      "vehicleId": "ec071b30-852a-4c59-bdca-5db76fe05fa8",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "576c015b-1063-428f-9a8b-619750523f32",
+      "vehicleId": "27ee52dd-042b-4ec8-af97-16744ea6cdea",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "458f94a9-6c78-44f7-aa38-276fa0594595",
+      "vehicleId": "0b523c45-d83c-48f2-b235-1b026d907d3d",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "12408874-64ac-4387-bc51-241e7f83b87b",
+      "vehicleId": "6b599025-d41e-432a-8e53-6ba38b75941e",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "f4c3aa2f-adcc-4643-9993-be9841251ec2",
+      "vehicleId": "f58bfd7f-b96b-4adf-a1a9-99f684bdce03",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 600000,
+      "amount": 1,
+      "color": "White"
+    },
+    {
+      "id": "f3642ed9-f6dc-4d64-a256-cb6d6c6fd818",
+      "vehicleId": "27ee52dd-042b-4ec8-af97-16744ea6cdea",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 2710000,
+      "amount": 1,
+      "color": "Grey"
+    },
+    {
+      "id": "6c1a8b59-7501-4291-894d-b95d8ff89059",
+      "vehicleId": "7f917721-53b4-40f2-ab21-d8b21a79bacf",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "b0cfd976-3966-442a-9a64-3fb41e1fe4e9",
+      "vehicleId": "5be517e4-302b-4fce-8efc-decc9d6c1026",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "cfa5fc80-cfd5-4be6-b25e-7796f82a0220",
+      "vehicleId": "b68e9441-67db-42da-8ce0-2af8c2d7d3a8",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 2200000,
+      "amount": 1,
+      "color": "Red"
+    },
+    {
+      "id": "9f8175fc-90a8-49de-b5db-ad6d9759d354",
+      "vehicleId": "3b84857c-931d-4606-a98a-aa9e8f84d534",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 1800000,
+      "amount": 1,
+      "color": "Blue"
+    },
+    {
+      "id": "635cad07-04ab-434f-9cf0-668af7e362d9",
+      "vehicleId": "74ebe1db-391c-490c-b588-89979b25da13",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 2600000,
+      "amount": 1,
+      "color": "Silver"
+    },
+    {
+      "id": "cd6b7d9d-bdf1-4d34-aa66-2521016c50c0",
+      "vehicleId": "29761a04-f533-49fb-a8bb-7af9f2e19ed0",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 4850000,
+      "amount": 1,
+      "color": "Blue"
+    },
+    {
+      "id": "35508cff-7149-4745-bcaa-c4711259142f",
+      "vehicleId": "3ba360e0-59d7-4ea7-af1f-c7e57964f21b",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 2980000,
+      "amount": 1,
+      "color": "White"
+    },
+    {
+      "id": "538eaea1-a1ed-4732-8e7f-cb7fb02fd1ee",
+      "vehicleId": "06d261f5-085a-47dd-ad2f-02974561b13a",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 3420000,
+      "amount": 1,
+      "color": "Grey"
+    },
+    {
+      "id": "9d8d26a7-6437-4738-bbf7-2a5223b868e5",
+      "vehicleId": "bc29d515-5540-486b-8d50-d7488aeab44f",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 2750000,
+      "amount": 1,
+      "color": "Black Cherry"
+    },
+    {
+      "id": "a5baacc1-8068-41f2-be81-fbe7d5925500",
+      "vehicleId": "b541823c-ef76-4fee-9d93-96ec0c605a94",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "d4284cfa-baec-4617-b819-a03d56a63f12",
+      "vehicleId": "8ff55807-0273-45e1-a62b-10e3fc6425ab",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "c56592c5-d648-40f9-bab4-1339418adbe4",
+      "vehicleId": "e76c448b-31b2-42e3-b56d-e17e5aaced44",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "ab5fa443-3450-48d8-a4c7-6b796394964e",
+      "vehicleId": "45b92c2b-165a-405e-82a2-637d22e5b84a",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "f8cb2198-52d4-4688-98b4-419f2bef326d",
+      "vehicleId": "ff1dcaed-2060-4119-b8a9-139d51c65328",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 1660000,
+      "amount": 1,
+      "color": "Red"
+    },
+    {
+      "id": "5d31f381-0dc4-4aa7-bf77-3cd92f249acc",
+      "vehicleId": "38961b8b-b2ff-463e-8cad-12918f375812",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 850000,
+      "amount": 1,
+      "color": "Purple"
+    },
+    {
+      "id": "0d19f563-b6db-4ad3-ac9b-e341ede165d1",
+      "vehicleId": "5f942860-02db-42b7-80fd-c3b881e794f6",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 800000,
+      "amount": 1,
+      "color": "Blue"
+    },
+    {
+      "id": "4c1131d1-684a-45c2-8a82-a6ed53dd26dd",
+      "vehicleId": "28d91816-08b0-4d6c-a237-9b6ac6601a24",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 600000,
+      "amount": 1,
+      "color": "Black"
+    },
+    {
+      "id": "b350d476-362e-4c13-be59-d5697b978121",
+      "vehicleId": "ab42893d-9b75-409a-b83f-a878207f0cc6",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 1000000,
+      "amount": 1,
+      "color": "Grey"
+    },
+    {
+      "id": "be95e03c-ad91-4131-9020-007613bc1635",
+      "vehicleId": "e759367a-8b47-4b1d-9dc2-68480efbfb95",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 400000,
+      "amount": 1,
+      "color": "Red"
+    },
+    {
+      "id": "43a3043f-41bb-4d72-a3e7-81d9070f12a2",
+      "vehicleId": "57d18c53-7679-4acd-aac7-a33a6f8dd88b",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 18000000,
+      "amount": 1,
+      "color": "Green"
+    },
+    {
+      "id": "a2b8bdb2-660c-47eb-9802-db8b0781aee7",
+      "vehicleId": "647f7be2-c2d5-4dbf-8896-b1c46a87812b",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "b0cec826-2454-4aa1-8080-08a2288f301b",
+      "vehicleId": "a991842d-0c14-4c00-bab3-830d525da9e1",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "46bbd13f-d35f-47e2-b856-41eafe35a8d7",
+      "vehicleId": "6e553135-1069-4768-90f9-690cf5198182",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "ba325c8a-7a50-44dc-aa55-23825a8e1b94",
+      "vehicleId": "1062e1d5-71dd-4d78-beb0-1071d6c7e3ab",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "9d0761f4-9111-41dc-ad0d-c11c555f66f8",
+      "vehicleId": "44cf7925-014a-4e68-9a01-887d3d1d687d",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "a9316415-0eda-4508-8096-94c15701dc4b",
+      "vehicleId": "5380b0b4-0026-4027-9878-9f691b773b78",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 2170000,
+      "amount": 1,
+      "color": "Blue"
+    },
+    {
+      "id": "76e56281-90d9-414b-b1f1-e2f21ab69346",
+      "vehicleId": "5f987da4-7270-40fa-8267-61ea5925b05a",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 3100000,
+      "amount": 1,
+      "color": "White"
+    },
+    {
+      "id": "fa1bf9b4-ada8-48d1-a124-e3aa48f9275d",
+      "vehicleId": "f574d690-54af-4651-b1ef-c6d6a48bf4a2",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "5a957d17-2440-4071-b8e5-ff2714842647",
+      "vehicleId": "dae41e71-3f34-4013-820a-febb2416866f",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 2620000,
+      "amount": 1,
+      "color": "Black"
+    },
+    {
+      "id": "b4aace30-e65b-4c72-ae5a-078ff8fa43ee",
+      "vehicleId": "97fb162b-27a8-433f-b5a6-1aa9401e75d6",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 2,
+      "color": null
+    },
+    {
+      "id": "4e0df253-6d0c-4ac5-b946-09d99f62f5ff",
+      "vehicleId": "d3a8cd25-722f-4764-a486-33783a627bb1",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "7c72ba52-2015-4e11-9476-78030359ea06",
+      "vehicleId": "d3a8cd25-722f-4764-a486-33783a627bb1",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 810000,
+      "amount": 2,
+      "color": "Grey"
+    },
+    {
+      "id": "9178b97e-a419-4e93-b8c0-1c72eb765949",
+      "vehicleId": "ddf5c62e-7b34-4c1a-bc72-e9c70d67e704",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 1150000,
+      "amount": 1,
+      "color": "Red"
+    },
+    {
+      "id": "db25dcc0-e03a-45ea-a659-1ddca5ad91f2",
+      "vehicleId": "c6ff8413-61d4-412a-bed2-4cadce3027c4",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 1400000,
+      "amount": 1,
+      "color": "White"
+    },
+    {
+      "id": "4ab2a843-9eb1-44a2-a466-b12ca41e3336",
+      "vehicleId": "481577f2-0b84-469c-9524-b47ea0455227",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 2000000,
+      "amount": 1,
+      "color": "Blue"
+    },
+    {
+      "id": "0a0c8c52-0399-47ac-837f-62aa7207064a",
+      "vehicleId": "d2d5b133-a2ae-45dc-9425-a892e453bfc4",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "be0b8298-7f88-4aca-a35b-713ded7a2dc0",
+      "vehicleId": "91c50179-51e6-4999-9f14-82b0abdfb5a3",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 2,
+      "color": null
+    },
+    {
+      "id": "8c542005-0551-4efa-adb6-5b7d7621e26a",
+      "vehicleId": "d4f8cc1a-fc2b-437d-a2d3-622797a7b62e",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "e78feab8-fbe5-4669-890c-4df866ef065d",
+      "vehicleId": "f190764e-83f1-411a-8886-eb5e7902c7f8",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "ec7cc63f-891a-45ab-851c-09be2d5f6685",
+      "vehicleId": "b83331ca-c641-4b8d-8fd9-1bb81f772b77",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "96e49559-96ac-454d-8fa2-026046976fb8",
+      "vehicleId": "e510f141-7c34-447e-9443-4d5b18b8191d",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "a6705ab9-28ef-4711-9b06-43f749bc2484",
+      "vehicleId": "7eee3285-9f5a-4c3e-942e-76b02f2706ef",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "254cfc41-d21b-45cd-bf9d-301bb8c6c34b",
+      "vehicleId": "3e1be0cc-1af4-473d-82af-80cca92c9347",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "2cd94277-646a-4f35-8c21-03c200878361",
+      "vehicleId": "c396dcc3-8384-4110-9648-3ade1fceb369",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "28d182f5-587b-4f29-baa3-03b9a04a3160",
+      "vehicleId": "ce5cf187-8cfb-4cdf-999a-d5c448e1dac2",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 3,
+      "color": null
+    },
+    {
+      "id": "f5885650-a70b-4d2c-8241-ee79e8306414",
+      "vehicleId": "a20c55ed-c934-43f0-b722-d96e13820278",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "6f63ebb4-50fb-4764-a864-00ecf78274bc",
+      "vehicleId": "eeda9511-a9c1-4fd7-8c26-5939b32b0b50",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "7d9f03f9-bbd7-480f-91b2-8ef448c7e85c",
+      "vehicleId": "8e952c4d-3667-411e-834c-e8d94e12f8a2",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 2,
+      "color": null
+    },
+    {
+      "id": "001fc62d-e8c7-47cc-85a6-ec21411c02e0",
+      "vehicleId": "22e7109d-f198-485d-850f-ac93efa40b17",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "dacf7bfd-5579-4d6c-9825-bf2e2e039d18",
+      "vehicleId": "c6ac38b5-5f3b-4f63-b2bd-410bc746abba",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "227fdeea-7d2d-4e52-a648-b04745b6511a",
+      "vehicleId": "ad298813-96dc-42b6-9b40-a398c6038fef",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "7a13b2aa-200b-4936-9bfb-364447cc31fa",
+      "vehicleId": "2e03e690-9b53-4620-b28a-fb434482b110",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 300000,
+      "amount": 1,
+      "color": "White"
+    },
+    {
+      "id": "d0b51c8e-511c-450d-b737-5ce84f9797b8",
+      "vehicleId": "babf7b13-cd94-4103-af60-e68e203d2a95",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 800000,
+      "amount": 1,
+      "color": "Grey"
+    },
+    {
+      "id": "69bf3326-963a-4a62-802d-37b38261c03d",
+      "vehicleId": "bf406971-5e05-4f6c-a4e1-c19d301f9836",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 700000,
+      "amount": 1,
+      "color": "Black"
+    },
+    {
+      "id": "369eb1c1-ac6b-4540-9e12-0117412ffedd",
+      "vehicleId": "ce5cf187-8cfb-4cdf-999a-d5c448e1dac2",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 700000,
+      "amount": 1,
+      "color": "Grey"
+    },
+    {
+      "id": "6a1b1c40-644a-44fe-a749-563c3a868fda",
+      "vehicleId": "449ff223-413e-40b8-ace6-ae82a4def321",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 550000,
+      "amount": 1,
+      "color": "Grey"
+    },
+    {
+      "id": "6a28ebd1-6173-4a9a-9ee6-c6e3d598994d",
+      "vehicleId": "c7c15a5a-430e-430b-a8b2-5150e5f3a77b",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 3170000,
+      "amount": 1,
+      "color": "Red"
+    },
+    {
+      "id": "d2a88768-6298-45da-bd83-52188d2b0edd",
+      "vehicleId": "87cf9cb3-0343-4878-ae4d-2325643f3600",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 700000,
+      "amount": 1,
+      "color": "White"
+    },
+    {
+      "id": "f1fe3e84-843f-4332-9925-4397356c5d91",
+      "vehicleId": "8ea6f6d7-9994-4638-a56c-2767ce33fc82",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 800000,
+      "amount": 1,
+      "color": "White"
+    },
+    {
+      "id": "6c2ec7dc-11a5-4f36-858e-81212473f577",
+      "vehicleId": "dba168fb-3183-4bfd-9226-d2af766bb021",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 15000000,
+      "amount": 1,
+      "color": "Black"
+    },
+    {
+      "id": "2bc4db22-ef30-4696-9fe2-9a6ac1ab790a",
+      "vehicleId": "60b4aaf1-e63e-4fc1-8979-68773883f85b",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 2890000,
+      "amount": 1,
+      "color": "Grey"
+    },
+    {
+      "id": "ccc0c4a5-acd4-4241-8b30-d068416d57c3",
+      "vehicleId": "589a7c12-6b73-49af-af57-c8c76da8531a",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "0b7b53c3-cc44-4249-a7f0-093e3e175c8f",
+      "vehicleId": "b9e3214e-2b75-48dd-bb28-ba77fd8d48d9",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "2920bf72-6aa4-41a9-a6e4-4c96d3d2956b",
+      "vehicleId": "70a71e3b-ba5c-4ece-b5ad-ef8cb7707862",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "fc78593d-5883-4796-a853-0f82bdb4a301",
+      "vehicleId": "48d597b2-d40a-44cd-817d-3d1d3669528c",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 2,
+      "color": null
+    },
+    {
+      "id": "b40b6d5b-476b-4f0b-8cb6-41eeb41a3288",
+      "vehicleId": "1e226b9d-a466-41c0-afa0-abedb50717b8",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 2,
+      "color": null
+    },
+    {
+      "id": "4bc3fe2e-a563-45a0-8802-36f5ab1c48fc",
+      "vehicleId": "f786f5c9-cefc-427a-98c0-7beb4769da6a",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "14eb81d4-94a9-42f2-920e-d90137dd8ecc",
+      "vehicleId": "41258210-36be-403d-a526-e598cae99a79",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "09e82061-23fa-4272-9a56-cac09a5a3142",
+      "vehicleId": "21675de4-fc32-40b1-ad30-8baafb72d382",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 3,
+      "color": null
+    },
+    {
+      "id": "03df689c-5427-469b-96a0-7d96806bf761",
+      "vehicleId": "31f79630-7706-449b-aec1-50fdd35643ee",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 2,
+      "color": null
+    },
+    {
+      "id": "096b13aa-43d5-4050-ad04-e632ee152df7",
+      "vehicleId": "92c1bbf4-c258-4cd0-bfd3-b91f53384e54",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "3947cbc2-af1f-42e1-a550-d305c05bec85",
+      "vehicleId": "70a71e3b-ba5c-4ece-b5ad-ef8cb7707862",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 750000,
+      "amount": 1,
+      "color": "Silver"
+    },
+    {
+      "id": "170c4de6-3385-4b78-9f24-6fab01f06314",
+      "vehicleId": "48d597b2-d40a-44cd-817d-3d1d3669528c",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 1100000,
+      "amount": 1,
+      "color": "Grey"
+    },
+    {
+      "id": "0c9a0040-8855-4594-a4cd-ed1e26491803",
+      "vehicleId": "ad0684a1-6de4-4840-9d86-4dcec5377885",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 600000,
+      "amount": 1,
+      "color": "Black"
+    },
+    {
+      "id": "68152350-b722-4c16-a586-06de47439367",
+      "vehicleId": "de6610f2-685f-4f5d-aa82-f4e6a1a2e586",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 1940000,
+      "amount": 1,
+      "color": "Blue"
+    },
+    {
+      "id": "b23e726e-630d-45e5-ad6c-10d947113097",
+      "vehicleId": "63605bb2-e41f-426e-b245-8e71a2b5aec8",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 4700000,
+      "amount": 1,
+      "color": "Green"
+    },
+    {
+      "id": "f13ffc35-e7f3-4007-99a3-740b82652d7e",
+      "vehicleId": "5bf1ecf4-b1cd-4c57-a708-d18ae968e956",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "f4a94b3c-40ff-480a-82f4-ef1ad422fdc5",
+      "vehicleId": "58b8c093-0611-440f-b6f4-5addeb0d796e",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "fe5ec32a-4578-4860-814c-bf7b87520a2c",
+      "vehicleId": "adaecf58-d7a4-4649-b402-d6768980767d",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 840000,
+      "amount": 1,
+      "color": "Grey"
+    },
+    {
+      "id": "498b08f2-55fa-47ec-9d96-a37ba979a141",
+      "vehicleId": "2dd3b9b6-54b9-438e-9c65-5c31778669a8",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 1090000,
+      "amount": 1,
+      "color": "Beige"
+    },
+    {
+      "id": "805a72d6-a816-417a-ba07-fa66f573736c",
+      "vehicleId": "3430bbf3-ab5e-4c71-96e4-f07aba6cedf0",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 1500000,
+      "amount": 1,
+      "color": "White"
+    },
+    {
+      "id": "206e6664-106f-49f3-886b-c8d9627f7851",
+      "vehicleId": "4a187051-8d13-4b17-aa76-c36c230b6c54",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 1260000,
+      "amount": 1,
+      "color": "Black"
+    },
+    {
+      "id": "e0a6bb38-2dc5-4ad5-bab4-3f13ab2e6184",
+      "vehicleId": "236cf3ca-9f39-4bcd-a934-902285889475",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "22d9c8d5-52bf-4c64-ae64-2d95c3b9720b",
+      "vehicleId": "de4332d3-c5e4-4cfb-93c3-5bc611a3eadb",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "c8d64151-fa37-43a4-9e93-c73ad9b6f383",
+      "vehicleId": "1e743ad6-d930-4e47-98e7-46c273cd7be8",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "d074bb80-ec8e-42b6-a9b4-1adec559758a",
+      "vehicleId": "cd6590f9-ac33-485c-b1d6-c1b4246ef5e7",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "8d453acd-fbe2-4747-b8cb-8d3435709481",
+      "vehicleId": "fdbc3235-1311-4867-93c5-aa796a4cbbcf",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 2,
+      "color": null
+    },
+    {
+      "id": "423f29c3-0d4e-49e8-8d5f-79ad1f6ccce9",
+      "vehicleId": "5283fabb-c4ee-46e5-9b22-0b5cc0b8fa6d",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "84d1c5c3-32f8-4fe2-9906-9620e123d6c1",
+      "vehicleId": "2e5c2254-2cb7-4308-b4cf-ebccd2fa1bd8",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "a91c4307-2b21-4397-a422-697bddbbf92d",
+      "vehicleId": "4cc1ea33-0ab8-4a57-b020-e3e6204eab7f",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "819bd962-f140-4302-882d-a60509f4bb35",
+      "vehicleId": "42b02ac9-4289-427d-a6b9-2380c3bb0577",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "b4394c5d-7b43-4258-b059-758a9cae7945",
+      "vehicleId": "b94b43e7-1be5-4af4-903e-209b14703a64",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "552fb36c-08dd-407d-b704-9b267f4130e4",
+      "vehicleId": "8c8180d6-8d32-4b44-ba47-a12ab0d962c5",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 3,
+      "color": null
+    },
+    {
+      "id": "1766a16e-3fdd-4213-9c49-aff7fb00faff",
+      "vehicleId": "58751619-39b6-4e72-82db-6e9b37ee38cc",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "a28585b1-e55a-427d-b859-4ab3b81ed0eb",
+      "vehicleId": "1b5e6d34-95af-454f-8b69-eb193e07d39d",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 2,
+      "color": null
+    },
+    {
+      "id": "5ea398d4-15d5-4bb0-892f-d82d116e77b8",
+      "vehicleId": "f5889822-3547-4172-ba82-f7d4a9eabf0e",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "42f9d27e-9fec-4cbb-bab7-1b1c5d019a08",
+      "vehicleId": "31d11e20-7210-4c2b-9f11-c37ae2ed9b1c",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "3ac7d0af-d9c8-4901-beb9-51564f6a5069",
+      "vehicleId": "d027bd59-b428-445b-a9ee-81731dba0485",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 550000,
+      "amount": 1,
+      "color": "White"
+    },
+    {
+      "id": "d7999e8a-2e7d-41bc-9725-20c26c53246b",
+      "vehicleId": "a326563b-c72e-4485-9822-44559b57c7ca",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 6030000,
+      "amount": 1,
+      "color": "Blue"
+    },
+    {
+      "id": "2951416f-44e8-49b6-a08f-658201ac7777",
+      "vehicleId": "a96b0499-67c6-4ffb-a286-5e1224a9c6be",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 1550000,
+      "amount": 1,
+      "color": "Pink"
+    },
+    {
+      "id": "de6a563a-ecfa-4dc1-935b-eed87d9de735",
+      "vehicleId": "494f6247-2b89-44b1-88f1-524f185a0357",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 3200000,
+      "amount": 1,
+      "color": "Blue"
+    },
+    {
+      "id": "2326ef45-4206-43bb-b205-f61953481f61",
+      "vehicleId": "017ddb57-3b92-4a84-ac8c-1f0800bb9782",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 1850000,
+      "amount": 1,
+      "color": "Blue"
+    },
+    {
+      "id": "9677ec88-2a83-4bf4-813d-ea9d848d4b91",
+      "vehicleId": "49e8c002-2594-41dd-a76d-2477288014de",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 3140000,
+      "amount": 1,
+      "color": "Grey"
+    },
+    {
+      "id": "7b3faccf-5498-499b-9b4f-4b20da9e3d8f",
+      "vehicleId": "48fe29c0-339e-4442-b43f-a10ca975c77e",
+      "bankId": "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
+      "price": 1390000,
+      "amount": 1,
+      "color": "Black"
+    },
+    {
+      "id": "7261def9-5869-4ad4-991c-045b0fedbfed",
+      "vehicleId": "017ddb57-3b92-4a84-ac8c-1f0800bb9782",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "540e9b3e-0d56-4a1d-bb51-7bfdf2749718",
+      "vehicleId": "fc95892b-3f00-46a3-a622-03a3cbf268b3",
+      "bankId": "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
+      "price": null,
+      "amount": 1,
+      "color": null
+    },
+    {
+      "id": "d8317804-a85c-4a24-b340-df782c056131",
+      "vehicleId": "f7deee85-b1bd-4b22-8ed9-d751abe28f2e",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 500000,
+      "amount": 1,
+      "color": "Blue"
+    },
+    {
+      "id": "5583f5bc-a230-44a6-bb8a-977fdc7993f4",
+      "vehicleId": "3a399922-fe63-4d39-8dad-2e4eba65b503",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 650000,
+      "amount": 1,
+      "color": "Grey"
+    },
+    {
+      "id": "5c1d09ad-9182-48a0-8d37-e44730ef55de",
+      "vehicleId": "4cb6cc7a-4d59-425d-977e-c0fed27610cc",
+      "bankId": "33ff7536-112c-4a40-9b16-a60666ac7d4f",
+      "price": 1450000,
+      "amount": 1,
+      "color": "Black"
+    }
+  ]
+}
