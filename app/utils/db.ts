@@ -1,4 +1,4 @@
-import type { Vehicle, Price } from "~/types/vehicle";
+import type { Vehicle, Price, VehicleWithPrices } from "~/types/vehicle";
 import type { Bank, VehicleDBSchema } from "~/types/bank";
 
 const DB_NAME = "bankomoto";
@@ -118,7 +118,7 @@ export async function getVehicleById(
 
 export async function getVehicles(
   filters: VehicleFilters = {}
-): Promise<(Vehicle & { prices: Price[] })[]> {
+): Promise<VehicleWithPrices[]> {
   const db = await openDB();
   const tx = db.transaction([STORES.VEHICLES, STORES.PRICES], "readonly");
   const vehiclesStore = tx.objectStore(STORES.VEHICLES);
