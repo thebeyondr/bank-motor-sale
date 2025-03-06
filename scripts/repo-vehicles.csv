@@ -1,0 +1,199 @@
+Year,Make,Model,Bank,Price,Color
+2021,Audi,Q3,JMMB,5300000,Grey
+2023,Audi,A3,NCB,0,unknown
+2018,Audi,A4,NCB,0,unknown
+2024,Audi,Q3,NCB,0,unknown
+2017,BMW,X1,JMMB,2500000,White
+2018,BMW,X5,JMMB,5500000,White
+2019,BMW,X4,JMMB,6500000,White
+2018,BMW,X1,JMMB,3000000,White
+2021,BMW,X4,JMMB,8500000,Red
+2016,BMW,523d,JMMB,3230000,White
+2015,BMW,316,NCB,0,unknown
+2018,BMW,530i,NCB,0,unknown
+2017,BMW,X1,NCB,0,unknown
+2019,BMW,X1,NCB,0,unknown
+2014,BMW,X3,NCB,0,unknown
+2019,BMW,X3 - Xdrive,NCB,0,unknown
+2018,BMW,X5,NCB,0,unknown
+2012,BMW,X5,NCB,0,unknown
+2014,BMW,X1,CIBC,1400000,Silver
+2016,BMW,X5,CIBC,2700000,Black
+2021,Ford,Ecosport Titanium,CIBC,2290000,Grey
+2010,Ford,Fiesta,CIBC,300000,Red
+2021,Ford,Ranger Raptor,CIBC,8570000,Grey
+2021,Ford,Ranger Wildtrak,CIBC,6520000,White
+2014,Honda,Accord,JMMB,1880000,Black
+2017,Honda,Accord Sport,JMMB,2800000,Blue
+2016,Honda,Accord EX,JMMB,3000000,Black
+2016,Honda,Accord,JMMB,2700000,Silver
+2014,Honda,Civic,JMMB,1300000,Grey
+2019,Honda,Civic,JMMB,2255000,Red
+2016,Honda,Accord Sport,JMMB,2100000,Grey
+2016,Honda,Fit,JMMB,1200000,White
+2017,Honda,Civic,JMMB,1600000,Blue
+2018,Honda,Civic,JMMB,2660000,Grey
+2014,Honda,City,JMMB,1000000,Red
+2020,Honda,Civic,JMMB,2150000,Silver
+2024,Honda,BRV,JMMB,5400000,White
+2018,Honda,CRV,JMMB,3040000,Red
+2014,Honda,CRV,JMMB,1600000,Black
+2018,Honda,CRV,NCB,0,unknown
+2015,Honda,Hybrid,NCB,0,unknown
+2017,Honda,Fit,NCB,0,unknown
+2017,Honda,Fit,NCB,0,unknown
+2017,Honda,Fit,NCB,0,unknown
+2018,Honda,Fit,NCB,0,unknown
+2017,Honda,Fit Hybrid,NCB,0,unknown
+2018,Honda,Fit Hybrid,NCB,0,unknown
+2021,Honda,City,NCB,0,unknown
+2016,Honda,Grace Hybrid,NCB,0,unknown
+2021,Honda,HRV,NCB,0,unknown
+2021,Honda,HRV,NCB,0,unknown
+2016,Honda,Vezel,NCB,0,unknown
+2016,Honda,Accord,CIBC,1940000,White
+2020,Hyundai,Grand I - 10,JMMB,2040000,Red
+2019,Hyundai,Accent,JMMB,2280000,Red
+2018,Hyundai,Accent,JMMB,1360000,Grey
+2022,Hyundai,Palisade,JMMB,7570000,Black
+2022,Hyundai,Venue,JMMB,3550000,Blue
+2019,Hyundai,Tucson,JMMB,2700000,Black
+2022,Hyundai,Tucson,JMMB,4700000,Black
+2022,Hyundai,Venue,JMMB,3020000,Red
+2022,Hyundai,Venue,JMMB,3000000,Green
+2019,Hyundai,Creta,NCB,0,unknown
+2021,Hyundai,Creta,NCB,0,unknown
+2022,Hyundai,Creta,NCB,0,unknown
+2016,Hyundai,Santa Fe,NCB,0,unknown
+2016,Hyundai,Santa Fe,NCB,0,unknown
+2015,Hyundai,Sonata,NCB,0,unknown
+2022,Hyundai,Staria,NCB,0,unknown
+2019,Hyundai,Tucson,NCB,0,unknown
+2020,Hyundai,Tucson,NCB,0,unknown
+2020,Hyundai,Venue,NCB,0,unknown
+2014,Hyundai,H1,CIBC,600000,White
+2019,Hyundai,Tucson,CIBC,2710000,Grey
+2018,Jaguar,XE R,NCB,0,unknown
+2013,Jaguar,XJ,NCB,0,unknown
+2020,Kia,Rio,JMMB,2200000,Red
+2019,Kia,Rio,JMMB,1800000,Blue
+2018,Kia,Sedona Grand Carnival,JMMB,2600000,Silver
+2024,Kia,Seltos,JMMB,4850000,Blue
+2022,Kia,Sonet,JMMB,2980000,White
+2023,Kia,Sonet,JMMB,3420000,Grey
+2019,Kia,Sportage,JMMB,2750000,Black Cherry
+2021,Kia,Seltos,NCB,0,unknown
+2022,Kia,Soluto,NCB,0,unknown
+2023,Kia,Sorento,NCB,0,unknown
+2023,Kia,Sportage,NCB,0,unknown
+2015,Mazda,CX5,CIBC,1660000,Red
+2013,Mazda,Premacy,CIBC,850000,Purple
+2014,Mazda,Premacy,CIBC,800000,Blue
+2015,Mazda,Premacy,CIBC,600000,Black
+2016,Mazda,Premacy,CIBC,1000000,Grey
+2013,Mazda,Versia,CIBC,400000,Red
+2022,Mercedes Benz,GLS 450,JMMB,18000000,Green
+2019,Mercedes Benz,C300,NCB,0,unknown
+2020,Mercedes Benz,C300,NCB,0,unknown
+2018,Mercedes Benz,CLA180,NCB,0,unknown
+2020,Mercedes Benz,CLA35 AMG,NCB,0,unknown
+2020,Mercedes Benz,GLC300,NCB,0,unknown
+2015,Mercedes Benz,C180,CIBC,2170000,Blue
+2015,Mercedes Benz,E250,CIBC,3100000,White
+2022,Mini Cooper,Countryman,NCB,0,unknown
+2021,Mitsubishi,Xpander,JMMB,2620000,Black
+2016,Mitsubishi,ASX,NCB,0,unknown
+2016,Mitsubishi,ASX,NCB,0,unknown
+2017,Mitsubishi,Attrage,NCB,0,unknown
+2017,Mitsubishi,Attrage,CIBC,810000,Grey
+2017,Mitsubishi,Attrage,CIBC,650000,White
+2013,Nissan,Juke,JMMB,1150000,Red
+2017,Nissan,Juke,JMMB,1400000,White
+2016,Nissan,XTrail,JMMB,2000000,Blue
+2011,Nissan,AD,NCB,0,unknown
+2016,Nissan,AD,NCB,0,unknown
+2016,Nissan,AD,NCB,0,unknown
+2017,Nissan,AD,NCB,0,unknown
+2016,Nissan,AD Expert,NCB,0,unknown
+2015,Nissan,Caravan,NCB,0,unknown
+2015,Nissan,LaFesta,NCB,0,unknown
+2013,Nissan,Latio,NCB,0,unknown
+2014,Nissan,Latio,NCB,0,unknown
+2015,Nissan,Latio,NCB,0,unknown
+2016,Nissan,Latio,NCB,0,unknown
+2016,Nissan,Latio,NCB,0,unknown
+2016,Nissan,Latio,NCB,0,unknown
+2016,Nissan,Note,NCB,0,unknown
+2013,Nissan,Serena,NCB,0,unknown
+2015,Nissan,Sylphy,NCB,0,unknown
+2015,Nissan,Sylphy,NCB,0,unknown
+2014,Nissan,Teana,NCB,0,unknown
+2017,Nissan,Teana,NCB,0,unknown
+2012,Nissan,Tiida Latio,NCB,0,unknown
+2014,Nissan,AD Wagon,CIBC,300000,White
+2014,Nissan,Bluebird Sylphy G,CIBC,800000,Grey
+2014,Nissan,Bluebird Sylphy X,CIBC,700000,Black
+2016,Nissan,Latio,CIBC,700000,Grey
+2012,Nissan,Lafesta Highway Star,CIBC,550000,Grey
+2021,Nissan,Qashqai,CIBC,3170000,Red
+2013,Nissan,Skyline,CIBC,700000,White
+2013,Nissan,Sulphy,CIBC,800000,White
+2021,Porsche,Cayenne,JMMB,15000000,Black
+2018,Subaru,Impreza Sport (Hatch Back),JMMB,2890000,Grey
+2012,Subaru,Impreza G4,NCB,0,unknown
+2013,Subaru,Impreza G4,NCB,0,unknown
+2014,Subaru,Impreza G4,NCB,0,unknown
+2015,Subaru,Impreza G4,NCB,0,unknown
+2015,Subaru,Impreza G4,NCB,0,unknown
+2016,Subaru,Impreza G4,NCB,0,unknown
+2016,Subaru,Impreza G4,NCB,0,unknown
+2017,Subaru,Impreza G4,NCB,0,unknown
+2015,Subaru,Impreza,NCB,0,unknown
+2016,Subaru,Impreza Sport,NCB,0,unknown
+2016,Subaru,Impreza Sport,NCB,0,unknown
+2016,Subaru,Impreza Sport,NCB,0,unknown
+2014,Subaru,Impreza XV,NCB,0,unknown
+2014,Subaru,Impreza XV,NCB,0,unknown
+2021,Subaru,XV,NCB,0,unknown
+2014,Subaru,Impreza G4,CIBC,750000,Silver
+2015,Subaru,Impreza G4,CIBC,1100000,Grey
+2012,Subaru,Legacy Touring,CIBC,600000,Black
+2013,Subaru,Legacy Touring,CIBC,1940000,Blue
+2022,Suzuki,Jimny,JMMB,4700000,Green
+2022,Suzuki,Vitara,NCB,0,unknown
+2022,Suzuki,XL7,NCB,0,unknown
+2015,Suzuki,Swift,CIBC,840000,Grey
+2015,Toyota,Altis,JMMB,1090000,Beige
+2018,Toyota,Aqua (Hybrid),JMMB,1500000,White
+2018,Toyota,Corolla,JMMB,1260000,Black
+2013,Toyota,Allion,NCB,0,unknown
+2017,Toyota,Aqua Hybrid,NCB,0,unknown
+2015,Toyota,Corolla Axio,NCB,0,unknown
+2016,Toyota,Corolla Axio,NCB,0,unknown
+2017,Toyota,Corolla Axio,NCB,0,unknown
+2017,Toyota,Corolla Axio,NCB,0,unknown
+2018,Toyota,Corolla Axio,NCB,0,unknown
+2015,Toyota,Corolla Fielder,NCB,0,unknown
+2017,Toyota,Corolla Fielder,NCB,0,unknown
+2015,Toyota,Isis,NCB,0,unknown
+2016,Toyota,Mark X,NCB,0,unknown
+2015,Toyota,Probox,NCB,0,unknown
+2015,Toyota,Probox,NCB,0,unknown
+2015,Toyota,Probox,NCB,0,unknown
+2017,Toyota,Probox,NCB,0,unknown
+2022,Toyota,Raize,NCB,0,unknown
+2022,Toyota,Raize,NCB,0,unknown
+2023,Toyota,Raize,NCB,0,unknown
+2013,Toyota,Wish,NCB,0,unknown
+2014,Toyota,Passo X,CIBC,550000,White
+2023,Toyota,Rav4,CIBC,6030000,Blue
+2017,Toyota,Vitz,CIBC,1550000,Pink
+2019,Volkswagen (VW),Amarok,JMMB,3200000,Blue
+2017,Volkswagen (VW),Polo,JMMB,1850000,Blue
+2017,Volkswagen (VW),Tiguan,JMMB,3140000,Grey
+2018,Volkswagen (VW),Jetta,JMMB,1390000,Black
+2017,Volkswagen (VW),Polo,NCB,0,unknown
+2022,Volkswagen (VW),Tiguan,NCB,0,unknown
+2014,Volkswagen (VW),Jetta,CIBC,500000,Blue
+2016,Volkswagen (VW),Polo,CIBC,650000,Grey
+2019,Volkswagen (VW),Polo,CIBC,1450000,Black
