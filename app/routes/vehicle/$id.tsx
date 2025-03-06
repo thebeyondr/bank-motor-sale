@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import type { Bank } from "~/types/bank";
 import type { Price, Vehicle } from "~/types/vehicle";
-import { getVehicleById } from "~/utils/db";
+import { getVehicleById, getBankById } from "~/utils/db";
 import type { Route } from "./+types/$id";
 
 // Bank ID to name mapping
@@ -15,14 +15,26 @@ export async function clientLoader({
   params,
 }: Route.ClientLoaderArgs): Promise<{
   vehicle: Vehicle;
-  prices: Price[];
+  prices: (Price & { bank: Bank })[];
   bank: Bank;
 }> {
   const result = await getVehicleById(params.id);
   if (!result) {
     throw new Response("Vehicle not found", { status: 404 });
   }
-  return result;
+
+  // Fetch bank data for each price
+  const pricesWithBanks = await Promise.all(
+    result.prices.map(async (price) => {
+      const bank = await getBankById(price.bankId);
+      if (!bank) {
+        throw new Error(`Bank not found for price ${price.id}`);
+      }
+      return { ...price, bank };
+    })
+  );
+
+  return { ...result, prices: pricesWithBanks };
 }
 
 // HydrateFallback is rendered while the client loader is running
@@ -99,17 +111,28 @@ export default function VehicleDetail({ loaderData }: Route.ComponentProps) {
         </table>
       </div>
       <div className="mt-8">
-        <h3 className="text-lg font-bold mb-2 text-white">Instructions</h3>
-        <div className="space-y-2 text-gray-300">
-          <p>
-            <strong>Viewing:</strong> {bank.viewInstructions}
-          </p>
-          <p>
-            <strong>Sale Terms:</strong> {bank.saleTerms}
-          </p>
-          <p>
-            <strong>Bidding:</strong> {bank.bidInstructions}
-          </p>
+        <h3 className="text-lg font-bold mb-2 text-white">
+          Instructions by Bank
+        </h3>
+        <div className="space-y-6">
+          {prices.map((price) => (
+            <div key={price.id} className="border border-gray-700 p-4 rounded">
+              <h4 className="text-md font-bold text-white mb-2">
+                {BANK_NAMES[price.bankId]}
+              </h4>
+              <div className="space-y-2 text-gray-300">
+                <p>
+                  <strong>Viewing:</strong> {price.bank.viewInstructions}
+                </p>
+                <p>
+                  <strong>Sale Terms:</strong> {price.bank.saleTerms}
+                </p>
+                <p>
+                  <strong>Bidding:</strong> {price.bank.bidInstructions}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
       <div className="mt-8">
