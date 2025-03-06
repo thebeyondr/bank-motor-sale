@@ -1,12 +1,23 @@
-import type { Route } from "./+types/$id";
-import type { Vehicle } from "~/types/vehicle";
-import type { Bank } from "~/types/bank";
-import { getVehicleById } from "~/utils/db";
 import { Link } from "react-router";
+import type { Bank } from "~/types/bank";
+import type { Price, Vehicle } from "~/types/vehicle";
+import { getVehicleById } from "~/utils/db";
+import type { Route } from "./+types/$id";
+
+// Bank ID to name mapping
+const BANK_NAMES: Record<string, string> = {
+  "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4": "JMMB",
+  "cf984f5d-4bf8-405d-93f4-c518e258f7fe": "NCB",
+  "33ff7536-112c-4a40-9b16-a60666ac7d4f": "CIBC",
+};
 
 export async function clientLoader({
   params,
-}: Route.ClientLoaderArgs): Promise<{ vehicle: Vehicle; bank: Bank }> {
+}: Route.ClientLoaderArgs): Promise<{
+  vehicle: Vehicle;
+  prices: Price[];
+  bank: Bank;
+}> {
   const result = await getVehicleById(params.id);
   if (!result) {
     throw new Response("Vehicle not found", { status: 404 });
@@ -20,7 +31,7 @@ export function HydrateFallback() {
 }
 
 export default function VehicleDetail({ loaderData }: Route.ComponentProps) {
-  const { vehicle, bank } = loaderData;
+  const { vehicle, prices, bank } = loaderData;
 
   return (
     <section className="container mx-auto px-4 py-8">
@@ -30,72 +41,104 @@ export default function VehicleDetail({ loaderData }: Route.ComponentProps) {
       <h1 className="text-2xl font-bold text-white">
         {vehicle.year} {vehicle.make} {vehicle.model}
       </h1>
-      <p className="text-gray-300 mb-2">
-        {vehicle.color === "Unknown" ? "Color undisclosed" : vehicle.color}
-      </p>
+      <div className="text-gray-300 mb-2">
+        {prices.map((price) => (
+          <p key={price.id} className="flex items-center">
+            <span
+              className={`h-4 w-4 mr-2 inline-block rounded-full border border-slate-300 ${
+                {
+                  Unknown: "bg-gray-700",
+                  Black: "bg-black",
+                  White: "bg-white",
+                  Red: "bg-red-500",
+                  Blue: "bg-blue-500",
+                  Green: "bg-green-500",
+                  Yellow: "bg-yellow-500",
+                  Orange: "bg-orange-500",
+                  Purple: "bg-purple-500",
+                  Gray: "bg-gray-500",
+                }[price.color || "Unknown"] || "bg-slate-300"
+              }`}
+            ></span>
+            {price.color === "Unknown" ? "Color undisclosed" : price.color}
+            {price.amount > 1 && ` (${price.amount} available)`}
+          </p>
+        ))}
+      </div>
       <h2 className="text-lg font-bold mb-2 text-white">
         Sold by: {bank.name}
       </h2>
       <div className="mt-8">
         <h3 className="text-lg font-bold mb-2 text-white">Prices</h3>
-        <table>
+        <table className="w-full">
           <thead>
-            <tr>
-              <th className="py-2 px-4">Bank</th>
-              <th className="py-2 px-4">Price</th>
+            <tr className="text-left">
+              <th className="py-2 px-4 text-gray-300">Bank</th>
+              <th className="py-2 px-4 text-gray-300">Price</th>
+              <th className="py-2 px-4 text-gray-300">Available</th>
             </tr>
           </thead>
           <tbody>
-            {Object.entries(vehicle.pricesBySource).map(
-              ([key, priceBySource]) => (
-                <tr key={key} className="border border-gray-700">
-                  <td className="py-2 px-4">{priceBySource.source}</td>
-                  <td className="py-2 px-4">
-                    {priceBySource.price
-                      ? Intl.NumberFormat("en-US", {
-                          style: "currency",
-                          currency: "JMD",
-                        }).format(priceBySource.price)
-                      : "N/A"}
-                  </td>
-                </tr>
-              )
-            )}
+            {prices.map((price) => (
+              <tr key={price.id} className="border border-gray-700">
+                <td className="py-2 px-4 text-gray-300">
+                  {BANK_NAMES[price.bankId]}
+                </td>
+                <td className="py-2 px-4 text-gray-300">
+                  {price.price
+                    ? Intl.NumberFormat("en-US", {
+                        style: "currency",
+                        currency: "JMD",
+                      }).format(price.price)
+                    : "N/A"}
+                </td>
+                <td className="py-2 px-4 text-gray-300">{price.amount}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
-      <div>
-        <h3>Instructions</h3>
-        <p>
-          <strong>Viewing:</strong> {bank.viewInstructions}
-        </p>
-        <p>
-          <strong>Sale Terms:</strong> {bank.saleTerms}
-        </p>
-        <p>
-          <strong>Bidding:</strong> {bank.bidInstructions}
-        </p>
+      <div className="mt-8">
+        <h3 className="text-lg font-bold mb-2 text-white">Instructions</h3>
+        <div className="space-y-2 text-gray-300">
+          <p>
+            <strong>Viewing:</strong> {bank.viewInstructions}
+          </p>
+          <p>
+            <strong>Sale Terms:</strong> {bank.saleTerms}
+          </p>
+          <p>
+            <strong>Bidding:</strong> {bank.bidInstructions}
+          </p>
+        </div>
       </div>
       <div className="mt-8">
-        <h3>Contact Information</h3>
-        <p>Address: {bank.contactInfo.address}</p>
-        <p>Phone: {bank.contactInfo.phones.join(", ")}</p>
-        <p>Email: {bank.contactInfo.emails.join(", ")}</p>
-        <p>
-          Website:{" "}
-          <a
-            href={bank.contactInfo.website}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {bank.contactInfo.website}
-          </a>
-        </p>
+        <h3 className="text-lg font-bold mb-2 text-white">
+          Contact Information
+        </h3>
+        <div className="space-y-2 text-gray-300">
+          <p>Address: {bank.contactInfo.address}</p>
+          <p>Phone: {bank.contactInfo.phones.join(", ")}</p>
+          <p>Email: {bank.contactInfo.emails.join(", ")}</p>
+          <p>
+            Website:{" "}
+            <a
+              href={bank.contactInfo.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-400 hover:text-blue-300"
+            >
+              {bank.contactInfo.website}
+            </a>
+          </p>
+        </div>
       </div>
-      <div>
-        <h3>Operating Hours</h3>
-        <p>Weekdays: {bank.operatingHours.weekdays}</p>
-        <p>Weekends: {bank.operatingHours.weekends}</p>
+      <div className="mt-8">
+        <h3 className="text-lg font-bold mb-2 text-white">Operating Hours</h3>
+        <div className="space-y-2 text-gray-300">
+          <p>Weekdays: {bank.operatingHours.weekdays}</p>
+          <p>Weekends: {bank.operatingHours.weekends}</p>
+        </div>
       </div>
     </section>
   );
