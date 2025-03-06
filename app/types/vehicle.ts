@@ -1,12 +1,12 @@
 // Unique identifier type
 export type UUID = string;
 
-// Vehicles store (Primary key: id, Indexes: make, model, year)
+// Database types
 export interface Vehicle {
-  id: UUID;
-  year: number;
+  id: string;
   make: string;
   model: string;
+  year: number;
 }
 
 // Prices store (Primary key: id, Indexes: vehicleId, bankId)
@@ -17,4 +17,9 @@ export interface Price {
   price: number | null;
   amount: number;
   color?: string;
+}
+
+// UI types
+export interface VehicleWithPrices extends Vehicle {
+  prices: Array<Price>;
 }
