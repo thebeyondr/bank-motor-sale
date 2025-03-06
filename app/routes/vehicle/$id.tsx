@@ -47,45 +47,19 @@ export default function VehicleDetail({ loaderData }: Route.ComponentProps) {
 
   return (
     <section className="container mx-auto px-4 py-8">
-      <Link to="/" className="text-gray-300 mb-3">
+      <Link to="/" className="text-gray-300 py-4">
         Back to vehicles
       </Link>
       <h1 className="text-2xl font-bold text-white">
         {vehicle.year} {vehicle.make} {vehicle.model}
       </h1>
-      <div className="text-gray-300 mb-2">
-        {prices.map((price) => (
-          <p key={price.id} className="flex items-center">
-            <span
-              className={`h-4 w-4 mr-2 inline-block rounded-full border border-slate-300 ${
-                {
-                  Unknown: "bg-gray-700",
-                  Black: "bg-black",
-                  White: "bg-white",
-                  Red: "bg-red-500",
-                  Blue: "bg-blue-500",
-                  Green: "bg-green-500",
-                  Yellow: "bg-yellow-500",
-                  Orange: "bg-orange-500",
-                  Purple: "bg-purple-500",
-                  Gray: "bg-gray-500",
-                }[price.color || "Unknown"] || "bg-slate-300"
-              }`}
-            ></span>
-            {price.color === "Unknown" ? "Color undisclosed" : price.color}
-            {price.amount > 1 && ` (${price.amount} available)`}
-          </p>
-        ))}
-      </div>
-      <h2 className="text-lg font-bold mb-2 text-white">
-        Sold by: {bank.name}
-      </h2>
       <div className="mt-8">
-        <h3 className="text-lg font-bold mb-2 text-white">Prices</h3>
-        <table className="w-full">
+        <h3 className="text-lg font-bold mb-2 text-white">Details</h3>
+        <table className="w-max">
           <thead>
             <tr className="text-left">
               <th className="py-2 px-4 text-gray-300">Bank</th>
+              <th className="py-2 px-4 text-gray-300">Color</th>
               <th className="py-2 px-4 text-gray-300">Price</th>
               <th className="py-2 px-4 text-gray-300">Available</th>
             </tr>
@@ -95,6 +69,29 @@ export default function VehicleDetail({ loaderData }: Route.ComponentProps) {
               <tr key={price.id} className="border border-gray-700">
                 <td className="py-2 px-4 text-gray-300">
                   {BANK_NAMES[price.bankId]}
+                </td>
+                <td className="py-2 px-4 text-gray-300">
+                  <div className="flex items-center">
+                    <span
+                      className={`h-4 w-4 mr-2 inline-block rounded-full border border-slate-300 ${
+                        {
+                          Unknown: "bg-gray-700",
+                          Black: "bg-black",
+                          White: "bg-white",
+                          Red: "bg-red-500",
+                          Blue: "bg-blue-500",
+                          Green: "bg-green-500",
+                          Yellow: "bg-yellow-500",
+                          Orange: "bg-orange-500",
+                          Purple: "bg-purple-500",
+                          Gray: "bg-gray-500",
+                        }[price.color || "Unknown"] || "bg-slate-300"
+                      }`}
+                    ></span>
+                    {price.color === "Unknown" || price.color === null
+                      ? "Color undiscosed"
+                      : price.color}
+                  </div>
                 </td>
                 <td className="py-2 px-4 text-gray-300">
                   {price.price
