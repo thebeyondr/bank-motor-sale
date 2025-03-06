@@ -1,16 +1,20 @@
-export type PriceBySource = {
-  price: number | null;
-  source: string;
-};
+// Unique identifier type
+export type UUID = string;
 
-export type Vehicle = {
-  id: string;
+// Vehicles store (Primary key: id, Indexes: make, model, year)
+export interface Vehicle {
+  id: UUID;
   year: number;
   make: string;
   model: string;
-  color: string;
-  pricesBySource: {
-    [key: string]: PriceBySource;
-  };
-  sources: string[];
-};
+}
+
+// Prices store (Primary key: id, Indexes: vehicleId, bankId)
+export interface Price {
+  id: UUID;
+  vehicleId: UUID; // Foreign key to Vehicle
+  bankId: UUID; // Foreign key to Bank
+  price: number | null;
+  amount: number;
+  color?: string;
+}
