@@ -1,6 +1,5 @@
-@import "tailwindcss";
-
 @import url(https://fonts.bunny.net/css?family=dm-sans:200,300,400,400i,500i,600,800,800i);
+@import "tailwindcss";
 
 @plugin 'tailwindcss-animate';
 
