@@ -8,6 +8,7 @@ import {
 } from "react-router";
 import { useEffect, useState } from "react";
 import { initializeDatabase } from "~/utils/initializeData";
+import { Analytics } from "@vercel/analytics/react";
 
 import type { Route } from "./+types/root";
 import "./app.css";
@@ -89,6 +90,7 @@ export default function Root() {
       </head>
       <body>
         <Outlet />
+        <Analytics />
       </body>
     </html>
   );
