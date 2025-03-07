@@ -6,6 +6,9 @@ import type { Route } from "./+types/_index";
 import { VehicleTable } from "~/vehicles/components/VehicleTable";
 import { FilterForm } from "~/vehicles/components/VehicleFilters/FilterForm";
 import { ActiveFilters } from "~/vehicles/components/VehicleFilters/ActiveFilters";
+import { VehicleCard } from "~/vehicles/components/VehicleCard";
+import { LucideFilter } from "lucide-react";
+import FilterModal from "~/vehicles/components/shared/FilterModal";
 
 // Bank ID to name mapping
 const BANK_NAMES: Record<string, string> = {
@@ -158,11 +161,22 @@ export default function Index({ loaderData }: Route.ComponentProps) {
         isLoading={isLoading}
       />
 
-      <VehicleTable
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {vehicles.map((vehicle) => (
+          <VehicleCard
+            key={vehicle.id}
+            vehicle={vehicle}
+            bankNames={BANK_NAMES}
+          />
+        ))}
+      </section>
+
+      {/* <VehicleTable
         vehicles={vehicles}
         isLoading={isLoading}
         bankNames={BANK_NAMES}
-      />
+      /> */}
+      {/* <FilterModal /> */}
     </div>
   );
 }
