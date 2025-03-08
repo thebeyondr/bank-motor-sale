@@ -1,3 +1,4 @@
+import { X } from "lucide-react";
 import React from "react";
 import type { FormState } from "~/types/filters";
 
@@ -107,7 +108,7 @@ function FilterChip({ label, value, onRemove, isLoading }: FilterChipProps) {
     >
       {label}: {value}
       <span className="text-lg" aria-hidden="true">
-        ×
+        <X size={16} />
       </span>
     </button>
   );

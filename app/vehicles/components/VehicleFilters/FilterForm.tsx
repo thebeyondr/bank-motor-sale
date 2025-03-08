@@ -1,7 +1,7 @@
 import React from "react";
 import type { FormState } from "~/types/filters";
 
-interface FilterFormProps {
+export interface FilterFormProps {
   formState: FormState;
   isLoading: boolean;
   onUpdateFilter: (
@@ -23,7 +23,7 @@ export function FilterForm({
   return (
     <form
       onSubmit={onSubmit}
-      className="bg-slate-200 dark:bg-slate-800 p-6 rounded-lg mb-8"
+      className="bg-blue-50 dark:bg-slate-800 p-6 rounded-lg mb-8"
       aria-label="Vehicle search filters"
     >
       <div

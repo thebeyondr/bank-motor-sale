@@ -9,6 +9,7 @@ import { ActiveFilters } from "~/vehicles/components/VehicleFilters/ActiveFilter
 import { VehicleCard } from "~/vehicles/components/VehicleCard";
 import { LucideFilter } from "lucide-react";
 import FilterModal from "~/vehicles/components/shared/FilterModal";
+import { useIsMobile } from "~/hooks/useMediaQuery";
 
 // Bank ID to name mapping
 const BANK_NAMES: Record<string, string> = {
@@ -56,6 +57,7 @@ export default function Index({ loaderData }: Route.ComponentProps) {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigation = useNavigation();
   const { vehicles } = loaderData;
+  const isMobile = useIsMobile();
 
   // Local state for form inputs
   const [formState, setFormState] = React.useState({
@@ -147,13 +149,23 @@ export default function Index({ loaderData }: Route.ComponentProps) {
         Find your next vehicle from the repossessed bank inventory
       </p>
 
-      <FilterForm
-        formState={formState}
-        isLoading={isLoading}
-        onUpdateFilter={updateFormState}
-        onSubmit={applyFilters}
-        onClear={clearAllFilters}
-      />
+      {isMobile ? (
+        <FilterModal
+          onUpdateFilter={updateFormState}
+          formState={formState}
+          isLoading={isLoading}
+          onSubmit={applyFilters}
+          onClear={clearAllFilters}
+        />
+      ) : (
+        <FilterForm
+          formState={formState}
+          isLoading={isLoading}
+          onUpdateFilter={updateFormState}
+          onSubmit={applyFilters}
+          onClear={clearAllFilters}
+        />
+      )}
 
       <ActiveFilters
         searchParams={searchParams}
@@ -170,13 +182,12 @@ export default function Index({ loaderData }: Route.ComponentProps) {
           />
         ))}
       </section>
-
-      {/* <VehicleTable
+      {/* 
+      <VehicleTable
         vehicles={vehicles}
         isLoading={isLoading}
         bankNames={BANK_NAMES}
       /> */}
-      {/* <FilterModal /> */}
     </div>
   );
 }
