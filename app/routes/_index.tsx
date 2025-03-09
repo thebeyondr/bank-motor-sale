@@ -250,7 +250,7 @@ export default function Index({ loaderData }: Route.ComponentProps) {
         )}
 
         <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {vehicles.length === 0 && !isLoading ? (
+          {vehicles.length === 0 && !isLoading && !isInitializing ? (
             <div className="col-span-full py-12 text-center">
               <div className="max-w-md mx-auto space-y-4">
                 <SearchX className="w-12 h-12 mx-auto text-slate-400" />
