@@ -24,7 +24,7 @@ const FilterModal = ({
           <LucideFilter className="w-8 h-8" />
         </button>
       </SheetTrigger>
-      <SheetContent side="bottom" className="h-[90vh] flex flex-col p-0">
+      <SheetContent side="bottom" className="h-[90dvh] flex flex-col p-0">
         <SheetHeader className="px-6 py-4 border-b">
           <SheetTitle>Filter Vehicles</SheetTitle>
         </SheetHeader>
