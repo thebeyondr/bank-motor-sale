@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import {
   isRouteErrorResponse,
   Links,
@@ -6,9 +7,6 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
-import { useEffect, useState } from "react";
-import { initializeDatabase } from "~/utils/initializeData";
-import { Analytics } from "@vercel/analytics/react";
 
 import type { Route } from "./+types/root";
 import "./app.css";
@@ -45,51 +43,19 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function Root() {
-  const [isInitializing, setIsInitializing] = useState(true);
-  const [initError, setInitError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const init = async () => {
-      try {
-        const result = await initializeDatabase();
-        if (!result.success) {
-          setInitError(result.error || "Failed to initialize database");
-        }
-      } catch (error) {
-        setInitError(
-          error instanceof Error ? error.message : "Unknown error occurred"
-        );
-      } finally {
-        setIsInitializing(false);
-      }
-    };
-
-    init();
-  }, []);
-
-  if (isInitializing) {
-    return <div>Initializing application...</div>;
-  }
-
-  if (initError) {
-    return (
-      <div>
-        <h1>Error Initializing Application</h1>
-        <p>{initError}</p>
-        <p>Please refresh the page to try again.</p>
-      </div>
-    );
-  }
-
   return (
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Bankomoto</title>
+        <Meta />
+        <Links />
       </head>
       <body>
         <Outlet />
+        <ScrollRestoration />
+        <Scripts />
         <Analytics />
       </body>
     </html>

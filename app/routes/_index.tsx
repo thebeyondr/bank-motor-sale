@@ -1,15 +1,15 @@
-import React from "react";
-import { useSearchParams, useNavigation } from "react-router";
+import { SearchX } from "lucide-react";
+import { useNavigation, useSearchParams } from "react-router";
+import { useIsMobile } from "~/hooks/useMediaQuery";
 import type { VehicleFilters } from "~/utils/db";
 import { getVehicles } from "~/utils/db";
-import type { Route } from "./+types/_index";
-import { VehicleTable } from "~/vehicles/components/VehicleTable";
-import { FilterForm } from "~/vehicles/components/VehicleFilters/FilterForm";
-import { ActiveFilters } from "~/vehicles/components/VehicleFilters/ActiveFilters";
-import { VehicleCard } from "~/vehicles/components/VehicleCard";
-import { LucideFilter } from "lucide-react";
+import { initializeDatabase } from "~/utils/initializeData";
 import FilterModal from "~/vehicles/components/shared/FilterModal";
-import { useIsMobile } from "~/hooks/useMediaQuery";
+import { VehicleCard } from "~/vehicles/components/VehicleCard";
+import { ActiveFilters } from "~/vehicles/components/VehicleFilters/ActiveFilters";
+import { FilterForm } from "~/vehicles/components/VehicleFilters/FilterForm";
+import type { Route } from "./+types/_index";
+import { useEffect, useState } from "react";
 
 // Bank ID to name mapping
 const BANK_NAMES: Record<string, string> = {
@@ -58,9 +58,34 @@ export default function Index({ loaderData }: Route.ComponentProps) {
   const navigation = useNavigation();
   const { vehicles } = loaderData;
   const isMobile = useIsMobile();
+  const [isHydrated, setIsHydrated] = useState(false);
+  const [isInitializing, setIsInitializing] = useState(true);
+  const [initError, setInitError] = useState<string | null>(null);
+
+  // Initialize database
+  useEffect(() => {
+    const initialize = async () => {
+      try {
+        const result = await initializeDatabase();
+        if (!result.success) {
+          setInitError(result.error || "Failed to initialize database");
+        }
+      } catch (error) {
+        setInitError("Unexpected error during initialization");
+      } finally {
+        setIsInitializing(false);
+      }
+    };
+    initialize();
+  }, []);
+
+  // Handle hydration
+  useEffect(() => {
+    setIsHydrated(true);
+  }, []);
 
   // Local state for form inputs
-  const [formState, setFormState] = React.useState({
+  const [formState, setFormState] = useState({
     make: searchParams.get("make") || "",
     model: searchParams.get("model") || "",
     year: searchParams.get("year") || "",
@@ -71,7 +96,7 @@ export default function Index({ loaderData }: Route.ComponentProps) {
   });
 
   // Track if we're in a batch update
-  const [isBatchUpdate, setIsBatchUpdate] = React.useState(false);
+  const [isBatchUpdate, setIsBatchUpdate] = useState(false);
 
   // Update form state and trigger URL update
   const updateFormState = (
@@ -139,55 +164,120 @@ export default function Index({ loaderData }: Route.ComponentProps) {
   };
 
   const isLoading = navigation.state === "loading";
+  const isFirstLoad = !vehicles.length && navigation.state === "loading";
+
+  if (isInitializing || initError) {
+    return (
+      <div className="min-h-[100dvh] flex items-center justify-center p-4 bg-white dark:bg-gray-950">
+        <div className="max-w-md w-full space-y-4 text-center">
+          {isInitializing ? (
+            <>
+              <div className="animate-pulse space-y-4">
+                <div className="h-12 bg-slate-200 dark:bg-slate-800 rounded-lg" />
+                <div className="h-4 bg-slate-200 dark:bg-slate-800 rounded w-3/4 mx-auto" />
+                <div className="h-4 bg-slate-200 dark:bg-slate-800 rounded w-1/2 mx-auto" />
+              </div>
+              <p className="text-slate-600 dark:text-slate-400">
+                Loading vehicle database...
+              </p>
+            </>
+          ) : (
+            <>
+              <div className="text-red-500 dark:text-red-400">
+                <span className="text-4xl">⚠️</span>
+              </div>
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
+                Failed to Load Database
+              </h2>
+              <p className="text-slate-600 dark:text-slate-400">{initError}</p>
+              <button
+                onClick={() => window.location.reload()}
+                className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
+              >
+                Try Again
+              </button>
+            </>
+          )}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h2 className="text-3xl xl:text-5xl font-bold mb-2 tracking-tight">
-        Bankomoto
-      </h2>
-      <p className="text-base xl:text-lg mb-6">
-        Find your next vehicle from the repossessed bank inventory
-      </p>
+      <div className={isFirstLoad ? "opacity-60 pointer-events-none" : ""}>
+        <h2 className="text-3xl xl:text-5xl font-bold mb-2 tracking-tight">
+          Bankomoto
+        </h2>
+        <p className="text-base xl:text-lg mb-6">
+          Find your next vehicle from the repossessed bank inventory
+        </p>
 
-      {isMobile ? (
-        <FilterModal
-          onUpdateFilter={updateFormState}
-          formState={formState}
-          isLoading={isLoading}
-          onSubmit={applyFilters}
-          onClear={clearAllFilters}
-        />
-      ) : (
-        <FilterForm
-          formState={formState}
-          isLoading={isLoading}
-          onUpdateFilter={updateFormState}
-          onSubmit={applyFilters}
-          onClear={clearAllFilters}
-        />
-      )}
-
-      <ActiveFilters
-        searchParams={searchParams}
-        onRemoveFilter={removeFilter}
-        isLoading={isLoading}
-      />
-
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {vehicles.map((vehicle) => (
-          <VehicleCard
-            key={vehicle.id}
-            vehicle={vehicle}
-            bankNames={BANK_NAMES}
+        {isMobile ? (
+          <FilterModal
+            onUpdateFilter={updateFormState}
+            formState={formState}
+            isLoading={isLoading}
+            onSubmit={applyFilters}
+            onClear={clearAllFilters}
+            className={isHydrated ? "opacity-100" : "opacity-0"}
           />
-        ))}
-      </section>
-      {/* 
-      <VehicleTable
-        vehicles={vehicles}
-        isLoading={isLoading}
-        bankNames={BANK_NAMES}
-      /> */}
+        ) : (
+          <FilterForm
+            formState={formState}
+            isLoading={isLoading}
+            onUpdateFilter={updateFormState}
+            onSubmit={applyFilters}
+            onClear={clearAllFilters}
+          />
+        )}
+
+        <ActiveFilters
+          searchParams={searchParams}
+          onRemoveFilter={removeFilter}
+          isLoading={isLoading}
+        />
+
+        {isFirstLoad && (
+          <div className="fixed inset-0 bg-white/50 dark:bg-black/50 backdrop-blur-sm flex items-center justify-center">
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
+              <div className="animate-spin w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full mx-auto" />
+              <p className="mt-4 text-center text-slate-600 dark:text-slate-300">
+                Loading vehicles...
+              </p>
+            </div>
+          </div>
+        )}
+
+        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {vehicles.length === 0 && !isLoading ? (
+            <div className="col-span-full py-12 text-center">
+              <div className="max-w-md mx-auto space-y-4">
+                <SearchX className="w-12 h-12 mx-auto text-slate-400" />
+                <h3 className="text-xl font-semibold">No Vehicles Found</h3>
+                <p className="text-slate-600 dark:text-slate-300">
+                  Try adjusting your filters or clearing them to see more
+                  results
+                </p>
+                <button
+                  onClick={clearAllFilters}
+                  className="text-blue-500 hover:text-blue-600"
+                >
+                  Clear all filters
+                </button>
+              </div>
+            </div>
+          ) : (
+            vehicles.map((vehicle) => (
+              <VehicleCard
+                key={vehicle.id}
+                vehicle={vehicle}
+                bankNames={BANK_NAMES}
+              />
+            ))
+          )}
+        </section>
+      </div>
     </div>
   );
 }

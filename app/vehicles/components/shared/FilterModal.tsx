@@ -10,17 +10,24 @@ import {
 } from "~/shadcn/ui/Sheet";
 import type { FilterFormProps } from "../VehicleFilters/FilterForm";
 
+interface FilterModalProps extends FilterFormProps {
+  className?: string;
+}
+
 const FilterModal = ({
   onUpdateFilter,
   formState,
   isLoading,
   onSubmit,
   onClear,
-}: FilterFormProps) => {
+  className,
+}: FilterModalProps) => {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <button className="cursor-pointer transition-transform active:scale-90 bg-blue-500 hover:bg-blue-600 text-white p-4 rounded-full fixed bottom-2 right-2 z-50">
+        <button
+          className={`cursor-pointer transition-transform active:scale-90 bg-blue-500 hover:bg-blue-600 text-white p-4 rounded-full fixed bottom-2 right-2 z-50 ${className}`}
+        >
           <LucideFilter className="w-8 h-8" />
         </button>
       </SheetTrigger>
