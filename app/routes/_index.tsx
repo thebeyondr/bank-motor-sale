@@ -172,13 +172,21 @@ export default function Index({ loaderData }: Route.ComponentProps) {
         <div className="max-w-md w-full space-y-4 text-center">
           {isInitializing ? (
             <>
-              <div className="animate-pulse space-y-4">
-                <div className="h-12 bg-slate-200 dark:bg-slate-800 rounded-lg" />
-                <div className="h-4 bg-slate-200 dark:bg-slate-800 rounded w-3/4 mx-auto" />
-                <div className="h-4 bg-slate-200 dark:bg-slate-800 rounded w-1/2 mx-auto" />
+              <div className="relative">
+                <div className="animate-pulse space-y-4">
+                  <div className="h-12 bg-slate-200 dark:bg-slate-800 rounded-lg" />
+                  <div className="h-4 bg-slate-200 dark:bg-slate-800 rounded w-3/4 mx-auto" />
+                  <div className="h-4 bg-slate-200 dark:bg-slate-800 rounded w-1/2 mx-auto" />
+                </div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="animate-spin w-8 h-8 border-3 border-blue-500 border-t-transparent rounded-full" />
+                </div>
               </div>
               <p className="text-slate-600 dark:text-slate-400">
-                Loading vehicle database...
+                🚗 Setting up your experience...
+              </p>
+              <p className="text-sm text-slate-500 dark:text-slate-500">
+                This may take a moment
               </p>
             </>
           ) : (
@@ -187,14 +195,16 @@ export default function Index({ loaderData }: Route.ComponentProps) {
                 <span className="text-4xl">⚠️</span>
               </div>
               <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-                Failed to Load Database
+                🤔 We couldn't load the data
               </h2>
-              <p className="text-slate-600 dark:text-slate-400">{initError}</p>
+              <p className="text-slate-600 dark:text-slate-400">
+                We encountered an issue while setting up. Please try again.
+              </p>
               <button
                 onClick={() => window.location.reload()}
                 className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
               >
-                Try Again
+                Retry
               </button>
             </>
           )}
