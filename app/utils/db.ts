@@ -2,12 +2,14 @@ import type { Vehicle, Price, VehicleWithPrices } from "~/types/vehicle";
 import type { Bank, VehicleDBSchema } from "~/types/bank";
 
 const DB_NAME = "bankomoto";
-const DB_VERSION = 1;
+export const DB_VERSION = 2;
+export const DB_VERSION_KEY = "schemaVersion";
 
 export const STORES = {
   VEHICLES: "vehicles",
   PRICES: "prices",
   BANKS: "banks",
+  METADATA: "metadata",
 } as const;
 
 interface BankomotoDB extends IDBDatabase {
@@ -29,6 +31,51 @@ export type VehicleFilters = {
   color?: string;
 };
 
+export async function deleteDatabase(): Promise<void> {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.deleteDatabase(DB_NAME);
+    request.onsuccess = () => resolve();
+    request.onerror = () => reject(request.error);
+  });
+}
+
+export async function validateDatabase(): Promise<{
+  isValid: boolean;
+  error?: string;
+}> {
+  try {
+    const db = await openDB();
+    const tx = db.transaction(STORES.METADATA, "readonly");
+    const store = tx.objectStore(STORES.METADATA);
+
+    const version = await new Promise<number | undefined>((resolve) => {
+      const request = store.get(DB_VERSION_KEY);
+      request.onsuccess = () => resolve(request.result?.version);
+      request.onerror = () => resolve(undefined);
+    });
+
+    // If no version or version mismatch, database needs to be recreated
+    if (!version || version !== DB_VERSION) {
+      return {
+        isValid: false,
+        error: !version
+          ? "No version found"
+          : `Version mismatch: ${version} !== ${DB_VERSION}`,
+      };
+    }
+
+    return { isValid: true };
+  } catch (error) {
+    return {
+      isValid: false,
+      error:
+        error instanceof Error
+          ? error.message
+          : "Unknown error validating database",
+    };
+  }
+}
+
 export async function openDB(): Promise<BankomotoDB> {
   return new Promise((resolve, reject) => {
     const request = indexedDB.open(DB_NAME, DB_VERSION);
@@ -38,6 +85,11 @@ export async function openDB(): Promise<BankomotoDB> {
 
     request.onupgradeneeded = (event) => {
       const db = request.result;
+
+      // Create metadata store for version tracking
+      if (!db.objectStoreNames.contains(STORES.METADATA)) {
+        db.createObjectStore(STORES.METADATA, { keyPath: "key" });
+      }
 
       // Create banks store with indexes
       if (!db.objectStoreNames.contains(STORES.BANKS)) {
