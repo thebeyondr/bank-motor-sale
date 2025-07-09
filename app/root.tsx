@@ -10,6 +10,9 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import { ConvexProvider, ConvexReactClient } from "convex/react";
+
+const convex = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL as string);
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -53,10 +56,12 @@ export default function Root() {
         <Links />
       </head>
       <body>
-        <Outlet />
-        <ScrollRestoration />
-        <Scripts />
-        <Analytics />
+        <ConvexProvider client={convex}>
+          <Outlet />
+          <ScrollRestoration />
+          <Scripts />
+          <Analytics />
+        </ConvexProvider>
       </body>
     </html>
   );
