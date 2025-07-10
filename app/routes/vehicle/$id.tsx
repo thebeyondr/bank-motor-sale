@@ -14,6 +14,31 @@ export function HydrateFallback() {
   return <div>Loading vehicle data...</div>;
 }
 
+export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+  return (
+    <div className="min-h-[50vh] flex items-center justify-center p-4">
+      <div className="max-w-md w-full text-center space-y-4">
+        <div className="text-red-500 dark:text-red-400">
+          <span className="text-4xl">⚠️</span>
+        </div>
+        <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
+          Vehicle Not Found
+        </h2>
+        <p className="text-slate-600 dark:text-slate-400">
+          We couldn't find the vehicle you're looking for. It may have been
+          removed or the link is incorrect.
+        </p>
+        <Link
+          to="/"
+          className="inline-block bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
+        >
+          Back to Vehicles
+        </Link>
+      </div>
+    </div>
+  );
+}
+
 export default function VehicleDetail({ loaderData }: Route.ComponentProps) {
   const { vehicleId } = loaderData;
 
