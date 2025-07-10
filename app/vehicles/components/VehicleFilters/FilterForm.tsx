@@ -1,5 +1,6 @@
 import React from "react";
 import type { FormState } from "~/types/filters";
+import { useBankMappings } from "~/hooks/useBankMappings";
 
 export interface FilterFormProps {
   formState: FormState;
@@ -20,6 +21,7 @@ export function FilterForm({
   onSubmit,
   onClear,
 }: FilterFormProps) {
+  const { bankIds } = useBankMappings();
   return (
     <form
       onSubmit={onSubmit}
@@ -159,9 +161,11 @@ export function FilterForm({
             aria-label="Select bank"
           >
             <option value="">All Banks</option>
-            <option value="NCB">NCB</option>
-            <option value="CIBC">CIBC</option>
-            <option value="JMMB">JMMB</option>
+            {Object.entries(bankIds).map(([name, id]) => (
+              <option key={id} value={name}>
+                {name}
+              </option>
+            ))}
           </select>
         </div>
 
