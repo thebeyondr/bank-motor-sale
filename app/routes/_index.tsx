@@ -1,29 +1,15 @@
 import { SearchX } from "lucide-react";
 import { useNavigation, useSearchParams } from "react-router";
 import { useIsMobile } from "~/hooks/useMediaQuery";
-import type { VehicleFilters } from "~/utils/db";
-import { getVehicles } from "~/utils/db";
-import { initializeDatabase } from "~/utils/initializeData";
 import FilterModal from "~/vehicles/components/shared/FilterModal";
 import { VehicleCard } from "~/vehicles/components/VehicleCard";
 import { ActiveFilters } from "~/vehicles/components/VehicleFilters/ActiveFilters";
 import { FilterForm } from "~/vehicles/components/VehicleFilters/FilterForm";
 import type { Route } from "./+types/_index";
 import { useEffect, useState } from "react";
-
-// Bank ID to name mapping
-const BANK_NAMES: Record<string, string> = {
-  "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4": "JMMB",
-  "cf984f5d-4bf8-405d-93f4-c518e258f7fe": "NCB",
-  "33ff7536-112c-4a40-9b16-a60666ac7d4f": "CIBC",
-};
-
-// Bank name to ID mapping
-const BANK_IDS: Record<string, string> = {
-  JMMB: "8fc8081e-32cf-4f27-90ec-8e440ea6dcd4",
-  NCB: "cf984f5d-4bf8-405d-93f4-c518e258f7fe",
-  CIBC: "33ff7536-112c-4a40-9b16-a60666ac7d4f",
-};
+import { useQuery } from "convex/react";
+import { api } from "../../convex/_generated/api";
+import { useBankMappings } from "~/hooks/useBankMappings";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -36,48 +22,46 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export async function clientLoader({ request }: Route.ClientLoaderArgs) {
-  const url = new URL(request.url);
-  const searchParams = Object.fromEntries(url.searchParams);
-
-  const filters: VehicleFilters = {
-    make: searchParams.make,
-    model: searchParams.model,
-    year: searchParams.year ? Number(searchParams.year) : undefined,
-    minPrice: searchParams.minPrice ? Number(searchParams.minPrice) : undefined,
-    maxPrice: searchParams.maxPrice ? Number(searchParams.maxPrice) : undefined,
-    bank: searchParams.bank ? BANK_IDS[searchParams.bank] : undefined,
-    color: searchParams.color,
-  };
-
-  const vehicles = await getVehicles(filters);
-  return { vehicles };
+  // We'll handle data loading in the component with Convex queries
+  return {};
 }
 
 export default function Index({ loaderData }: Route.ComponentProps) {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigation = useNavigation();
-  const { vehicles } = loaderData;
   const isMobile = useIsMobile();
   const [isHydrated, setIsHydrated] = useState(false);
-  const [isInitializing, setIsInitializing] = useState(true);
-  const [initError, setInitError] = useState<string | null>(null);
 
-  // Initialize database
-  useEffect(() => {
-    const initialize = async () => {
-      try {
-        const result = await initializeDatabase();
-        if (!result.success) {
-          setInitError(result.error || "Failed to initialize database");
-        }
-      } catch (error) {
-        setInitError("Unexpected error during initialization");
-      } finally {
-        setIsInitializing(false);
-      }
-    };
-    initialize();
-  }, []);
+  // Get dynamic bank mappings first
+  const { bankNames, bankIds } = useBankMappings();
+
+  // Get filter values from URL params
+  const make = searchParams.get("make") || undefined;
+  const model = searchParams.get("model") || undefined;
+  const year = searchParams.get("year")
+    ? Number(searchParams.get("year"))
+    : undefined;
+  const minPrice = searchParams.get("minPrice")
+    ? Number(searchParams.get("minPrice"))
+    : undefined;
+  const maxPrice = searchParams.get("maxPrice")
+    ? Number(searchParams.get("maxPrice"))
+    : undefined;
+  const bankId = searchParams.get("bank")
+    ? bankIds[searchParams.get("bank")!]
+    : undefined;
+  const color = searchParams.get("color") || undefined;
+
+  // Use Convex queries
+  const vehicles = useQuery(api.vehicles.getVehicles, {
+    make,
+    model,
+    year,
+    minPrice,
+    maxPrice,
+    bankId,
+    color,
+  });
 
   // Handle hydration
   useEffect(() => {
@@ -163,55 +147,8 @@ export default function Index({ loaderData }: Route.ComponentProps) {
     setSearchParams(new URLSearchParams());
   };
 
-  const isLoading = navigation.state === "loading";
-  const isFirstLoad = !vehicles.length && navigation.state === "loading";
-
-  if (isInitializing || initError) {
-    return (
-      <div className="min-h-[100dvh] flex items-center justify-center p-4 bg-white dark:bg-gray-950">
-        <div className="max-w-md w-full space-y-4 text-center">
-          {isInitializing ? (
-            <>
-              <div className="relative">
-                <div className="animate-pulse space-y-4">
-                  <div className="h-12 bg-slate-200 dark:bg-slate-800 rounded-lg" />
-                  <div className="h-4 bg-slate-200 dark:bg-slate-800 rounded w-3/4 mx-auto" />
-                  <div className="h-4 bg-slate-200 dark:bg-slate-800 rounded w-1/2 mx-auto" />
-                </div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="animate-spin w-8 h-8 border-3 border-blue-500 border-t-transparent rounded-full" />
-                </div>
-              </div>
-              <p className="text-slate-600 dark:text-slate-400">
-                🚗 Setting up your experience...
-              </p>
-              <p className="text-sm text-slate-500 dark:text-slate-500">
-                This may take a moment
-              </p>
-            </>
-          ) : (
-            <>
-              <div className="text-red-500 dark:text-red-400">
-                <span className="text-4xl">⚠️</span>
-              </div>
-              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-                🤔 We couldn't load the data
-              </h2>
-              <p className="text-slate-600 dark:text-slate-400">
-                We encountered an issue while setting up. Please try again.
-              </p>
-              <button
-                onClick={() => window.location.reload()}
-                className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
-              >
-                Retry
-              </button>
-            </>
-          )}
-        </div>
-      </div>
-    );
-  }
+  const isLoading = navigation.state === "loading" || vehicles === undefined;
+  const isFirstLoad = !vehicles?.length && navigation.state === "loading";
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -260,7 +197,7 @@ export default function Index({ loaderData }: Route.ComponentProps) {
         )}
 
         <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {vehicles.length === 0 && !isLoading && !isInitializing ? (
+          {vehicles?.length === 0 && !isLoading ? (
             <div className="col-span-full py-12 text-center">
               <div className="max-w-md mx-auto space-y-4">
                 <SearchX className="w-12 h-12 mx-auto text-slate-400" />
@@ -278,11 +215,24 @@ export default function Index({ loaderData }: Route.ComponentProps) {
               </div>
             </div>
           ) : (
-            vehicles.map((vehicle) => (
+            vehicles?.map((vehicle) => (
               <VehicleCard
                 key={vehicle.id}
-                vehicle={vehicle}
-                bankNames={BANK_NAMES}
+                vehicle={{
+                  id: vehicle.id,
+                  make: vehicle.make,
+                  model: vehicle.model,
+                  year: vehicle.year,
+                  prices: vehicle.listings.map((listing) => ({
+                    id: listing.id,
+                    vehicleId: listing.vehicleId,
+                    bankId: listing.bankId,
+                    price: listing.price,
+                    amount: listing.amount,
+                    color: listing.color || undefined,
+                  })),
+                }}
+                bankNames={bankNames}
               />
             ))
           )}
