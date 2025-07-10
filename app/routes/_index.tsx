@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import { useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { useBankMappings } from "~/hooks/useBankMappings";
+import { VehicleGridSkeleton } from "~/components/LoadingSkeleton";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -19,6 +20,31 @@ export function meta({}: Route.MetaArgs) {
       content: "Find your next vehicle from the repossessed bank inventory",
     },
   ];
+}
+
+export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+  return (
+    <div className="min-h-[50vh] flex items-center justify-center p-4">
+      <div className="max-w-md w-full text-center space-y-4">
+        <div className="text-red-500 dark:text-red-400">
+          <span className="text-4xl">⚠️</span>
+        </div>
+        <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
+          Something went wrong
+        </h2>
+        <p className="text-slate-600 dark:text-slate-400">
+          We encountered an error while loading vehicles. Please try refreshing
+          the page.
+        </p>
+        <button
+          onClick={() => window.location.reload()}
+          className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
+        >
+          Refresh Page
+        </button>
+      </div>
+    </div>
+  );
 }
 
 export async function clientLoader({ request }: Route.ClientLoaderArgs) {
@@ -197,7 +223,9 @@ export default function Index({ loaderData }: Route.ComponentProps) {
         )}
 
         <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {vehicles?.length === 0 && !isLoading ? (
+          {isLoading ? (
+            <VehicleGridSkeleton />
+          ) : vehicles?.length === 0 ? (
             <div className="col-span-full py-12 text-center">
               <div className="max-w-md mx-auto space-y-4">
                 <SearchX className="w-12 h-12 mx-auto text-slate-400" />
