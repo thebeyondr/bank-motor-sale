@@ -1,5 +1,6 @@
 import { query } from "./_generated/server";
 import { v } from "convex/values";
+import { paginationOptsValidator } from "convex/server";
 
 export const getVehicles = query({
   args: {
@@ -119,6 +120,145 @@ export const getVehicles = query({
     }
 
     return results;
+  },
+});
+
+export const getVehiclesPaginated = query({
+  args: {
+    make: v.optional(v.string()),
+    model: v.optional(v.string()),
+    year: v.optional(v.number()),
+    minPrice: v.optional(v.number()),
+    maxPrice: v.optional(v.number()),
+    bankId: v.optional(v.string()),
+    color: v.optional(v.string()),
+    paginationOpts: paginationOptsValidator,
+  },
+  returns: v.object({
+    page: v.array(
+      v.object({
+        _id: v.id("vehicles"),
+        _creationTime: v.number(),
+        id: v.string(),
+        make: v.string(),
+        model: v.string(),
+        year: v.number(),
+        listings: v.array(
+          v.object({
+            _id: v.id("listings"),
+            _creationTime: v.number(),
+            id: v.string(),
+            vehicleId: v.string(),
+            bankId: v.string(),
+            price: v.union(v.null(), v.number()),
+            amount: v.number(),
+            color: v.union(v.null(), v.string()),
+            bank: v.object({
+              _id: v.id("banks"),
+              _creationTime: v.number(),
+              id: v.string(),
+              name: v.string(),
+              bidInstructions: v.string(),
+              contactInfo: v.object({
+                address: v.string(),
+                emails: v.array(v.string()),
+                phones: v.array(v.string()),
+                website: v.string(),
+              }),
+              operatingHours: v.object({
+                weekdays: v.string(),
+                weekends: v.string(),
+              }),
+              saleTerms: v.string(),
+              viewInstructions: v.string(),
+            }),
+          })
+        ),
+      })
+    ),
+    isDone: v.boolean(),
+    continueCursor: v.union(v.string(), v.null()),
+  }),
+  handler: async (ctx, args) => {
+    // For now, we'll use the same logic as getVehicles but with pagination
+    // In a real implementation, you'd want to optimize this with proper indexing
+    const allVehicles = await ctx.db.query("vehicles").collect();
+
+    // Apply vehicle filters
+    let vehicles = allVehicles;
+    if (args.make) {
+      vehicles = vehicles.filter((v) => v.make === args.make);
+    }
+    if (args.model) {
+      vehicles = vehicles.filter((v) => v.model === args.model);
+    }
+    if (args.year) {
+      vehicles = vehicles.filter((v) => v.year === args.year);
+    }
+
+    // Get listings for each vehicle and apply additional filters
+    const results = [];
+    for (const vehicle of vehicles) {
+      const listings = await ctx.db
+        .query("listings")
+        .withIndex("by_vehicleId", (q) => q.eq("vehicleId", vehicle.id))
+        .collect();
+
+      // Apply listing filters
+      let filteredListings = listings;
+      if (args.bankId) {
+        filteredListings = filteredListings.filter(
+          (listing) => listing.bankId === args.bankId
+        );
+      }
+      if (args.color) {
+        filteredListings = filteredListings.filter(
+          (listing) =>
+            listing.color?.toLowerCase() === args.color?.toLowerCase()
+        );
+      }
+      if (args.minPrice) {
+        filteredListings = filteredListings.filter(
+          (listing) => listing.price && listing.price >= args.minPrice!
+        );
+      }
+      if (args.maxPrice) {
+        filteredListings = filteredListings.filter(
+          (listing) => listing.price && listing.price <= args.maxPrice!
+        );
+      }
+
+      // Skip vehicle if no listings match filters
+      if (filteredListings.length === 0) continue;
+
+      // Get bank info for each listing
+      const banks = await ctx.db.query("banks").collect();
+      const listingsWithBanks = filteredListings.map((listing) => {
+        const bank = banks.find((b) => b.id === listing.bankId);
+        return {
+          ...listing,
+          bank: bank!,
+        };
+      });
+
+      results.push({
+        ...vehicle,
+        listings: listingsWithBanks,
+      });
+    }
+
+    // Simple pagination - in production, you'd want proper cursor-based pagination
+    const startIndex = 0;
+    const endIndex = args.paginationOpts.numItems;
+    const page = results.slice(startIndex, endIndex);
+    const isDone = endIndex >= results.length;
+    const continueCursor = isDone ? null : endIndex.toString();
+
+    return {
+      page,
+      isDone,
+      continueCursor,
+    };
   },
 });
 
