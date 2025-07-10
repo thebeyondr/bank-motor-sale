@@ -29,6 +29,27 @@ export const getBanks = query({
   },
 });
 
+export const getBankMappings = query({
+  args: {},
+  returns: v.object({
+    bankNames: v.record(v.string(), v.string()),
+    bankIds: v.record(v.string(), v.string()),
+  }),
+  handler: async (ctx) => {
+    const banks = await ctx.db.query("banks").collect();
+
+    const bankNames: Record<string, string> = {};
+    const bankIds: Record<string, string> = {};
+
+    for (const bank of banks) {
+      bankNames[bank.id] = bank.name;
+      bankIds[bank.name] = bank.id;
+    }
+
+    return { bankNames, bankIds };
+  },
+});
+
 export const getBankById = query({
   args: {
     id: v.string(),
