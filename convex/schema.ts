@@ -18,7 +18,7 @@ export default defineSchema({
     }),
     saleTerms: v.string(),
     viewInstructions: v.string(),
-  }),
+  }).index("by_bank_id", ["id"]),
   listings: defineTable({
     amount: v.float64(),
     bankId: v.string(),
