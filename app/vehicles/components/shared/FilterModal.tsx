@@ -1,4 +1,3 @@
-import { banks } from "data/banks";
 import { LucideFilter } from "lucide-react";
 import {
   Sheet,
@@ -9,6 +8,7 @@ import {
   SheetTrigger,
 } from "~/shadcn/ui/Sheet";
 import type { FilterFormProps } from "../VehicleFilters/FilterForm";
+import { useBankMappings } from "~/hooks/useBankMappings";
 
 interface FilterModalProps extends FilterFormProps {
   className?: string;
@@ -22,6 +22,7 @@ const FilterModal = ({
   onClear,
   className,
 }: FilterModalProps) => {
+  const { bankIds } = useBankMappings();
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -39,24 +40,24 @@ const FilterModal = ({
         <div className="flex-1 overflow-y-auto px-6 py-4">
           <div className="flex flex-col gap-4">
             <section className="flex flex-row gap-2 overflow-x-auto pb-2">
-              {banks.map((bank) => (
+              {Object.entries(bankIds).map(([name, id]) => (
                 <button
-                  key={bank.id}
-                  onClick={() => onUpdateFilter("bank", bank.name)}
+                  key={id}
+                  onClick={() => onUpdateFilter("bank", name)}
                   className={`flex flex-col items-center justify-between gap-3 px-3 py-2 md:px-5 rounded-lg cursor-pointer border-3 border-blue-100 hover:border-blue-300 ${
-                    bank.name === formState.bank
+                    name === formState.bank
                       ? "border-blue-500"
                       : "border-blue-100"
                   }`}
                 >
                   <div className="relative w-20 h-10 flex items-center justify-center">
                     <img
-                      src={`/bank-logos/${bank.name.toLowerCase()}-logo.png`}
-                      alt={bank.name}
+                      src={`/bank-logos/${name.toLowerCase()}-logo.png`}
+                      alt={name}
                       className={`w-auto h-8 object-contain`}
                     />
                   </div>
-                  <p className="text-sm">{bank.name}</p>
+                  <p className="text-sm">{name}</p>
                 </button>
               ))}
             </section>
