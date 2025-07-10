@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import type { FormState } from "~/types/filters";
 import { useBankMappings } from "~/hooks/useBankMappings";
+import { SearchSuggestions } from "~/components/SearchSuggestions";
 
 export interface FilterFormProps {
   formState: FormState;
@@ -22,6 +23,8 @@ export function FilterForm({
   onClear,
 }: FilterFormProps) {
   const { bankIds } = useBankMappings();
+  const [showMakeSuggestions, setShowMakeSuggestions] = useState(false);
+  const [showModelSuggestions, setShowModelSuggestions] = useState(false);
   return (
     <form
       onSubmit={onSubmit}
@@ -33,7 +36,7 @@ export function FilterForm({
         role="group"
         aria-label="Filter options"
       >
-        <div>
+        <div className="relative">
           <label
             htmlFor="make"
             className="block text-slate-600 dark:text-slate-300 mb-2 font-bold"
@@ -46,15 +49,30 @@ export function FilterForm({
             name="make"
             value={formState.make}
             onChange={(e) => onUpdateFilter("make", e.target.value)}
-            onBlur={(e) => onUpdateFilter("make", e.target.value, true)}
+            onFocus={() => setShowMakeSuggestions(true)}
+            onBlur={(e) => {
+              onUpdateFilter("make", e.target.value, true);
+              // Delay hiding to allow for suggestion clicks
+              setTimeout(() => setShowMakeSuggestions(false), 150);
+            }}
             className="w-full bg-white dark:bg-slate-700 text-gray-900 dark:text-white rounded px-3 py-2 border-[1.5px] border-slate-300 dark:border-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
             placeholder="e.g. Toyota"
             disabled={isLoading}
             aria-label="Vehicle make"
           />
+          <SearchSuggestions
+            value={formState.make}
+            onSelect={(value) => {
+              onUpdateFilter("make", value, true);
+              setShowMakeSuggestions(false);
+            }}
+            type="make"
+            isVisible={showMakeSuggestions}
+            onClose={() => setShowMakeSuggestions(false)}
+          />
         </div>
 
-        <div>
+        <div className="relative">
           <label
             htmlFor="model"
             className="block text-slate-600 dark:text-slate-300 mb-2 font-bold"
@@ -67,11 +85,26 @@ export function FilterForm({
             name="model"
             value={formState.model}
             onChange={(e) => onUpdateFilter("model", e.target.value)}
-            onBlur={(e) => onUpdateFilter("model", e.target.value, true)}
+            onFocus={() => setShowModelSuggestions(true)}
+            onBlur={(e) => {
+              onUpdateFilter("model", e.target.value, true);
+              // Delay hiding to allow for suggestion clicks
+              setTimeout(() => setShowModelSuggestions(false), 150);
+            }}
             className="w-full bg-white dark:bg-slate-700 text-gray-900 dark:text-white rounded px-3 py-2 border-[1.5px] border-slate-300 dark:border-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
             placeholder="e.g. Corolla"
             disabled={isLoading}
             aria-label="Vehicle model"
+          />
+          <SearchSuggestions
+            value={formState.model}
+            onSelect={(value) => {
+              onUpdateFilter("model", value, true);
+              setShowModelSuggestions(false);
+            }}
+            type="model"
+            isVisible={showModelSuggestions}
+            onClose={() => setShowModelSuggestions(false)}
           />
         </div>
 
