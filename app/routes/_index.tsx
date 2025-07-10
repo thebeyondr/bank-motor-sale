@@ -14,7 +14,7 @@ import { VehicleGridSkeleton } from "~/components/LoadingSkeleton";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Bankomoto - Find Your Next Vehicle" },
+    { title: "LIMBO - Find Your Next Vehicle" },
     {
       name: "description",
       content: "Find your next vehicle from the repossessed bank inventory",
@@ -180,7 +180,7 @@ export default function Index({ loaderData }: Route.ComponentProps) {
     <div className="container mx-auto px-4 py-8">
       <div className={isFirstLoad ? "opacity-60 pointer-events-none" : ""}>
         <h2 className="text-3xl xl:text-5xl font-bold mb-2 tracking-tight">
-          Bankomoto
+          LIMBO
         </h2>
         <p className="text-base xl:text-lg mb-6">
           Find your next vehicle from the repossessed bank inventory
