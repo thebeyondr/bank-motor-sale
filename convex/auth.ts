@@ -28,9 +28,12 @@ export const { createUser, updateUser, deleteUser, createSession } =
         );
       }
 
-      return ctx.db.insert("users", {
+      const userId = await ctx.db.insert("users", {
         bank: bank._id,
+        role: "bank-representative",
       });
+
+      return userId;
     },
 
     // Delete the user when they are deleted from Better Auth

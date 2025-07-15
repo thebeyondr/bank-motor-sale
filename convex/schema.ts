@@ -3,7 +3,8 @@ import { v } from "convex/values";
 
 export default defineSchema({
   users: defineTable({
-    bank: v.id("banks"),
+    role: v.union(v.literal("bank-representative"), v.literal("admin")),
+    bank: v.optional(v.id("banks")),
   }),
   banks: defineTable({
     bidInstructions: v.string(),
