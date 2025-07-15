@@ -24,7 +24,8 @@ export const getBanks = query({
     })
   ),
   handler: async (ctx) => {
-    return await ctx.db.query("banks").collect();
+    const banks = await ctx.db.query("banks").collect();
+    return banks.map(({ allowedEmails, ...bank }) => bank);
   },
 });
 
@@ -75,6 +76,9 @@ export const getBankById = query({
     })
   ),
   handler: async (ctx, args) => {
-    return await ctx.db.get(args.id);
+    const bank = await ctx.db.get(args.id);
+    if (!bank) return null;
+    const { allowedEmails, ...safeBank } = bank;
+    return safeBank;
   },
 });

@@ -3,7 +3,7 @@ import { v } from "convex/values";
 
 export default defineSchema({
   users: defineTable({
-    bank: v.optional(v.id("banks")),
+    bank: v.id("banks"),
   }),
   banks: defineTable({
     bidInstructions: v.string(),
@@ -20,6 +20,7 @@ export default defineSchema({
     }),
     saleTerms: v.string(),
     viewInstructions: v.string(),
+    allowedEmails: v.array(v.string()),
   }),
   vehicles: defineTable({
     make: v.string(),

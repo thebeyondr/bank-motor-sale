@@ -143,10 +143,11 @@ export const getListingsWithFilters = query({
         if (args.model && vehicle?.model !== args.model) return null;
         if (args.year && vehicle?.year !== args.year) return null;
 
+        const { allowedEmails, ...safeBank } = bank!;
         return {
           ...listing,
           vehicle: vehicle!,
-          bank: bank!,
+          bank: safeBank,
         };
       })
     );
@@ -214,9 +215,10 @@ export const getListingsByVehicle = query({
     const listingsWithBanks = await Promise.all(
       listings.map(async (listing) => {
         const bank = await ctx.db.get(listing.bankId);
+        const { allowedEmails, ...safeBank } = bank!;
         return {
           ...listing,
-          bank: bank!,
+          bank: safeBank,
         };
       })
     );
@@ -353,10 +355,11 @@ export const getListingById = query({
     const vehicle = await ctx.db.get(listing.vehicleId);
     const bank = await ctx.db.get(listing.bankId);
 
+    const { allowedEmails: _, ...safeBank } = bank!;
     return {
       ...listing,
       vehicle: vehicle!,
-      bank: bank!,
+      bank: safeBank,
     };
   },
 });
@@ -392,8 +395,8 @@ export const createListing = mutation({
 
     // Find the bank associated with the authenticated user
     const banks = await ctx.db.query("banks").collect();
-    const bank = banks.find((b) =>
-      b.contactInfo.emails.includes(identity.email || "")
+    const bank = banks.find(
+      (b) => b.allowedEmails?.includes(identity.email || "") ?? false
     );
 
     if (!bank) {

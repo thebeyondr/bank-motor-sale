@@ -66,7 +66,7 @@ export const getVehicles = query({
           .query("listings")
           .withIndex("by_vehicleId", (q) => q.eq("vehicleId", vehicle._id))
           .collect();
-        
+
         return {
           ...vehicle,
           listingCount: listings.length,
@@ -152,9 +152,10 @@ export const getVehicleById = query({
     const listingsWithBanks = await Promise.all(
       listings.map(async (listing) => {
         const bank = await ctx.db.get(listing.bankId);
+        const { allowedEmails, ...safeBank } = bank!;
         return {
           ...listing,
-          bank: bank!,
+          bank: safeBank,
         };
       })
     );
@@ -180,7 +181,9 @@ export const getVehicleFilters = query({
 
     const makes = [...new Set(vehicles.map((v) => v.make))].sort();
     const models = [...new Set(vehicles.map((v) => v.model))].sort();
-    const years = [...new Set(vehicles.map((v) => v.year))].sort((a, b) => b - a);
+    const years = [...new Set(vehicles.map((v) => v.year))].sort(
+      (a, b) => b - a
+    );
     const fuelTypes = [
       ...new Set(
         vehicles
@@ -216,7 +219,12 @@ export const createVehicle = mutation({
   },
   handler: async (ctx, args) => {
     // Generate slug
-    const slug = `${args.year}-${args.make.toLowerCase()}-${args.model.toLowerCase()}`.replace(/\s+/g, '-');
+    const slug = `${
+      args.year
+    }-${args.make.toLowerCase()}-${args.model.toLowerCase()}`.replace(
+      /\s+/g,
+      "-"
+    );
 
     // Check if this vehicle already exists
     const existing = await ctx.db

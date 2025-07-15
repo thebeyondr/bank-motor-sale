@@ -1,5 +1,5 @@
 import { BetterAuth, type AuthFunctions } from "@convex-dev/better-auth";
-import { api, components, internal } from "./_generated/api";
+import { components, internal } from "./_generated/api";
 import { query } from "./_generated/server";
 import type { Id, DataModel } from "./_generated/dataModel";
 
@@ -16,7 +16,21 @@ export const { createUser, updateUser, deleteUser, createSession } =
   betterAuthComponent.createAuthFunctions<DataModel>({
     // Must create a user and return the user id
     onCreateUser: async (ctx, user) => {
-      return ctx.db.insert("users", {});
+      // Lookup bank by email
+      const banks = await ctx.db.query("banks").collect();
+      const bank = banks.find(
+        (b) => b.allowedEmails?.includes(user.email) ?? false
+      );
+
+      if (!bank) {
+        throw new Error(
+          "User is not authorized to operate on behalf of this bank"
+        );
+      }
+
+      return ctx.db.insert("users", {
+        bank: bank._id,
+      });
     },
 
     // Delete the user when they are deleted from Better Auth

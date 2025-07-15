@@ -35,8 +35,8 @@ export const createListing = mutation({
 
     // Find the bank associated with the authenticated user
     const banks = await ctx.db.query("banks").collect();
-    const bank = banks.find((b) =>
-      b.contactInfo.emails.includes(identity.email || "")
+    const bank = banks.find(
+      (b) => b.allowedEmails?.includes(identity.email || "") ?? false
     );
 
     if (!bank) {
@@ -174,8 +174,8 @@ export const createVehicleAndListing = mutation({
 
     // Find the bank associated with the authenticated user
     const banks = await ctx.db.query("banks").collect();
-    const bank = banks.find((b) =>
-      b.contactInfo.emails.includes(identity.email || "")
+    const bank = banks.find(
+      (b) => b.allowedEmails?.includes(identity.email || "") ?? false
     );
 
     if (!bank) {
