@@ -2,6 +2,9 @@ import { defineSchema, defineTable } from "convex/server";
 import { v } from "convex/values";
 
 export default defineSchema({
+  users: defineTable({
+    bank: v.optional(v.id("banks")),
+  }),
   banks: defineTable({
     bidInstructions: v.string(),
     contactInfo: v.object({

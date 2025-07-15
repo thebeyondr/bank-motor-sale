@@ -10,7 +10,9 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
-import { ConvexProvider, ConvexReactClient } from "convex/react";
+import { ConvexReactClient } from "convex/react";
+import { ConvexBetterAuthProvider } from "@convex-dev/better-auth/react";
+import { authClient } from "./lib/auth-client";
 
 const convex = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL as string);
 
@@ -56,12 +58,12 @@ export default function Root() {
         <Links />
       </head>
       <body>
-        <ConvexProvider client={convex}>
+        <ConvexBetterAuthProvider client={convex} authClient={authClient}>
           <Outlet />
           <ScrollRestoration />
           <Scripts />
           <Analytics />
-        </ConvexProvider>
+        </ConvexBetterAuthProvider>
       </body>
     </html>
   );
