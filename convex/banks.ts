@@ -7,7 +7,6 @@ export const getBanks = query({
     v.object({
       _id: v.id("banks"),
       _creationTime: v.number(),
-      id: v.string(),
       name: v.string(),
       bidInstructions: v.string(),
       contactInfo: v.object({
@@ -42,8 +41,8 @@ export const getBankMappings = query({
     const bankIds: Record<string, string> = {};
 
     for (const bank of banks) {
-      bankNames[bank.id] = bank.name;
-      bankIds[bank.name] = bank.id;
+      bankNames[bank._id] = bank.name;
+      bankIds[bank.name] = bank._id;
     }
 
     return { bankNames, bankIds };
@@ -52,14 +51,13 @@ export const getBankMappings = query({
 
 export const getBankById = query({
   args: {
-    id: v.string(),
+    id: v.id("banks"),
   },
   returns: v.union(
     v.null(),
     v.object({
       _id: v.id("banks"),
       _creationTime: v.number(),
-      id: v.string(),
       name: v.string(),
       bidInstructions: v.string(),
       contactInfo: v.object({
@@ -77,7 +75,6 @@ export const getBankById = query({
     })
   ),
   handler: async (ctx, args) => {
-    const banks = await ctx.db.query("banks").collect();
-    return banks.find((bank) => bank.id === args.id) || null;
+    return await ctx.db.get(args.id);
   },
 });

@@ -1,294 +1,126 @@
-import { query } from "./_generated/server";
+import { query, mutation } from "./_generated/server";
 import { v } from "convex/values";
-import { paginationOptsValidator } from "convex/server";
+
+export const get = query({
+  args: {},
+  returns: v.array(
+    v.object({
+      _id: v.id("vehicles"),
+      _creationTime: v.number(),
+      make: v.string(),
+      model: v.string(),
+      year: v.number(),
+      slug: v.string(),
+      fuelType: v.optional(v.string()),
+      bodyType: v.optional(v.string()),
+    })
+  ),
+  handler: async (ctx) => {
+    return await ctx.db.query("vehicles").collect();
+  },
+});
 
 export const getVehicles = query({
   args: {
     make: v.optional(v.string()),
     model: v.optional(v.string()),
     year: v.optional(v.number()),
-    minPrice: v.optional(v.number()),
-    maxPrice: v.optional(v.number()),
-    bankId: v.optional(v.string()),
-    color: v.optional(v.string()),
   },
   returns: v.array(
     v.object({
       _id: v.id("vehicles"),
       _creationTime: v.number(),
-      id: v.string(),
       make: v.string(),
       model: v.string(),
       year: v.number(),
-      listings: v.array(
-        v.object({
-          _id: v.id("listings"),
-          _creationTime: v.number(),
-          id: v.string(),
-          vehicleId: v.string(),
-          bankId: v.string(),
-          price: v.union(v.null(), v.number()),
-          amount: v.number(),
-          color: v.union(v.null(), v.string()),
-          bank: v.object({
-            _id: v.id("banks"),
-            _creationTime: v.number(),
-            id: v.string(),
-            name: v.string(),
-            bidInstructions: v.string(),
-            contactInfo: v.object({
-              address: v.string(),
-              emails: v.array(v.string()),
-              phones: v.array(v.string()),
-              website: v.string(),
-            }),
-            operatingHours: v.object({
-              weekdays: v.string(),
-              weekends: v.string(),
-            }),
-            saleTerms: v.string(),
-            viewInstructions: v.string(),
-          }),
-        })
-      ),
+      slug: v.string(),
+      fuelType: v.optional(v.string()),
+      bodyType: v.optional(v.string()),
+      listingCount: v.number(),
     })
   ),
   handler: async (ctx, args) => {
-    // Start with all vehicles
-    let vehicles = await ctx.db.query("vehicles").collect();
+    let vehicles;
 
-    // Apply vehicle filters
     if (args.make) {
-      vehicles = vehicles.filter((v) => v.make === args.make);
+      vehicles = await ctx.db
+        .query("vehicles")
+        .withIndex("by_make", (q) => q.eq("make", args.make!))
+        .collect();
+    } else {
+      vehicles = await ctx.db.query("vehicles").collect();
     }
+
+    let filteredVehicles = vehicles;
     if (args.model) {
-      vehicles = vehicles.filter((v) => v.model === args.model);
+      filteredVehicles = filteredVehicles.filter((v) => v.model === args.model);
     }
     if (args.year) {
-      vehicles = vehicles.filter((v) => v.year === args.year);
+      filteredVehicles = filteredVehicles.filter((v) => v.year === args.year);
     }
 
-    // Get listings for each vehicle and apply additional filters
-    const results = [];
-    for (const vehicle of vehicles) {
-      const listings = await ctx.db
-        .query("listings")
-        .withIndex("by_vehicleId", (q) => q.eq("vehicleId", vehicle.id))
-        .collect();
-
-      // Apply listing filters
-      let filteredListings = listings;
-      if (args.bankId) {
-        filteredListings = filteredListings.filter(
-          (listing) => listing.bankId === args.bankId
-        );
-      }
-      if (args.color) {
-        filteredListings = filteredListings.filter(
-          (listing) =>
-            listing.color?.toLowerCase() === args.color?.toLowerCase()
-        );
-      }
-      if (args.minPrice) {
-        filteredListings = filteredListings.filter(
-          (listing) => listing.price && listing.price >= args.minPrice!
-        );
-      }
-      if (args.maxPrice) {
-        filteredListings = filteredListings.filter(
-          (listing) => listing.price && listing.price <= args.maxPrice!
-        );
-      }
-
-      // Skip vehicle if no listings match filters
-      if (filteredListings.length === 0) continue;
-
-      // Get bank info for each listing
-      const banks = await ctx.db.query("banks").collect();
-      const listingsWithBanks = filteredListings.map((listing) => {
-        const bank = banks.find((b) => b.id === listing.bankId);
+    // Get listing counts for each vehicle
+    const vehiclesWithCounts = await Promise.all(
+      filteredVehicles.map(async (vehicle) => {
+        const listings = await ctx.db
+          .query("listings")
+          .withIndex("by_vehicleId", (q) => q.eq("vehicleId", vehicle._id))
+          .collect();
+        
         return {
-          ...listing,
-          bank: bank!,
+          ...vehicle,
+          listingCount: listings.length,
         };
-      });
-
-      results.push({
-        ...vehicle,
-        listings: listingsWithBanks,
-      });
-    }
-
-    return results;
-  },
-});
-
-export const getVehiclesPaginated = query({
-  args: {
-    make: v.optional(v.string()),
-    model: v.optional(v.string()),
-    year: v.optional(v.number()),
-    minPrice: v.optional(v.number()),
-    maxPrice: v.optional(v.number()),
-    bankId: v.optional(v.string()),
-    color: v.optional(v.string()),
-    paginationOpts: paginationOptsValidator,
-  },
-  returns: v.object({
-    page: v.array(
-      v.object({
-        _id: v.id("vehicles"),
-        _creationTime: v.number(),
-        id: v.string(),
-        make: v.string(),
-        model: v.string(),
-        year: v.number(),
-        listings: v.array(
-          v.object({
-            _id: v.id("listings"),
-            _creationTime: v.number(),
-            id: v.string(),
-            vehicleId: v.string(),
-            bankId: v.string(),
-            price: v.union(v.null(), v.number()),
-            amount: v.number(),
-            color: v.union(v.null(), v.string()),
-            bank: v.object({
-              _id: v.id("banks"),
-              _creationTime: v.number(),
-              id: v.string(),
-              name: v.string(),
-              bidInstructions: v.string(),
-              contactInfo: v.object({
-                address: v.string(),
-                emails: v.array(v.string()),
-                phones: v.array(v.string()),
-                website: v.string(),
-              }),
-              operatingHours: v.object({
-                weekdays: v.string(),
-                weekends: v.string(),
-              }),
-              saleTerms: v.string(),
-              viewInstructions: v.string(),
-            }),
-          })
-        ),
       })
-    ),
-    isDone: v.boolean(),
-    continueCursor: v.union(v.string(), v.null()),
-  }),
-  handler: async (ctx, args) => {
-    // For now, we'll use the same logic as getVehicles but with pagination
-    // In a real implementation, you'd want to optimize this with proper indexing
-    const allVehicles = await ctx.db.query("vehicles").collect();
+    );
 
-    // Apply vehicle filters
-    let vehicles = allVehicles;
-    if (args.make) {
-      vehicles = vehicles.filter((v) => v.make === args.make);
-    }
-    if (args.model) {
-      vehicles = vehicles.filter((v) => v.model === args.model);
-    }
-    if (args.year) {
-      vehicles = vehicles.filter((v) => v.year === args.year);
-    }
-
-    // Get listings for each vehicle and apply additional filters
-    const results = [];
-    for (const vehicle of vehicles) {
-      const listings = await ctx.db
-        .query("listings")
-        .withIndex("by_vehicleId", (q) => q.eq("vehicleId", vehicle.id))
-        .collect();
-
-      // Apply listing filters
-      let filteredListings = listings;
-      if (args.bankId) {
-        filteredListings = filteredListings.filter(
-          (listing) => listing.bankId === args.bankId
-        );
-      }
-      if (args.color) {
-        filteredListings = filteredListings.filter(
-          (listing) =>
-            listing.color?.toLowerCase() === args.color?.toLowerCase()
-        );
-      }
-      if (args.minPrice) {
-        filteredListings = filteredListings.filter(
-          (listing) => listing.price && listing.price >= args.minPrice!
-        );
-      }
-      if (args.maxPrice) {
-        filteredListings = filteredListings.filter(
-          (listing) => listing.price && listing.price <= args.maxPrice!
-        );
-      }
-
-      // Skip vehicle if no listings match filters
-      if (filteredListings.length === 0) continue;
-
-      // Get bank info for each listing
-      const banks = await ctx.db.query("banks").collect();
-      const listingsWithBanks = filteredListings.map((listing) => {
-        const bank = banks.find((b) => b.id === listing.bankId);
-        return {
-          ...listing,
-          bank: bank!,
-        };
-      });
-
-      results.push({
-        ...vehicle,
-        listings: listingsWithBanks,
-      });
-    }
-
-    // Simple pagination - in production, you'd want proper cursor-based pagination
-    const startIndex = 0;
-    const endIndex = args.paginationOpts.numItems;
-    const page = results.slice(startIndex, endIndex);
-    const isDone = endIndex >= results.length;
-    const continueCursor = isDone ? null : endIndex.toString();
-
-    return {
-      page,
-      isDone,
-      continueCursor,
-    };
+    return vehiclesWithCounts;
   },
 });
 
 export const getVehicleById = query({
   args: {
-    id: v.string(),
+    id: v.id("vehicles"),
   },
   returns: v.union(
     v.null(),
     v.object({
       _id: v.id("vehicles"),
       _creationTime: v.number(),
-      id: v.string(),
       make: v.string(),
       model: v.string(),
       year: v.number(),
+      slug: v.string(),
+      fuelType: v.optional(v.string()),
+      bodyType: v.optional(v.string()),
       listings: v.array(
         v.object({
           _id: v.id("listings"),
           _creationTime: v.number(),
-          id: v.string(),
-          vehicleId: v.string(),
-          bankId: v.string(),
-          price: v.union(v.null(), v.number()),
-          amount: v.number(),
-          color: v.union(v.null(), v.string()),
+          vehicleId: v.id("vehicles"),
+          bankId: v.id("banks"),
+          mileage: v.optional(v.number()),
+          color: v.optional(v.string()),
+          condition: v.optional(
+            v.union(
+              v.literal("Excellent"),
+              v.literal("Good"),
+              v.literal("Fair"),
+              v.literal("Unknown")
+            )
+          ),
+          price: v.union(v.number(), v.null()),
+          images: v.array(
+            v.object({
+              url: v.string(),
+              isCover: v.boolean(),
+              rank: v.optional(v.number()),
+            })
+          ),
+          createdAt: v.number(),
           bank: v.object({
             _id: v.id("banks"),
             _creationTime: v.number(),
-            id: v.string(),
             name: v.string(),
             bidInstructions: v.string(),
             contactInfo: v.object({
@@ -309,10 +141,7 @@ export const getVehicleById = query({
     })
   ),
   handler: async (ctx, args) => {
-    // Find vehicle by custom id field
-    const vehicles = await ctx.db.query("vehicles").collect();
-    const vehicle = vehicles.find((v) => v.id === args.id);
-
+    const vehicle = await ctx.db.get(args.id);
     if (!vehicle) return null;
 
     const listings = await ctx.db
@@ -320,14 +149,15 @@ export const getVehicleById = query({
       .withIndex("by_vehicleId", (q) => q.eq("vehicleId", args.id))
       .collect();
 
-    const banks = await ctx.db.query("banks").collect();
-    const listingsWithBanks = listings.map((listing) => {
-      const bank = banks.find((b) => b.id === listing.bankId);
-      return {
-        ...listing,
-        bank: bank!,
-      };
-    });
+    const listingsWithBanks = await Promise.all(
+      listings.map(async (listing) => {
+        const bank = await ctx.db.get(listing.bankId);
+        return {
+          ...listing,
+          bank: bank!,
+        };
+      })
+    );
 
     return {
       ...vehicle,
@@ -342,43 +172,79 @@ export const getVehicleFilters = query({
     makes: v.array(v.string()),
     models: v.array(v.string()),
     years: v.array(v.number()),
-    colors: v.array(v.string()),
-    banks: v.array(
-      v.object({
-        id: v.string(),
-        name: v.string(),
-      })
-    ),
+    fuelTypes: v.array(v.string()),
+    bodyTypes: v.array(v.string()),
   }),
   handler: async (ctx) => {
-    // Get all vehicles for filter options
     const vehicles = await ctx.db.query("vehicles").collect();
-    const listings = await ctx.db.query("listings").collect();
-    const banks = await ctx.db.query("banks").collect();
 
-    // Extract unique values
     const makes = [...new Set(vehicles.map((v) => v.make))].sort();
     const models = [...new Set(vehicles.map((v) => v.model))].sort();
-    const years = [...new Set(vehicles.map((v) => v.year))].sort(
-      (a, b) => b - a
-    );
-    const colors = [
+    const years = [...new Set(vehicles.map((v) => v.year))].sort((a, b) => b - a);
+    const fuelTypes = [
       ...new Set(
-        listings.map((l) => l.color).filter((c): c is string => c !== null)
+        vehicles
+          .map((v) => v.fuelType)
+          .filter((f): f is string => f !== undefined)
       ),
     ].sort();
-
-    const bankOptions = banks.map((bank) => ({
-      id: bank.id,
-      name: bank.name,
-    }));
+    const bodyTypes = [
+      ...new Set(
+        vehicles
+          .map((v) => v.bodyType)
+          .filter((b): b is string => b !== undefined)
+      ),
+    ].sort();
 
     return {
       makes,
       models,
       years,
-      colors,
-      banks: bankOptions,
+      fuelTypes,
+      bodyTypes,
     };
+  },
+});
+
+export const createVehicle = mutation({
+  args: {
+    make: v.string(),
+    model: v.string(),
+    year: v.number(),
+    fuelType: v.optional(v.string()),
+    bodyType: v.optional(v.string()),
+  },
+  handler: async (ctx, args) => {
+    // Generate slug
+    const slug = `${args.year}-${args.make.toLowerCase()}-${args.model.toLowerCase()}`.replace(/\s+/g, '-');
+
+    // Check if this vehicle already exists
+    const existing = await ctx.db
+      .query("vehicles")
+      .withIndex("by_make_model_year", (q) =>
+        q.eq("make", args.make).eq("model", args.model).eq("year", args.year)
+      )
+      .first();
+
+    if (existing) {
+      throw new Error("Vehicle already exists in catalog");
+    }
+
+    // Validate year
+    const currentYear = new Date().getFullYear();
+    if (args.year < 1990 || args.year > currentYear) {
+      throw new Error(`Year must be between 1990 and ${currentYear}`);
+    }
+
+    const vehicleId = await ctx.db.insert("vehicles", {
+      make: args.make,
+      model: args.model,
+      year: args.year,
+      slug,
+      fuelType: args.fuelType,
+      bodyType: args.bodyType,
+    });
+
+    return vehicleId;
   },
 });

@@ -14,7 +14,9 @@ import type {
   FunctionReference,
 } from "convex/server";
 import type * as banks from "../banks.js";
+import type * as createVehicle from "../createVehicle.js";
 import type * as listings from "../listings.js";
+import type * as uploadHelpers from "../uploadHelpers.js";
 import type * as vehicles from "../vehicles.js";
 
 /**
@@ -27,7 +29,9 @@ import type * as vehicles from "../vehicles.js";
  */
 declare const fullApi: ApiFromModules<{
   banks: typeof banks;
+  createVehicle: typeof createVehicle;
   listings: typeof listings;
+  uploadHelpers: typeof uploadHelpers;
   vehicles: typeof vehicles;
 }>;
 export declare const api: FilterApi<
