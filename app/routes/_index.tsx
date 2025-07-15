@@ -1,16 +1,22 @@
 import { SearchX } from "lucide-react";
 import { useNavigation, useSearchParams } from "react-router";
 import { useIsMobile } from "~/hooks/useMediaQuery";
-import FilterModal from "~/vehicles/components/shared/FilterModal";
+import FilterModal from "~/vehicles/components/VehicleFilters/FilterModal";
 import { VehicleCard } from "~/vehicles/components/VehicleCard";
 import { ActiveFilters } from "~/vehicles/components/VehicleFilters/ActiveFilters";
 import { FilterForm } from "~/vehicles/components/VehicleFilters/FilterForm";
 import type { Route } from "./+types/_index";
 import { useEffect, useState } from "react";
-import { useQuery } from "convex/react";
+import {
+  useQuery,
+  Authenticated,
+  Unauthenticated,
+  AuthLoading,
+} from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { useBankMappings } from "~/hooks/useBankMappings";
 import { VehicleGridSkeleton } from "~/components/LoadingSkeleton";
+import { authClient } from "~/lib/auth-client";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -57,6 +63,10 @@ export default function Index({ loaderData }: Route.ComponentProps) {
   const navigation = useNavigation();
   const isMobile = useIsMobile();
   const [isHydrated, setIsHydrated] = useState(false);
+
+  // Get current user
+  const user = useQuery(api.auth.getCurrentUser);
+  console.log({ user });
 
   // Get dynamic bank mappings first
   const { bankNames, bankIds } = useBankMappings();
@@ -122,10 +132,10 @@ export default function Index({ loaderData }: Route.ComponentProps) {
       const currentValue = searchParams.get(key);
       if (currentValue !== value) {
         const newParams = new URLSearchParams(searchParams);
-        if (value) {
-          newParams.set(key, value);
-        } else {
+        if (value === "all") {
           newParams.delete(key);
+        } else {
+          newParams.set(key, value);
         }
         setSearchParams(newParams, { replace: true });
       }
@@ -177,7 +187,7 @@ export default function Index({ loaderData }: Route.ComponentProps) {
   const isFirstLoad = !vehicles?.length && navigation.state === "loading";
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 text-center">
       <div className={isFirstLoad ? "opacity-60 pointer-events-none" : ""}>
         <h2 className="text-3xl xl:text-5xl font-bold mb-2 tracking-tight">
           LIMBO
@@ -185,6 +195,48 @@ export default function Index({ loaderData }: Route.ComponentProps) {
         <p className="text-base xl:text-lg mb-6">
           Find your next vehicle from the repossessed bank inventory
         </p>
+
+        {/* User Info Section */}
+        <div className="mb-6">
+          <AuthLoading>
+            <div className="text-sm text-gray-500">Loading...</div>
+          </AuthLoading>
+          <Unauthenticated>
+            <div className="text-sm text-gray-500">
+              <a
+                href="/listings/new"
+                className="text-blue-500 hover:text-blue-600"
+              >
+                Sign in to manage listings
+              </a>
+            </div>
+          </Unauthenticated>
+          <Authenticated>
+            {user && (
+              <div className="inline-flex items-center gap-4 bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-lg">
+                <div className="text-sm">
+                  <span className="text-gray-600 dark:text-gray-300">
+                    Signed in as{" "}
+                  </span>
+                  <span className="font-medium text-gray-900 dark:text-white">
+                    {user.name || user.email}
+                  </span>
+                  {user.role && (
+                    <span className="text-gray-500 dark:text-gray-400 ml-2">
+                      ({user.role})
+                    </span>
+                  )}
+                </div>
+                <button
+                  onClick={() => authClient.signOut()}
+                  className="text-xs text-red-500 hover:text-red-600"
+                >
+                  Sign out
+                </button>
+              </div>
+            )}
+          </Authenticated>
+        </div>
 
         {isMobile ? (
           <FilterModal
@@ -222,7 +274,7 @@ export default function Index({ loaderData }: Route.ComponentProps) {
           </div>
         )}
 
-        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 py-5">
           {isLoading ? (
             <VehicleGridSkeleton />
           ) : vehicles?.length === 0 ? (
