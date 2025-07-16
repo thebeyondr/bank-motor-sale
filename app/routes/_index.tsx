@@ -29,7 +29,7 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+export function ErrorBoundary() {
   return (
     <div className="min-h-[50vh] flex items-center justify-center p-4">
       <div className="max-w-md w-full text-center space-y-4">
@@ -206,7 +206,7 @@ export default function Index() {
           Find your next vehicle from the repossessed bank inventory
         </p>
 
-        {/* User Info Section */}
+        {/* Header Actions */}
         <div className="mb-6">
           <AuthLoading>
             <div className="text-sm text-gray-500">Loading...</div>
@@ -214,10 +214,10 @@ export default function Index() {
           <Unauthenticated>
             <div className="text-sm text-gray-500">
               <a
-                href="/listings/new"
+                href="/dashboard"
                 className="text-blue-500 hover:text-blue-600"
               >
-                Sign in to manage listings
+                Bank Login →
               </a>
             </div>
           </Unauthenticated>
@@ -226,7 +226,7 @@ export default function Index() {
               <div className="inline-flex items-center gap-4 bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-lg">
                 <div className="text-sm">
                   <span className="text-gray-600 dark:text-gray-300">
-                    Signed in as{" "}
+                    Welcome back,{" "}
                   </span>
                   <span className="font-medium text-gray-900 dark:text-white">
                     {user.name || user.email}
@@ -237,6 +237,12 @@ export default function Index() {
                     </span>
                   )}
                 </div>
+                <a
+                  href="/dashboard"
+                  className="text-xs text-blue-500 hover:text-blue-600"
+                >
+                  Dashboard
+                </a>
                 <button
                   onClick={() => authClient.signOut()}
                   className="text-xs text-red-500 hover:text-red-600"
