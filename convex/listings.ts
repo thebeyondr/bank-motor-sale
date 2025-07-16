@@ -145,9 +145,21 @@ export const getListingsWithFilters = query({
         if (args.model && vehicle?.model !== args.model) return null;
         if (args.year && vehicle?.year !== args.year) return null;
 
+        // Convert storage IDs to actual URLs
+        const imagesWithUrls = await Promise.all(
+          listing.images.map(async (image) => {
+            const url = await ctx.storage.getUrl(image.url as any);
+            return {
+              ...image,
+              url: url || image.url, // Fallback to original if getUrl returns null
+            };
+          })
+        );
+
         const { allowedEmails, ...safeBank } = bank!;
         return {
           ...listing,
+          images: imagesWithUrls,
           vehicle: vehicle!,
           bank: safeBank,
         };
@@ -281,8 +293,21 @@ export const getListingsByBank = query({
     const listingsWithVehicles = await Promise.all(
       listings.map(async (listing) => {
         const vehicle = await ctx.db.get(listing.vehicleId);
+
+        // Convert storage IDs to actual URLs
+        const imagesWithUrls = await Promise.all(
+          listing.images.map(async (image) => {
+            const url = await ctx.storage.getUrl(image.url as any);
+            return {
+              ...image,
+              url: url || image.url, // Fallback to original if getUrl returns null
+            };
+          })
+        );
+
         return {
           ...listing,
+          images: imagesWithUrls,
           vehicle: vehicle!,
         };
       })
