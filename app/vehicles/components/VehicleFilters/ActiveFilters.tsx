@@ -20,15 +20,13 @@ export function ActiveFilters({
     searchParams.get("minPrice") ||
     searchParams.get("maxPrice") ||
     searchParams.get("bank") ||
-    searchParams.get("color");
+    searchParams.get("color") ||
+    searchParams.get("condition");
 
   if (!hasActiveFilters) return null;
 
   return (
-    <div className="mb-6" role="region" aria-label="Active filters">
-      <h3 className="text-slate-600 dark:text-slate-300 mb-2 font-medium">
-        Active filters:
-      </h3>
+    <div className="mb-6 text-center" role="region" aria-label="Active filters">
       <div className="flex flex-wrap gap-2">
         {searchParams.get("make") && (
           <FilterChip
@@ -83,6 +81,14 @@ export function ActiveFilters({
             label="Color"
             value={searchParams.get("color") || ""}
             onRemove={() => onRemoveFilter("color")}
+            isLoading={isLoading}
+          />
+        )}
+        {searchParams.get("condition") && (
+          <FilterChip
+            label="Condition"
+            value={searchParams.get("condition") || ""}
+            onRemove={() => onRemoveFilter("condition")}
             isLoading={isLoading}
           />
         )}

@@ -1,4 +1,4 @@
-# Bankomoto - Bank Motor Sale
+# LIMBO - Bank Motor Sale
 
 A modern web application for browsing repossessed vehicles from Jamaican banks. Built with React, TypeScript, and IndexedDB for offline-first functionality.
 
@@ -64,16 +64,16 @@ To build and run using Docker:
 
 ```bash
 # For npm
-docker build -t bankomoto .
+docker build -t LIMBO .
 
 # For pnpm
-docker build -f Dockerfile.pnpm -t bankomoto .
+docker build -f Dockerfile.pnpm -t LIMBO .
 
 # For bun
-docker build -f Dockerfile.bun -t bankomoto .
+docker build -f Dockerfile.bun -t LIMBO .
 
 # Run the container
-docker run -p 3000:3000 bankomoto
+docker run -p 3000:3000 LIMBO
 ```
 
 The containerized application can be deployed to any platform that supports Docker, including:
@@ -102,7 +102,7 @@ Make sure to deploy the output of `bun run build`
 ## Project Structure
 
 ```bash
-bankomoto/
+LIMBO/
 ├── app/
 │   ├── components/     # Reusable UI components
 │   ├── routes/        # Route components and loaders

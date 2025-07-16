@@ -1,5 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import type { FormState } from "~/types/filters";
+import { useBankMappings } from "~/hooks/useBankMappings";
+import { SearchSuggestions } from "~/components/SearchSuggestions";
+import { Input } from "~/shadcn/ui/Input";
+import { Label } from "~/shadcn/ui/Label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "~/shadcn/ui/Select";
+import { Button } from "~/shadcn/ui/Button";
+import { Car, Palette, Calendar, DollarSign, Star } from "lucide-react";
 
 export interface FilterFormProps {
   formState: FormState;
@@ -20,120 +33,139 @@ export function FilterForm({
   onSubmit,
   onClear,
 }: FilterFormProps) {
+  const { bankIds } = useBankMappings();
+  const [showMakeSuggestions, setShowMakeSuggestions] = useState(false);
+  const [showModelSuggestions, setShowModelSuggestions] = useState(false);
   return (
-    <form
-      onSubmit={onSubmit}
-      className="bg-blue-50 dark:bg-slate-800 p-6 rounded-lg mb-8"
-      aria-label="Vehicle search filters"
-    >
+    <form onSubmit={onSubmit} aria-label="Vehicle search filters">
       <div
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+        className="w-full flex gap-3 flex-wrap justify-center"
         role="group"
         aria-label="Filter options"
       >
-        <div>
-          <label
+        <div className="relative">
+          <Label
             htmlFor="make"
-            className="block text-slate-600 dark:text-slate-300 mb-2 font-bold"
+            className="mb-2 flex items-center gap-2 font-medium"
           >
-            Make
-          </label>
-          <input
-            type="text"
+            <Car className="w-4 h-4" /> Make
+          </Label>
+          <Input
             id="make"
-            name="make"
             value={formState.make}
             onChange={(e) => onUpdateFilter("make", e.target.value)}
-            onBlur={(e) => onUpdateFilter("make", e.target.value, true)}
-            className="w-full bg-white dark:bg-slate-700 text-gray-900 dark:text-white rounded px-3 py-2 border-[1.5px] border-slate-300 dark:border-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
+            onFocus={() => setShowMakeSuggestions(true)}
+            onBlur={(e) => {
+              onUpdateFilter("make", e.target.value, true);
+              setTimeout(() => setShowMakeSuggestions(false), 150);
+            }}
             placeholder="e.g. Toyota"
             disabled={isLoading}
             aria-label="Vehicle make"
+            className="max-w-sm"
+          />
+          <SearchSuggestions
+            value={formState.make}
+            onSelect={(value) => {
+              onUpdateFilter("make", value, true);
+              setShowMakeSuggestions(false);
+            }}
+            type="make"
+            isVisible={showMakeSuggestions}
+            onClose={() => setShowMakeSuggestions(false)}
           />
         </div>
 
-        <div>
-          <label
+        <div className="relative">
+          <Label
             htmlFor="model"
-            className="block text-slate-600 dark:text-slate-300 mb-2 font-bold"
+            className="mb-2 flex items-center gap-2 font-medium"
           >
-            Model
-          </label>
-          <input
-            type="text"
+            <Car className="w-4 h-4" /> Model
+          </Label>
+          <Input
             id="model"
-            name="model"
             value={formState.model}
             onChange={(e) => onUpdateFilter("model", e.target.value)}
-            onBlur={(e) => onUpdateFilter("model", e.target.value, true)}
-            className="w-full bg-white dark:bg-slate-700 text-gray-900 dark:text-white rounded px-3 py-2 border-[1.5px] border-slate-300 dark:border-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
+            onFocus={() => setShowModelSuggestions(true)}
+            onBlur={(e) => {
+              onUpdateFilter("model", e.target.value, true);
+              setTimeout(() => setShowModelSuggestions(false), 150);
+            }}
             placeholder="e.g. Corolla"
             disabled={isLoading}
             aria-label="Vehicle model"
+            className="max-w-sm"
+          />
+          <SearchSuggestions
+            value={formState.model}
+            onSelect={(value) => {
+              onUpdateFilter("model", value, true);
+              setShowModelSuggestions(false);
+            }}
+            type="model"
+            isVisible={showModelSuggestions}
+            onClose={() => setShowModelSuggestions(false)}
           />
         </div>
 
         <div>
-          <label
+          <Label
             htmlFor="year"
-            className="block text-slate-600 dark:text-slate-300 mb-2 font-bold"
+            className="mb-2 flex items-center gap-2 font-medium"
           >
-            Year
-          </label>
-          <input
+            <Calendar className="w-4 h-4" /> Year
+          </Label>
+          <Input
             type="number"
             id="year"
-            name="year"
             value={formState.year}
             onChange={(e) => onUpdateFilter("year", e.target.value)}
             onBlur={(e) => onUpdateFilter("year", e.target.value, true)}
-            className="w-full bg-white dark:bg-slate-700 text-gray-900 dark:text-white rounded px-3 py-2 border-[1.5px] border-slate-300 dark:border-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
             placeholder="e.g. 2020"
             min="1900"
             max={new Date().getFullYear() + 1}
             disabled={isLoading}
             aria-label="Vehicle year"
+            className="w-28"
           />
         </div>
 
         <div>
-          <label
+          <Label
             htmlFor="minPrice"
-            className="block text-slate-600 dark:text-slate-300 mb-2 font-bold"
+            className="mb-2 flex items-center gap-2 font-medium"
           >
-            Min Price (JMD)
-          </label>
-          <input
+            <DollarSign className="w-4 h-4" /> Min Price (JMD)
+          </Label>
+          <Input
             type="number"
             id="minPrice"
-            name="minPrice"
             value={formState.minPrice}
             onChange={(e) => onUpdateFilter("minPrice", e.target.value)}
             onBlur={(e) => onUpdateFilter("minPrice", e.target.value, true)}
-            className="w-full bg-white dark:bg-slate-700 text-gray-900 dark:text-white rounded px-3 py-2 border-[1.5px] border-slate-300 dark:border-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
             placeholder="Minimum price"
             min="0"
             step="1000"
             disabled={isLoading}
             aria-label="Minimum price in Jamaican dollars"
+            className="max-w-sm"
           />
         </div>
 
         <div>
-          <label
+          <Label
             htmlFor="maxPrice"
-            className="block text-slate-600 dark:text-slate-300 mb-2 font-bold"
+            className="mb-2 flex items-center gap-2 font-medium"
           >
-            Max Price (JMD)
-          </label>
-          <input
+            <DollarSign className="w-4 h-4" /> Max Price (JMD)
+          </Label>
+          <Input
             type="number"
             id="maxPrice"
-            name="maxPrice"
             value={formState.maxPrice}
             onChange={(e) => onUpdateFilter("maxPrice", e.target.value)}
             onBlur={(e) => onUpdateFilter("maxPrice", e.target.value, true)}
-            className="w-full bg-white dark:bg-slate-700 text-gray-900 dark:text-white rounded px-3 py-2 border-[1.5px] border-slate-300 dark:border-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
             placeholder="Maximum price"
             min="0"
             step="1000"
@@ -141,79 +173,95 @@ export function FilterForm({
             aria-label="Maximum price in Jamaican dollars"
           />
         </div>
-
         <div>
-          <label
-            htmlFor="bank"
-            className="block text-slate-600 dark:text-slate-300 mb-2 font-bold"
-          >
-            Bank
-          </label>
-          <select
-            id="bank"
-            name="bank"
-            value={formState.bank}
-            onChange={(e) => onUpdateFilter("bank", e.target.value)}
-            className="w-full bg-white dark:bg-slate-700 text-gray-900 dark:text-white rounded px-3 py-2 border-[1.5px] border-slate-300 dark:border-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
-            disabled={isLoading}
-            aria-label="Select bank"
-          >
-            <option value="">All Banks</option>
-            <option value="NCB">NCB</option>
-            <option value="CIBC">CIBC</option>
-            <option value="JMMB">JMMB</option>
-          </select>
-        </div>
-
-        <div>
-          <label
+          <Label
             htmlFor="color"
-            className="block text-slate-600 dark:text-slate-300 mb-2 font-bold"
+            className="mb-2 flex items-center gap-2 font-medium"
           >
-            Color
-          </label>
-          <select
-            id="color"
-            name="color"
+            <Palette className="w-4 h-4" /> Color
+          </Label>
+          <Select
             value={formState.color}
-            onChange={(e) => onUpdateFilter("color", e.target.value)}
-            className="w-full bg-white dark:bg-slate-700 text-gray-900 dark:text-white rounded px-3 py-2 border-[1.5px] border-slate-300 dark:border-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
+            onValueChange={(value: string) => onUpdateFilter("color", value)}
             disabled={isLoading}
-            aria-label="Select vehicle color"
           >
-            <option value="">All Colors</option>
-            <option value="Black">Black</option>
-            <option value="White">White</option>
-            <option value="Red">Red</option>
-            <option value="Blue">Blue</option>
-            <option value="Green">Green</option>
-            <option value="Yellow">Yellow</option>
-            <option value="Orange">Orange</option>
-            <option value="Purple">Purple</option>
-            <option value="Gray">Gray</option>
-          </select>
+            <SelectTrigger>
+              <SelectValue placeholder="All Colors" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Colors</SelectItem>
+              <SelectItem value="Black">Black</SelectItem>
+              <SelectItem value="White">White</SelectItem>
+              <SelectItem value="Red">Red</SelectItem>
+              <SelectItem value="Blue">Blue</SelectItem>
+              <SelectItem value="Green">Green</SelectItem>
+              <SelectItem value="Yellow">Yellow</SelectItem>
+              <SelectItem value="Orange">Orange</SelectItem>
+              <SelectItem value="Purple">Purple</SelectItem>
+              <SelectItem value="Gray">Gray</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
+        
+        <div>
+          <Label
+            htmlFor="condition"
+            className="mb-2 flex items-center gap-2 font-medium"
+          >
+            <Star className="w-4 h-4" /> Condition
+          </Label>
+          <Select
+            value={formState.condition}
+            onValueChange={(value: string) => onUpdateFilter("condition", value)}
+            disabled={isLoading}
+          >
+            <SelectTrigger>
+              <SelectValue placeholder="All Conditions" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Conditions</SelectItem>
+              <SelectItem value="Excellent">Excellent</SelectItem>
+              <SelectItem value="Good">Good</SelectItem>
+              <SelectItem value="Fair">Fair</SelectItem>
+              <SelectItem value="Unknown">Unknown</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+        
+        <Button
+          variant="link"
+          type="button"
+          className="text-blue-500 hover:text-blue-600 text-base self-center"
+          onClick={onClear}
+          disabled={isLoading}
+          aria-label="Reset filters"
+        >
+          Reset filters
+        </Button>
       </div>
 
-      <div className="mt-4 flex gap-2 justify-end">
-        <button
-          type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-slate-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-          disabled={isLoading}
-          aria-label={isLoading ? "Applying filters..." : "Apply filters"}
-        >
-          {isLoading ? "Applying..." : "Apply All Filters"}
-        </button>
-        <button
-          type="button"
-          onClick={onClear}
-          className="bg-slate-200 dark:bg-slate-700 text-gray-900 dark:text-white px-4 py-2 rounded hover:bg-slate-300 dark:hover:bg-slate-600 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 dark:focus:ring-offset-slate-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-          disabled={isLoading}
-          aria-label="Clear all filters"
-        >
-          Clear All Filters
-        </button>
-      </div>
+      <section className="flex flex-row gap-2 overflow-x-auto my-3 justify-center">
+        {Object.entries(bankIds).map(([name, id]) => (
+          <button
+            key={id}
+            onClick={() =>
+              onUpdateFilter("bank", name === formState.bank ? "" : name)
+            }
+            className={`flex flex-col items-center justify-between gap-3 px-3 py-2 md:px-5 rounded-lg cursor-pointer border-3 border-blue-100 hover:border-blue-300 ${
+              name === formState.bank ? "border-blue-500" : "border-blue-100"
+            }`}
+          >
+            <div className="relative w-20 h-10 flex items-center justify-center">
+              <img
+                src={`/bank-logos/${name.toLowerCase()}-logo.png`}
+                alt={name}
+                className={`w-auto h-8 object-contain`}
+              />
+            </div>
+            <p className="text-sm">{name}</p>
+          </button>
+        ))}
+      </section>
     </form>
   );
 }

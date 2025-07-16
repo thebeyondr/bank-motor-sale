@@ -10,6 +10,11 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import { ConvexReactClient } from "convex/react";
+import { ConvexBetterAuthProvider } from "@convex-dev/better-auth/react";
+import { authClient } from "./lib/auth-client";
+
+const convex = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL as string);
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -48,15 +53,17 @@ export default function Root() {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Bankomoto</title>
+        <title>LIMBO</title>
         <Meta />
         <Links />
       </head>
       <body>
-        <Outlet />
-        <ScrollRestoration />
-        <Scripts />
-        <Analytics />
+        <ConvexBetterAuthProvider client={convex} authClient={authClient}>
+          <Outlet />
+          <ScrollRestoration />
+          <Scripts />
+          <Analytics />
+        </ConvexBetterAuthProvider>
       </body>
     </html>
   );

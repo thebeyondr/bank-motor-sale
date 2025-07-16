@@ -1,15 +1,41 @@
 // Unique identifier type
 export type UUID = string;
 
-// Database types
+// New schema types based on updated Convex schema
 export interface Vehicle {
   id: string;
   make: string;
   model: string;
   year: number;
+  slug: string;
+  fuelType?: string;
+  bodyType?: string;
 }
 
-// Prices store (Primary key: id, Indexes: vehicleId, bankId)
+export interface Bank {
+  id: string;
+  name: string;
+}
+
+export interface Listing {
+  id: string;
+  vehicleId: string;
+  bankId: string;
+  mileage?: number;
+  color?: string;
+  condition?: "Excellent" | "Good" | "Fair" | "Unknown";
+  price: number | null;
+  images: Array<{
+    url: string;
+    isCover: boolean;
+    rank?: number;
+  }>;
+  createdAt: number;
+  vehicle: Vehicle;
+  bank: Bank;
+}
+
+// Legacy types for backward compatibility
 export interface Price {
   id: UUID;
   vehicleId: UUID; // Foreign key to Vehicle
