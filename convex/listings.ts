@@ -16,7 +16,8 @@ export const get = query({
           v.literal("Excellent"),
           v.literal("Good"),
           v.literal("Fair"),
-          v.literal("Unknown")
+          v.literal("Unknown"),
+          v.null()
         )
       ),
       price: v.union(v.number(), v.null()),
@@ -66,7 +67,8 @@ export const getListingsWithFilters = query({
           v.literal("Excellent"),
           v.literal("Good"),
           v.literal("Fair"),
-          v.literal("Unknown")
+          v.literal("Unknown"),
+          v.null()
         )
       ),
       price: v.union(v.number(), v.null()),
@@ -174,7 +176,8 @@ export const getListingsByVehicle = query({
           v.literal("Excellent"),
           v.literal("Good"),
           v.literal("Fair"),
-          v.literal("Unknown")
+          v.literal("Unknown"),
+          v.null()
         )
       ),
       price: v.union(v.number(), v.null()),
@@ -244,7 +247,8 @@ export const getListingsByBank = query({
           v.literal("Excellent"),
           v.literal("Good"),
           v.literal("Fair"),
-          v.literal("Unknown")
+          v.literal("Unknown"),
+          v.null()
         )
       ),
       price: v.union(v.number(), v.null()),
@@ -306,7 +310,8 @@ export const getListingById = query({
           v.literal("Excellent"),
           v.literal("Good"),
           v.literal("Fair"),
-          v.literal("Unknown")
+          v.literal("Unknown"),
+          v.null()
         )
       ),
       price: v.union(v.number(), v.null()),

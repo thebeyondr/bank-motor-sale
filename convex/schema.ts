@@ -48,7 +48,8 @@ export default defineSchema({
         v.literal("Excellent"),
         v.literal("Good"),
         v.literal("Fair"),
-        v.literal("Unknown")
+        v.literal("Unknown"),
+        v.null()
       )
     ),
     price: v.union(v.number(), v.null()),
