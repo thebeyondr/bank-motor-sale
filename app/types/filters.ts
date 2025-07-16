@@ -6,4 +6,5 @@ export interface FormState {
   maxPrice: string;
   bank: string;
   color: string;
+  condition: string;
 }
