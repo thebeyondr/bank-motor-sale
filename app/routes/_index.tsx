@@ -17,6 +17,7 @@ import { api } from "../../convex/_generated/api";
 import { useBankMappings } from "~/hooks/useBankMappings";
 import { VehicleGridSkeleton } from "~/components/LoadingSkeleton";
 import { authClient } from "~/lib/auth-client";
+import type { Id } from "convex/_generated/dataModel";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -53,12 +54,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   );
 }
 
-export async function clientLoader({ request }: Route.ClientLoaderArgs) {
-  // We'll handle data loading in the component with Convex queries
-  return {};
-}
-
-export default function Index({ loaderData }: Route.ComponentProps) {
+export default function Index() {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigation = useNavigation();
   const isMobile = useIsMobile();
@@ -68,8 +64,8 @@ export default function Index({ loaderData }: Route.ComponentProps) {
   const user = useQuery(api.auth.getCurrentUser);
   console.log({ user });
 
-  // Get dynamic bank mappings first
-  const { bankNames, bankIds } = useBankMappings();
+  // Get dynamic bank mappings for filtering
+  const { bankIds } = useBankMappings();
 
   // Get filter values from URL params
   const make = searchParams.get("make") || undefined;
@@ -83,20 +79,29 @@ export default function Index({ loaderData }: Route.ComponentProps) {
   const maxPrice = searchParams.get("maxPrice")
     ? Number(searchParams.get("maxPrice"))
     : undefined;
-  const bankId = searchParams.get("bank")
-    ? bankIds[searchParams.get("bank")!]
-    : undefined;
-  const color = searchParams.get("color") || undefined;
+  const bankParam = searchParams.get("bank");
+  const bankId =
+    bankParam && bankParam !== "all" && bankIds[bankParam]
+      ? bankIds[bankParam]
+      : undefined;
+  const colorParam = searchParams.get("color");
+  const color = colorParam && colorParam !== "all" ? colorParam : undefined;
+  const conditionParam = searchParams.get("condition");
+  const condition =
+    conditionParam && conditionParam !== "all"
+      ? (conditionParam as "Excellent" | "Good" | "Fair" | "Unknown")
+      : undefined;
 
-  // Use Convex queries
-  const vehicles = useQuery(api.vehicles.getVehicles, {
+  // Use Convex queries - now using listings with filters
+  const listings = useQuery(api.listings.getListingsWithFilters, {
     make,
     model,
     year,
     minPrice,
     maxPrice,
-    bankId,
+    bankId: bankId as Id<"banks"> | undefined,
     color,
+    condition,
   });
 
   // Handle hydration
@@ -113,6 +118,7 @@ export default function Index({ loaderData }: Route.ComponentProps) {
     maxPrice: searchParams.get("maxPrice") || "",
     bank: searchParams.get("bank") || "",
     color: searchParams.get("color") || "",
+    condition: searchParams.get("condition") || "",
   });
 
   // Track if we're in a batch update
@@ -128,11 +134,14 @@ export default function Index({ loaderData }: Route.ComponentProps) {
 
     setFormState((prev) => ({ ...prev, [key]: value }));
 
-    if (!isBatchUpdate && (isBlur || key === "bank" || key === "color")) {
+    if (
+      !isBatchUpdate &&
+      (isBlur || key === "bank" || key === "color" || key === "condition")
+    ) {
       const currentValue = searchParams.get(key);
       if (currentValue !== value) {
         const newParams = new URLSearchParams(searchParams);
-        if (value === "all") {
+        if (value === "all" || value === "") {
           newParams.delete(key);
         } else {
           newParams.set(key, value);
@@ -148,7 +157,7 @@ export default function Index({ loaderData }: Route.ComponentProps) {
     setIsBatchUpdate(true);
     const newParams = new URLSearchParams();
     Object.entries(formState).forEach(([key, value]) => {
-      if (value) {
+      if (value && value !== "all" && value !== "") {
         newParams.set(key, value);
       }
     });
@@ -163,7 +172,7 @@ export default function Index({ loaderData }: Route.ComponentProps) {
 
     const newParams = new URLSearchParams();
     Object.entries(newFormState).forEach(([k, v]) => {
-      if (v) {
+      if (v && v !== "all" && v !== "") {
         newParams.set(k, v);
       }
     });
@@ -179,12 +188,13 @@ export default function Index({ loaderData }: Route.ComponentProps) {
       maxPrice: "",
       bank: "",
       color: "",
+      condition: "",
     });
     setSearchParams(new URLSearchParams());
   };
 
-  const isLoading = navigation.state === "loading" || vehicles === undefined;
-  const isFirstLoad = !vehicles?.length && navigation.state === "loading";
+  const isLoading = navigation.state === "loading" || listings === undefined;
+  const isFirstLoad = !listings?.length && navigation.state === "loading";
 
   return (
     <div className="container mx-auto px-4 py-8 text-center">
@@ -277,7 +287,7 @@ export default function Index({ loaderData }: Route.ComponentProps) {
         <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 py-5">
           {isLoading ? (
             <VehicleGridSkeleton />
-          ) : vehicles?.length === 0 ? (
+          ) : listings?.length === 0 ? (
             <div className="col-span-full py-12 text-center">
               <div className="max-w-md mx-auto space-y-4">
                 <SearchX className="w-12 h-12 mx-auto text-slate-400" />
@@ -295,24 +305,33 @@ export default function Index({ loaderData }: Route.ComponentProps) {
               </div>
             </div>
           ) : (
-            vehicles?.map((vehicle) => (
+            listings?.map((listing) => (
               <VehicleCard
-                key={vehicle.id}
-                vehicle={{
-                  id: vehicle.id,
-                  make: vehicle.make,
-                  model: vehicle.model,
-                  year: vehicle.year,
-                  prices: vehicle.listings.map((listing) => ({
-                    id: listing.id,
-                    vehicleId: listing.vehicleId,
-                    bankId: listing.bankId,
-                    price: listing.price,
-                    amount: listing.amount,
-                    color: listing.color || undefined,
-                  })),
+                key={listing._id}
+                listing={{
+                  id: listing._id,
+                  vehicleId: listing.vehicleId,
+                  bankId: listing.bankId,
+                  price: listing.price,
+                  mileage: listing.mileage,
+                  color: listing.color,
+                  condition: listing.condition ?? "Unknown",
+                  images: listing.images,
+                  createdAt: listing.createdAt,
+                  vehicle: {
+                    id: listing.vehicle._id,
+                    make: listing.vehicle.make,
+                    model: listing.vehicle.model,
+                    year: listing.vehicle.year,
+                    slug: listing.vehicle.slug,
+                    fuelType: listing.vehicle.fuelType,
+                    bodyType: listing.vehicle.bodyType,
+                  },
+                  bank: {
+                    id: listing.bank._id,
+                    name: listing.bank.name,
+                  },
                 }}
-                bankNames={bankNames}
               />
             ))
           )}
