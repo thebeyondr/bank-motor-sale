@@ -1,6 +1,7 @@
 {
   "name": "bank-motor-sale",
   "private": true,
+  "packageManager": "bun@1.1.29",
   "type": "module",
   "scripts": {
     "build": "react-router build",
