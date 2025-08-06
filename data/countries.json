@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Jamaica",
+    "code": "JM",
+    "currency": "JMD",
+    "slug": "jamaica",
+    "isActive": true,
+    "createdAt": 1737336000000
+  },
+  {
+    "name": "Barbados",
+    "code": "BB",
+    "currency": "BDS",
+    "slug": "barbados",
+    "isActive": false,
+    "createdAt": 1737336000000
+  },
+  {
+    "name": "Trinidad and Tobago",
+    "code": "TT",
+    "currency": "TTD",
+    "slug": "trinidad-and-tobago",
+    "isActive": false,
+    "createdAt": 1737336000000
+  }
+]
