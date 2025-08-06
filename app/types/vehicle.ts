@@ -10,6 +10,8 @@ export interface Vehicle {
   slug: string;
   fuelType?: string;
   bodyType?: string;
+  driveTrain?: "FWD" | "RWD" | "AWD" | "4WD";
+  transmission?: string;
 }
 
 export interface Bank {
@@ -23,7 +25,13 @@ export interface Listing {
   bankId: string;
   mileage?: number;
   color?: string;
-  condition?: "Excellent" | "Good" | "Fair" | "Unknown";
+  condition?:
+    | "like new"
+    | "well maintained"
+    | "fair condition"
+    | "poorly maintained"
+    | "needs work"
+    | "unknown";
   price: number | null;
   images: Array<{
     url: string;
@@ -33,6 +41,10 @@ export interface Listing {
   createdAt: number;
   vehicle: Vehicle;
   bank: Bank;
+  // Market stats
+  medianPrice?: number;
+  priceDelta?: number | null;
+  sampleSize?: number;
 }
 
 // Legacy types for backward compatibility
