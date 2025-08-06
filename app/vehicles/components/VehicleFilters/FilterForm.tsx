@@ -202,7 +202,7 @@ export function FilterForm({
             </SelectContent>
           </Select>
         </div>
-        
+
         <div>
           <Label
             htmlFor="condition"
@@ -212,7 +212,9 @@ export function FilterForm({
           </Label>
           <Select
             value={formState.condition}
-            onValueChange={(value: string) => onUpdateFilter("condition", value)}
+            onValueChange={(value: string) =>
+              onUpdateFilter("condition", value)
+            }
             disabled={isLoading}
           >
             <SelectTrigger>
@@ -227,7 +229,7 @@ export function FilterForm({
             </SelectContent>
           </Select>
         </div>
-        
+
         <Button
           variant="link"
           type="button"

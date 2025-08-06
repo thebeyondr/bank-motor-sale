@@ -89,11 +89,11 @@ export default function Index() {
   const conditionParam = searchParams.get("condition");
   const condition =
     conditionParam && conditionParam !== "all"
-      ? (conditionParam as "Excellent" | "Good" | "Fair" | "Unknown")
+      ? (conditionParam as "excellent" | "good" | "fair" | "poor" | "unknown")
       : undefined;
 
-  // Use Convex queries - now using listings with filters
-  const listings = useQuery(api.listings.getListingsWithFilters, {
+  // Use Convex queries - now using listings with market stats
+  const listings = useQuery(api.listings.getListingsWithMarketStats, {
     make,
     model,
     year,
@@ -318,12 +318,16 @@ export default function Index() {
                   id: listing._id,
                   vehicleId: listing.vehicleId,
                   bankId: listing.bankId,
-                  price: listing.price,
+                  price: listing.price ?? null,
                   mileage: listing.mileage,
                   color: listing.color,
-                  condition: listing.condition ?? "Unknown",
-                  images: listing.images,
-                  createdAt: listing.createdAt,
+                  condition: (listing.condition as any) || "unknown",
+                  images: listing.imageUrls.map((url, index) => ({
+                    url,
+                    isCover: index === 0,
+                    rank: index,
+                  })),
+                  createdAt: listing._creationTime,
                   vehicle: {
                     id: listing.vehicle._id,
                     make: listing.vehicle.make,
@@ -332,11 +336,17 @@ export default function Index() {
                     slug: listing.vehicle.slug,
                     fuelType: listing.vehicle.fuelType,
                     bodyType: listing.vehicle.bodyType,
+                    driveTrain: listing.vehicle.driveTrain,
+                    transmission: listing.vehicle.transmission,
                   },
                   bank: {
                     id: listing.bank._id,
                     name: listing.bank.name,
                   },
+                  // Market stats
+                  medianPrice: listing.medianPrice,
+                  priceDelta: listing.priceDelta,
+                  sampleSize: listing.sampleSize,
                 }}
               />
             ))
