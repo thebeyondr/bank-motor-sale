@@ -17,7 +17,8 @@ export default function DashboardIndex() {
   }
 
   const totalListings = userListings?.length || 0;
-  const activeListings = userListings?.filter(listing => listing.price !== null)?.length || 0;
+  const activeListings =
+    userListings?.filter((listing) => listing.price !== null)?.length || 0;
 
   return (
     <div className="space-y-8">
@@ -96,37 +97,39 @@ export default function DashboardIndex() {
                   className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-lg"
                 >
                   <div className="flex items-center space-x-4">
-                    {listing.images.find(img => img.isCover) && (
+                    {listing.coverImageUrl && (
                       <img
-                        src={listing.images.find(img => img.isCover)?.url}
+                        src={listing.coverImageUrl}
                         alt={`${listing.vehicle.year} ${listing.vehicle.make} ${listing.vehicle.model}`}
                         className="w-16 h-16 object-cover rounded-lg"
                       />
                     )}
                     <div>
                       <h4 className="font-medium text-gray-900 dark:text-white">
-                        {listing.vehicle.year} {listing.vehicle.make} {listing.vehicle.model}
+                        {listing.vehicle.year} {listing.vehicle.make}{" "}
+                        {listing.vehicle.model}
                       </h4>
                       <p className="text-sm text-gray-600 dark:text-gray-300">
                         {listing.color && `${listing.color} • `}
-                        {listing.mileage && `${listing.mileage.toLocaleString()} miles • `}
+                        {listing.mileage &&
+                          `${listing.mileage.toLocaleString()} miles • `}
                         {listing.condition || "Condition not specified"}
                       </p>
                       <p className="text-sm text-gray-500 dark:text-gray-400">
-                        Listed {new Date(listing.createdAt).toLocaleDateString()}
+                        Listed{" "}
+                        {new Date(listing.createdAt).toLocaleDateString()}
                       </p>
                     </div>
                   </div>
                   <div className="text-right">
                     <p className="font-semibold text-gray-900 dark:text-white">
-                      {listing.price 
+                      {listing.price
                         ? new Intl.NumberFormat("en-US", {
                             style: "currency",
                             currency: "JMD",
                             maximumFractionDigits: 0,
                           }).format(listing.price)
-                        : "Price not disclosed"
-                      }
+                        : "Price not disclosed"}
                     </p>
                   </div>
                 </div>
