@@ -1,4 +1,4 @@
-import { Id } from "./_generated/dataModel";
+import type { Id } from "./_generated/dataModel";
 import { mutation } from "./_generated/server";
 import { v } from "convex/values";
 
@@ -11,20 +11,28 @@ export const createListing = mutation({
     color: v.optional(v.string()),
     condition: v.optional(
       v.union(
-        v.literal("Excellent"),
-        v.literal("Good"),
-        v.literal("Fair"),
-        v.literal("Unknown")
+        v.literal("like new"),
+        v.literal("well maintained"),
+        v.literal("fair condition"),
+        v.literal("poorly maintained"),
+        v.literal("needs work"),
+        v.literal("unknown")
       )
     ),
-    price: v.union(v.number(), v.null()),
-    images: v.array(
-      v.object({
-        url: v.string(),
-        isCover: v.boolean(),
-        rank: v.optional(v.number()),
-      })
+    price: v.optional(v.number()),
+    currency: v.optional(v.string()),
+    coverImageId: v.optional(v.id("_storage")),
+    imageIds: v.array(v.id("_storage")),
+    status: v.optional(
+      v.union(
+        v.literal("draft"),
+        v.literal("active"),
+        v.literal("sold"),
+        v.literal("expired"),
+        v.literal("removed")
+      )
     ),
+    expiresAt: v.optional(v.number()),
   },
   handler: async (ctx, args) => {
     // Check authentication
@@ -43,24 +51,22 @@ export const createListing = mutation({
       throw new Error("Bank not found for authenticated user");
     }
 
-    // Verify vehicle exists in catalog
+    // Verify vehicle exists in catalog and is active
     const vehicle = await ctx.db.get(args.vehicleId);
     if (!vehicle) {
       throw new Error("Vehicle not found in catalog");
     }
+    if (!vehicle.isActive) {
+      throw new Error("Vehicle is not active in catalog");
+    }
 
     // Validate images
-    if (args.images.length < 1) {
+    if (args.imageIds.length < 1) {
       throw new Error("At least one image is required");
     }
 
-    const coverImages = args.images.filter((img) => img.isCover);
-    if (coverImages.length !== 1) {
-      throw new Error("Exactly one image must be marked as cover");
-    }
-
     // Validate price if present
-    if (args.price !== null && args.price <= 0) {
+    if (args.price !== undefined && args.price <= 0) {
       throw new Error("Price must be greater than 0");
     }
 
@@ -68,6 +74,8 @@ export const createListing = mutation({
     if (args.mileage !== undefined && args.mileage < 0) {
       throw new Error("Mileage cannot be negative");
     }
+
+    const now = Date.now();
 
     // Create the listing
     const listingId = await ctx.db.insert("listings", {
@@ -77,8 +85,11 @@ export const createListing = mutation({
       color: args.color,
       condition: args.condition,
       price: args.price,
-      images: args.images,
-      createdAt: Date.now(),
+      currency: args.currency || "JMD", // Default to JMD
+      status: args.status || "active",
+      coverImageId: args.coverImageId,
+      imageIds: args.imageIds,
+      expiresAt: args.expiresAt,
     });
 
     return listingId;
@@ -92,17 +103,12 @@ export const addVehicleToCatalog = mutation({
     make: v.string(),
     model: v.string(),
     year: v.number(),
-    fuelType: v.optional(v.string()),
-    bodyType: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
     // Generate slug
-    const slug = `${
+    const slug = `${args.make.toLowerCase()}-${args.model.toLowerCase()}-${
       args.year
-    }-${args.make.toLowerCase()}-${args.model.toLowerCase()}`.replace(
-      /\s+/g,
-      "-"
-    );
+    }`.replace(/\s+/g, "-");
 
     // Check if this vehicle already exists
     const existing = await ctx.db
@@ -118,17 +124,17 @@ export const addVehicleToCatalog = mutation({
 
     // Validate year
     const currentYear = new Date().getFullYear();
-    if (args.year < 1990 || args.year > currentYear) {
-      throw new Error(`Year must be between 1990 and ${currentYear}`);
+    if (args.year < 1990 || args.year > currentYear + 1) {
+      throw new Error(`Year must be between 1990 and ${currentYear + 1}`);
     }
 
+    const now = Date.now();
     const vehicleId = await ctx.db.insert("vehicles", {
       make: args.make,
       model: args.model,
       year: args.year,
       slug,
-      fuelType: args.fuelType,
-      bodyType: args.bodyType,
+      isActive: true,
     });
 
     return vehicleId;
@@ -143,27 +149,33 @@ export const createVehicleAndListing = mutation({
     make: v.string(),
     model: v.string(),
     year: v.number(),
-    fuelType: v.optional(v.string()),
-    bodyType: v.optional(v.string()),
     // Listing-specific info
     mileage: v.optional(v.number()),
     color: v.optional(v.string()),
     condition: v.optional(
       v.union(
-        v.literal("Excellent"),
-        v.literal("Good"),
-        v.literal("Fair"),
-        v.literal("Unknown")
+        v.literal("like new"),
+        v.literal("well maintained"),
+        v.literal("fair condition"),
+        v.literal("poorly maintained"),
+        v.literal("needs work"),
+        v.literal("unknown")
       )
     ),
-    price: v.union(v.number(), v.null()),
-    images: v.array(
-      v.object({
-        url: v.string(),
-        isCover: v.boolean(),
-        rank: v.optional(v.number()),
-      })
+    price: v.optional(v.number()),
+    currency: v.optional(v.string()),
+    coverImageId: v.optional(v.id("_storage")),
+    imageIds: v.array(v.id("_storage")),
+    status: v.optional(
+      v.union(
+        v.literal("draft"),
+        v.literal("active"),
+        v.literal("sold"),
+        v.literal("expired"),
+        v.literal("removed")
+      )
     ),
+    expiresAt: v.optional(v.number()),
   },
   handler: async (ctx, args) => {
     // Check authentication
@@ -193,48 +205,46 @@ export const createVehicleAndListing = mutation({
 
     if (existingVehicle) {
       vehicleId = existingVehicle._id;
+      // Ensure existing vehicle is active
+      if (!existingVehicle.isActive) {
+        throw new Error("Vehicle exists but is not active in catalog");
+      }
     } else {
       // Create new vehicle in catalog
-      const slug = `${
+      const slug = `${args.make.toLowerCase()}-${args.model.toLowerCase()}-${
         args.year
-      }-${args.make.toLowerCase()}-${args.model.toLowerCase()}`.replace(
-        /\s+/g,
-        "-"
-      );
+      }`.replace(/\s+/g, "-");
 
       // Validate year
       const currentYear = new Date().getFullYear();
-      if (args.year < 1990 || args.year > currentYear) {
-        throw new Error(`Year must be between 1990 and ${currentYear}`);
+      if (args.year < 1990 || args.year > currentYear + 1) {
+        throw new Error(`Year must be between 1990 and ${currentYear + 1}`);
       }
 
+      const now = Date.now();
       vehicleId = await ctx.db.insert("vehicles", {
         make: args.make,
         model: args.model,
         year: args.year,
         slug,
-        fuelType: args.fuelType,
-        bodyType: args.bodyType,
+        isActive: true,
       });
     }
 
     // Validate listing data
-    if (args.images.length < 1) {
+    if (args.imageIds.length < 1) {
       throw new Error("At least one image is required");
     }
 
-    const coverImages = args.images.filter((img) => img.isCover);
-    if (coverImages.length !== 1) {
-      throw new Error("Exactly one image must be marked as cover");
-    }
-
-    if (args.price !== null && args.price <= 0) {
+    if (args.price !== undefined && args.price <= 0) {
       throw new Error("Price must be greater than 0");
     }
 
     if (args.mileage !== undefined && args.mileage < 0) {
       throw new Error("Mileage cannot be negative");
     }
+
+    const now = Date.now();
 
     // Create the listing
     const listingId = await ctx.db.insert("listings", {
@@ -244,8 +254,11 @@ export const createVehicleAndListing = mutation({
       color: args.color,
       condition: args.condition,
       price: args.price,
-      images: args.images,
-      createdAt: Date.now(),
+      currency: args.currency || "JMD", // Default to JMD
+      status: args.status || "active",
+      coverImageId: args.coverImageId,
+      imageIds: args.imageIds,
+      expiresAt: args.expiresAt,
     });
 
     return { vehicleId, listingId };
