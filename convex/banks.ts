@@ -1,19 +1,26 @@
 import { query } from "./_generated/server";
 import { v } from "convex/values";
 
-export const getBanks = query({
-  args: {},
+export const getBanksByCountry = query({
+  args: {
+    countryId: v.id("countries"),
+  },
   returns: v.array(
     v.object({
       _id: v.id("banks"),
       _creationTime: v.number(),
       name: v.string(),
+      slug: v.string(),
+      countryId: v.id("countries"),
+      isActive: v.boolean(),
       bidInstructions: v.string(),
       contactInfo: v.object({
         address: v.string(),
-        emails: v.array(v.string()),
-        phones: v.array(v.string()),
-        website: v.string(),
+        primaryEmail: v.string(),
+        primaryPhone: v.string(),
+        website: v.optional(v.string()),
+        additionalEmails: v.optional(v.array(v.string())),
+        additionalPhones: v.optional(v.array(v.string())),
       }),
       operatingHours: v.object({
         weekdays: v.string(),
@@ -21,6 +28,46 @@ export const getBanks = query({
       }),
       saleTerms: v.string(),
       viewInstructions: v.string(),
+      logoStorageId: v.optional(v.id("_storage")),
+    })
+  ),
+  handler: async (ctx, args) => {
+    const banks = await ctx.db
+      .query("banks")
+      .withIndex("by_country_active", (q) =>
+        q.eq("countryId", args.countryId).eq("isActive", true)
+      )
+      .collect();
+    return banks.map(({ allowedEmails, ...bank }) => bank);
+  },
+});
+
+export const getBanks = query({
+  args: {},
+  returns: v.array(
+    v.object({
+      _id: v.id("banks"),
+      _creationTime: v.number(),
+      name: v.string(),
+      slug: v.string(),
+      countryId: v.id("countries"),
+      isActive: v.boolean(),
+      bidInstructions: v.string(),
+      contactInfo: v.object({
+        address: v.string(),
+        primaryEmail: v.string(),
+        primaryPhone: v.string(),
+        website: v.optional(v.string()),
+        additionalEmails: v.optional(v.array(v.string())),
+        additionalPhones: v.optional(v.array(v.string())),
+      }),
+      operatingHours: v.object({
+        weekdays: v.string(),
+        weekends: v.string(),
+      }),
+      saleTerms: v.string(),
+      viewInstructions: v.string(),
+      logoStorageId: v.optional(v.id("_storage")),
     })
   ),
   handler: async (ctx) => {
@@ -60,12 +107,17 @@ export const getBankById = query({
       _id: v.id("banks"),
       _creationTime: v.number(),
       name: v.string(),
+      slug: v.string(),
+      countryId: v.id("countries"),
+      isActive: v.boolean(),
       bidInstructions: v.string(),
       contactInfo: v.object({
         address: v.string(),
-        emails: v.array(v.string()),
-        phones: v.array(v.string()),
-        website: v.string(),
+        primaryEmail: v.string(),
+        primaryPhone: v.string(),
+        website: v.optional(v.string()),
+        additionalEmails: v.optional(v.array(v.string())),
+        additionalPhones: v.optional(v.array(v.string())),
       }),
       operatingHours: v.object({
         weekdays: v.string(),
@@ -73,6 +125,7 @@ export const getBankById = query({
       }),
       saleTerms: v.string(),
       viewInstructions: v.string(),
+      logoStorageId: v.optional(v.id("_storage")),
     })
   ),
   handler: async (ctx, args) => {
