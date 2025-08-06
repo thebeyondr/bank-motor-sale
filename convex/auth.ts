@@ -29,7 +29,8 @@ export const { createUser, updateUser, deleteUser, createSession } =
       }
 
       const userId = await ctx.db.insert("users", {
-        bank: bank._id,
+        email: user.email,
+        bankId: bank._id,
         role: "bank-representative",
       });
 
