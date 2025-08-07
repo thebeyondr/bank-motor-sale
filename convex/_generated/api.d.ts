@@ -13,8 +13,10 @@ import type * as banks from "../banks.js";
 import type * as countries from "../countries.js";
 import type * as createVehicle from "../createVehicle.js";
 import type * as http from "../http.js";
+import type * as listingFilters from "../listingFilters.js";
 import type * as listings from "../listings.js";
 import type * as marketStats from "../marketStats.js";
+import type * as migrations from "../migrations.js";
 import type * as uploadHelpers from "../uploadHelpers.js";
 import type * as vehicles from "../vehicles.js";
 
@@ -38,8 +40,10 @@ declare const fullApi: ApiFromModules<{
   countries: typeof countries;
   createVehicle: typeof createVehicle;
   http: typeof http;
+  listingFilters: typeof listingFilters;
   listings: typeof listings;
   marketStats: typeof marketStats;
+  migrations: typeof migrations;
   uploadHelpers: typeof uploadHelpers;
   vehicles: typeof vehicles;
 }>;
