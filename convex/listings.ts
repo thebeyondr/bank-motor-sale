@@ -1,6 +1,7 @@
 import type { Id } from "./_generated/dataModel";
 import { query, mutation } from "./_generated/server";
 import { v } from "convex/values";
+import { internal } from "./_generated/api";
 
 export const get = query({
   args: {},
@@ -848,6 +849,11 @@ export const createListing = mutation({
       expiresAt: args.expiresAt,
     });
 
+    // Create/update listingFilter record
+    await ctx.scheduler.runAfter(0, internal.listingFilters.upsertListingFilter, {
+      listingId,
+    });
+
     // Update market stats if listing is active
     if ((args.status || "active") === "active") {
       // Note: Market stats will be updated on next query
@@ -962,6 +968,11 @@ export const updateListing = mutation({
     if (args.expiresAt !== undefined) updateData.expiresAt = args.expiresAt;
 
     await ctx.db.patch(args.listingId, updateData);
+
+    // Update listingFilter record
+    await ctx.scheduler.runAfter(0, internal.listingFilters.upsertListingFilter, {
+      listingId: args.listingId,
+    });
 
     // Update market stats if status is changing to/from active
     if (isBecomingActive || isLeavingActive) {
